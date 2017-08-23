@@ -1,0 +1,56 @@
+...................................................................................
+.    Header for input file containing thermodyanmic
+.	 properties for the Solvent and Solute
+...................................................................................
+1.0		! chamber pressure [atm]
+! SOLVENT PROPERTIES: (Propanol C3H8O CAS No 71-23-B)
+ 1.537500E+02      !Low Temp Range Density Eqn [K]...... 
+ 5.352000E+02      !High Temp Range Density Eqn [K]..... 
+ 2.341000E-01      !A coefficient Density Eqn........... 
+ 2.605800E-01      !B coefficient Density Eqn........... 
+ 5.402000E+02      !C coefficient Density Eqn........... 
+ 2.857100E-01      !n coefficient Density Eqn........... 
+
+ 146.95      	   !Low Temp Range Antoinne Eqn [K]..... GOOD (CHERIC) 
+ 536.71      	   !High Temp Range Antoinne Eqn [K].... GOOD (CHERIC) 
+-7.702226E+00      !A coefficient Antoinne Eqn.......... GOOD (CHERIC) 
+-8.002693E+03      !B coefficient Antoinne Eqn.......... GOOD (CHERIC) 
+ 7.171697E+01      !C coefficient Antoinne Eqn.......... GOOD (CHERIC) 
+ 3.950448E-07      !D coefficient Antoinne Eqn.......... GOOD (CHERIC) 
+
+ 201.15      	   !Low Temp Range Andrade/Quasi-polynomial Eqn [K]...... GOOD (CHERIC) 
+ 533.15      	   !High Temp Range Andrade/Quasi-polynomial Eqn [K]..... GOOD (CHERIC)  
+-12.28       	   !A coefficient Andrade/Quasi-polynomial Eqn........... GOOD (CHERIC)  
+ 2666        	   !B coefficient Andrade/Quasi-polynomial Eqn........... GOOD (CHERIC)  
+0.02008      	   !C coefficient Andrade/Quasi-polynomial Eqn........... GOOD (CHERIC) NEW ROWS
+-2.233E-05   	   !D coefficient Andrade/Quasi-polynomial Eqn........... GOOD (CHERIC) NEW ROWS
+
+ 50.5      	       !Critical Pressure [bar]............. GOOD (Vargaftik)
+ 536.85			   !Critical Temperature [K]............ GOOD (Vargaftik)
+ 60.1      		   !Molecular Weight [kg/kmol].......... GOOD (Vargaftik)
+
+!SOLUTE PROPERTIES: (Glycerol C3H8O3)
+ 291.33     	   !Low Temp Range Density Eqn [K]...... GOOD (YAW)
+ 850.00      	   !High Temp Range Density Eqn [K]..... GOOD (YAW)
+ 0.3488      	   !A coefficient Density Eqn........... GOOD (YAW)
+ 0.25408      	   !B coefficient Density Eqn........... GOOD (YAW)
+ 850.00      	   !C coefficient Density Eqn........... GOOD (YAW)
+ 0.15410      	   !n coefficient Density Eqn........... GOOD (YAW)
+
+ 290.15      	   !Low Temp Range Antoinne Eqn [K]..... GOOD (CHERIC)
+ 723.00      	   !High Temp Range Antoinne Eqn [K].... GOOD (CHERIC)
+-2.125867E+01      !A coefficient Antoinne Eqn.......... GOOD (CHERIC)
+-1.672626E+04      !B coefficient Antoinne Eqn.......... GOOD (CHERIC)
+ 1.655099E+02      !C coefficient Antoinne Eqn.......... GOOD (CHERIC)
+ 1.100480E-05      !D coefficient Antoinne Eqn.......... GOOD (CHERIC)
+
+ 2.931500E+02      !Low Temp Range Andrade Eqn [K]...... 
+ 5.531500E+02      !High Temp Range Andrade Eqn [K]..... 
+-4.643000E+00      !A coefficient Andrade Eqn........... 
+ 1.700000E+03      !B coefficient Andrade Eqn........... 
+ 6.680000E+01      !Critical Pressure [bar]............. GOOD (CHERIC)
+ 7.260000E+02      !Critical Temperature [K]............ GOOD (CHERIC)
+ 92.1 		       !Molecular Weight [kg/kmol].......... GOOD (Vargaftik)
+
+ C3H8O			   !chemical formula for solvent (Propanol)
+
