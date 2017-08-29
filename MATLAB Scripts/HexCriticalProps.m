@@ -1,5 +1,6 @@
 %This function lists contains the critical properties of 
 % N-Hexadecane (C16H34) to calculate the surface tension
+% Properties from Poling et al. Also verified through CHERIC
 
 
 function [Pc,Tc,MW]= HexCriticalProps()

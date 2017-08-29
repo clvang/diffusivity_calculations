@@ -46,7 +46,7 @@ K = [0.857907745
 0.284856146];
 
 %specify mass fraction of solute (Hexadecane) in mixture
-sizeBlock1 = 6;
+sizeBlock1 = 7;
 for i=1:length(do)
     if i <= sizeBlock1
         YsuVector(i) = 0.05;      

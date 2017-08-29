@@ -15,11 +15,10 @@ IMPLICIT NONE
 
 
 CHARACTER(len=30) :: filename, filenameOUT, filenameOUText, chemFormula
-CHARACTER(len=3) :: filenameHead
 CHARACTER(len=100) :: junk
 INTEGER :: status, i, j, N
-REAL, DIMENSION(19) :: soluteProps, solventProps
-REAL, DIMENSION(100) :: Tvector
+REAL, DIMENSION(20) :: soluteProps, solventProps
+REAL, DIMENSION(300) :: Tvector
 REAL :: TminRhoSolute, TmaxRhoSolute, ArhoSolute, BrhoSolute, CrhoSolute, &
 nrhoSolute, TminAntoinneSolute, TmaxAntoinneSolute, AantoinneSolute, &
 BantoinneSolute, CantoinneSolute, DantoinneSolute, TminAndradeSolute, &
@@ -31,25 +30,13 @@ BantoinneSolvent, CantoinneSolvent, DantoinneSolvent, TminAndradeSolvent, &
 TmaxAndradeSolvent, AandradeSolvent, BandradeSolvent, PcriticalSolvent, &
 TcriticalSolvent, MWsolvent
 REAL :: Pchamber, TsatSolventNBP, rhoSatSolventNBP, TsatSolventChamber, &
-VSLsolventChamber
+VSLsolventChamber, sigmaSolvent
 REAL :: TsatSoluteNBP, rhoSoluteAtSolventTsatNBP, TsatSoluteChamber, &
-VSLsoluteChamber
+VSLsoluteChamber, sigmaSolute
 REAL :: DAB, DBA, maxTMIN, minTMAX
 
 
-!Get the file name and echo back to user
-WRITE(*,*) "Enter the name of the file with thermodynamic properties: "
-READ(*,15) filename
-15 FORMAT(A30)
-
-filenameHead = filename(1:3)	!save the first 3 letter of filename
-								!and store.  This will be used to
-								!ID weather data being read is 
-								!"hep" = Heptane-Hexadencane or
-								!"prp" = Propanol-Glycerol
-
-WRITE(*,10) filename
-10 FORMAT(' ','The input file name is: ' A)
+filename = "inputData.txt"
 
 !Open the file and check for errors on Open 
 OPEN(UNIT=1, FILE=filename, STATUS='OLD', ACTION='READ', IOSTAT=status)
@@ -68,7 +55,7 @@ openif : IF (status == 0) THEN
 	READ(1,*,IOSTAT=status) junk !read line 6 (headerline)
 
 	!Read Solvent Properties (The component in excess)
-	readSolventProps: DO i=1,19  !read lines 7-25
+	readSolventProps: DO i=1,20  !read lines 7-25
 	  READ(1,*,IOSTAT=status) solventProps(i)
 	  IF (status /= 0) EXIT
 	END DO readSolventProps
@@ -92,6 +79,7 @@ openif : IF (status == 0) THEN
 	PcriticalSolvent    = solventProps(17)
 	TcriticalSolvent    = solventProps(18)
 	MWsolvent           = solventProps(19)
+	sigmaSolvent        = solventProps(20)
 
 	WRITE(*,*)"==============================================="
 
@@ -99,7 +87,7 @@ openif : IF (status == 0) THEN
 	nrhoSolvent, TminAntoinneSolvent, TmaxAntoinneSolvent, AantoinneSolvent, &
 	BantoinneSolvent, CantoinneSolvent, DantoinneSolvent, TminAndradeSolvent, &
 	TmaxAndradeSolvent, AandradeSolvent, BandradeSolvent, PcriticalSolvent, &
-	TcriticalSolvent, MWsolvent
+	TcriticalSolvent, MWsolvent, sigmaSolvent
 
 	30 FORMAT (/,"SOLVENT PROPERTIES: ",/,  &
 		"Low Temp Range Density Eqn [K]......",ES14.6,/, &
@@ -120,12 +108,13 @@ openif : IF (status == 0) THEN
 		"B coefficient Andrade Eqn...........",ES14.6,/,/, &
 		"Critical Pressure [bar].............",ES14.6,/, &
 		"Critical Temperature [K]............",ES14.6,/, &
-		"Molecular Weight [kg/kmol]..........",ES14.6 )
+		"Molecular Weight [kg/kmol]..........",ES14.6,/, &
+		"Surface Tension at BP [erg/cm^2]....",ES14.6)
 
-	READ(1,*,IOSTAT=status) junk !read line 27 (another headerline)
+	READ(1,*,IOSTAT=status) junk !read line 28 (another headerline)
 
 	!Read solute properties (component NOT in excess)
-	readSoluteProps: DO i=1,19   !read line 28-46
+	readSoluteProps: DO i=1,20   !read line 29-48
 	  READ(1,*,IOSTAT=status) soluteProps(i)
 	  IF (status /= 0) EXIT
 	END DO readSoluteProps
@@ -149,12 +138,13 @@ openif : IF (status == 0) THEN
 	PcriticalSolute    = soluteProps(17)
 	TcriticalSolute    = soluteProps(18)
 	MWsolute           = soluteProps(19)
+	sigmaSolute 	   = soluteProps(20)
 
 	WRITE(*,20) TminRhoSolute, TmaxRhoSolute, ArhoSolute, BrhoSolute, CrhoSolute, &
 	nrhoSolute, TminAntoinneSolute, TmaxAntoinneSolute, AantoinneSolute, &
 	BantoinneSolute, CantoinneSolute, DantoinneSolute, TminAndradeSolute, &
 	TmaxAndradeSolute, AandradeSolute, BandradeSolute, PcriticalSolute, &
-	TcriticalSolute, MWsolute
+	TcriticalSolute, MWsolute, sigmaSolute
 
 	20 FORMAT (/,"SOLUTE PROPERTIES: ",/,  &
 		"Low Temp Range Density Eqn [K]......",ES14.6,/, &
@@ -175,7 +165,8 @@ openif : IF (status == 0) THEN
 		"B coefficient Andrade Eqn...........",ES14.6,/,/, &
 		"Critical Pressure [bar].............",ES14.6,/, &
 		"Critical Temperature [K]............",ES14.6,/, &
-		"Molecular Weight [kg/kmol]..........",ES14.6 )
+		"Molecular Weight [kg/kmol]..........",ES14.6,/, &
+		"Surface Tension at BP [erg/cm^2]....",ES14.6)
 
 	READ(1,*, IOSTAT = status) chemFormula
 
@@ -203,11 +194,11 @@ minTMAX = FLOOR(minTMAX)	!round to nearest integer less than or equal to argumen
 
 !create array of temperatures in which we would like to evalute
 !values of DAB and DBA
-CALL linspace(Tvector, maxTMIN, minTMAX, 100)
+CALL linspace(Tvector, maxTMIN, minTMAX, 300)
 
 !open file to write DAB and DBA calculated results
-filenameOUText = "OUT.txt"
-filenameOUT = filename(1:6) // filenameOUText
+filenameOUText = "_OUT.txt"
+filenameOUT = filename(1:9) // filenameOUText
 OPEN(UNIT=4, FILE=filenameOUT, STATUS='REPLACE', ACTION='WRITE', IOSTAT = status)
 WRITE(4,*) " DAB [m^2/s]     DBA [m^2/s]    Temperature [K]" !write header for output file
 
@@ -268,7 +259,7 @@ loopOverTemp : DO j=1, N
 	!evaluate DAB 
 	CALL tynCalus(MWsolvent,rhoSatSolventNBP, &
 		MWsolute,rhoSoluteAtSolventTsatNBP,VSLsolventChamber,&
-		TsatSolventChamber, DAB)
+		TsatSolventChamber, sigmaSolvent, sigmaSolute, DAB)
 	DAB = DAB/(1E4)
 	WRITE(*,110) DAB, TsatSolventChamber
 	110 FORMAT("DAB..........", ES14.6, " m^2/s   @", ES14.6, "K")
@@ -276,7 +267,7 @@ loopOverTemp : DO j=1, N
 	!evaluate DBA
 	CALL tynCalus(MWsolute, rhoSoluteAtSolventTsatNBP, &
 		MWsolvent, rhoSatSolventNBP, VSLsoluteChamber, &
-		TsatSolventChamber, DBA)
+		TsatSolventChamber, sigmaSolute, sigmaSolvent, DBA)
 	DBA = DBA/(1E4)
 	WRITE(*,120) DBA,  TsatSolventChamber
 	120 FORMAT("DBA..........", ES14.6, " m^2/s   @", ES14.6, "K"/)

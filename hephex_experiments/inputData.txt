@@ -23,6 +23,7 @@
  2.740000E+01      !Critical Pressure [bar]............. CHERIC
  5.402000E+02      !Critical Temperature [K]............ CHERIC
  1.002040E+02      !Molecular Weight [kg/kmol].......... CHERIC
+ 12.6191 		   !surface tension at BP [erg/cm^2].... Vargaftik
 
 !SOLUTE PROPERTIES: (Hexadecane)
  2.913100E+02      !Low Temp Range Density Eqn [K]...... YAW
@@ -44,6 +45,7 @@
  1.400000E+01      !Critical Pressure [bar]............. CHERIC
  7.230000E+02      !Critical Temperature [K]............ CHERIC
  2.264460E+02      !Molecular Weight [kg/kmol].......... CHERIC
+ 21.03 			   !surface tension at solvent BP [erg/cm^2]... Vargaftik
 
  C7H16			   !chemical formula for solvent (Heptane)
 

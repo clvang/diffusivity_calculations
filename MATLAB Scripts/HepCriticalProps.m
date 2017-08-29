@@ -1,5 +1,6 @@
-%This function lists contains the critical properties of 
-% N-Heptane (C7H16) to calculate the surface tension
+% This function lists contains the critical properties of 
+% N-Heptane (C7H16) to calculate the surface tension.
+% Properties from Poling et al. p. A.13
 
 
 function [Pc,Tc,MW]= HepCriticalProps()

@@ -55,7 +55,7 @@ for i = 1:length(P)
     
     %calculate surface tension using corresponding states of Bird and Brock
     [PcSV, TcSV,MWsv] = HepCriticalProps();
-    sigmaSV = BrockBirdCS(PcSV,TcSV,TsatSV);  %[erg/cm^2] @ normal BP
+    sigmaSV = 12.6191; %BrockBirdCS(PcSV,TcSV,TbpSVChamber);  %[erg/cm^2] @ normal BP
     %NOTE: Vargaftik, sigmaSV = 12.6191e-3 N/m = 12.6191 erg/cm^2 (CHECK)
     
     
@@ -96,8 +96,8 @@ for i = 1:length(P)
     %calculate surface tension using corresponding states of Bird and Brock
     [PcSU, TcSU,MWsu] = HexCriticalProps();
 
-    sigmaSU = BrockBirdCS(PcSU,TcSU,TbpSVChamber);  %[erg/cm^2] @ normal BP
-    %NOTE: Vargaftik, sigmaSU=21.03e-3 N/m=21.03 erg/cm^2
+    sigmaSU = 21.03; %BrockBirdCS(PcSU,TcSU,TbpSVChamber)  %[erg/cm^2] @ normal BP
+    %NOTE: Vargaftik, sigmaSU=21.03e-3 N/m = 21.03 erg/cm^2
     
     
 % DAB = tynCalus(MWsolv, rhoSATsolv,MWsolu,rhoSATsolu,...
