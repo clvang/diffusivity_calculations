@@ -88,7 +88,7 @@ SUBROUTINE DABuncertainty(MWsolvent,rhoSatSolventNBP, MWsolute,rhoSoluteAtSolven
 	! Calculate uncertainty in viscosity of solvant (B) squared: ( U_{\eta_B} / \eta_{B} )^2
 	U_AetaB_sq = 0.0 							! U_{A}^2
 	U_BetaB_sq = 0.0 							! U_{B}^2
-	U_etaBOetaB_sq = U_AetaB_sq + ( U_BetaB_sq / (T**2) ) + ( BandradeSolvent/T )**2 * (U_ToT_sq)**2
+	U_etaBOetaB_sq = U_AetaB_sq + ( U_BetaB_sq / (T**2) ) + ( BandradeSolvent/T )**2 * (U_ToT_sq)
 	WRITE(*,60) U_etaBOetaB_sq 					! (U_{V_B}/V_B)^2
 	60 FORMAT("U_etaBOetaB_sq............", ES14.6)
 
@@ -103,13 +103,13 @@ SUBROUTINE DABuncertainty(MWsolvent,rhoSatSolventNBP, MWsolute,rhoSoluteAtSolven
 	! Calculate uncertainty in D_{AB}: U_{D_{AB}}
 	U_Dab = DAB*SQRT( U_DabODab_sq )
 	WRITE(*,80) U_Dab 						
-	80 FORMAT("U_Dab.....................", ES14.6)
+	80 FORMAT("U_Dab.....................", ES14.6,' m^2/s')
 
 	! Calculate 95% expanded uncertainty in D_{AB}:
 	! See Coleman, Steele Eqn. 3.19
 	U_Dab_95 = 2*U_Dab
 	WRITE(*,90) U_Dab_95						
-	90 FORMAT("U_Dab_95..................", ES14.6)	
+	90 FORMAT("U_Dab_95..................", ES14.6,' m^2/s')	
 
 
 END SUBROUTINE DABuncertainty
