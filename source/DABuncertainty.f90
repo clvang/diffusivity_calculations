@@ -18,8 +18,8 @@ SUBROUTINE DABuncertainty(MWsolvent,rhoSatSolventNBP, MWsolute,rhoSoluteAtSolven
 	INTEGER :: i, N 
 	REAL :: Va, Vb, U_Pv_sq, U_ToT_sq, U_Arho_sq, U_Brho_sq, T, U_rhoAOrhoA_sq, &
 			U_VaOVa_sq, U_MWA_sq, U_rhoBOrhoB_sq, U_VbOVb_sq, U_MWB_sq, U_AetaB_sq, &
-			U_BetaB_sq, U_etaBOetaB_sq, U_sigmaA_sq, U_sigmaB_sq, U_sigmaAosigmaA_sq, &
-			U_sigmaBosigmaB_sq, U_DabODab_sq, U_Dab
+			U_BetaB_sq, U_etaBOetaB_sq, U_sigmaAosigmaA_sq, &
+			U_sigmaBosigmaB_sq, U_DabODab_sq, U_Dab, U_Dab_95
 
 	!compute molar volume [cm^3/mol] at NBP solvent
 	Vb = (MWsolvent/rhoSatSolventNBP)*(1E3)	
@@ -27,7 +27,7 @@ SUBROUTINE DABuncertainty(MWsolvent,rhoSatSolventNBP, MWsolute,rhoSoluteAtSolven
 	!compute molar volume[cm^3/mol] at NBP of solvent
 	Va = (MWsolute/rhoSoluteAtSolventTsatNBP)*(1E3)
 
-	!Calculate uncertainty in T, (U_T/T)^2
+	!Calculate relative uncertainty in T squared, (U_T/T)^2
 	N = 10
 	deltaDP(1) = 0.01*Po
 	DO i=1,N 
@@ -49,27 +49,21 @@ SUBROUTINE DABuncertainty(MWsolvent,rhoSatSolventNBP, MWsolute,rhoSoluteAtSolven
 		BantoinneSolvent,CantoinneSolvent,DantoinneSolvent, &
 		TminAntoinneSolvent, TmaxAntoinneSolvent,T)
 
-	U_Pv_sq = 0.1*2.0   						! U_{P_v}^2, Assume U_{P_v} = 10 percent
+	U_Pv_sq = (0.1*Po)**2   					! U_{P_v}^2, Assume U_{P_v} = 10 percent
 	U_ToT_sq = (dTdP(N) / T)**2 * U_Pv_sq       ! (U_T/T)^2
 	WRITE(*,10) U_ToT_sq
 	10 FORMAT("U_ToT_sq..................", ES14.6)
 
-	!Calculate uncertainty in density of solute (A), (U_rho_A/ rho_A)^2
-	U_Arho_sq = 0.0
-	U_Brho_sq = 0.0
+	!Calculate relative uncertainty in density of solute (A) squared, (U_rho_A/ rho_A)^2
+	U_Arho_sq = 0.0 	! uncertainties in A coefficient in equation = 0
+	U_Brho_sq = 0.0		! uncertainties in B coefficient in equation = 0
 	U_rhoAOrhoA_sq = ( 1. / ArhoSolute)**2 * U_Arho_sq + &
 		( (1. - (T/CrhoSolute))**(nrhoSolute) / BrhoSolute )**2 * U_Brho_sq + &
 		( nrhoSolute*(1- (T/CrhoSolute))**( nrhoSolute - 1) * LOG(BrhoSolute) / CrhoSolute )**2 * (U_ToT_sq * T**2)
 	WRITE(*,20) U_rhoAOrhoA_sq 					! (U_rho_A/ rho_A)^2
 	20 FORMAT("U_rhoAOrhoA_sq............", ES14.6)
 
-	! Calculate uncerntainty in molar volume of solute (A), Va: (U_{V_A}/V_A)^2
-	U_MWA_sq = 0.1*2.0 		!U_{MW_A}^2. Assume U_{MW_A} = 10 percent
-	U_VaOVa_sq = (U_MWA_sq/(MWsolute**2)) + U_rhoAOrhoA_sq   
-	WRITE(*,30) U_VaOVa_sq 						! (U_{V_A}/V_A)^2
-	30 FORMAT("U_VaOVa_sq................", ES14.6)
-
-	!Calculate uncertainty in density of solvant (B), (U_rho_B/ rho_B)^2
+	!Calculate relative uncertainty in density of solvant (B) squared: (U_rho_B/ rho_B)^2
 	U_Arho_sq = 0.0
 	U_Brho_sq = 0.0
 	U_rhoBOrhoB_sq = ( 1. / ArhoSolvent)**2 * U_Arho_sq + &
@@ -78,34 +72,44 @@ SUBROUTINE DABuncertainty(MWsolvent,rhoSatSolventNBP, MWsolute,rhoSoluteAtSolven
 	WRITE(*,40) U_rhoBOrhoB_sq 					! (U_rho_B/ rho_B)^2
 	40 FORMAT("U_rhoBOrhoB_sq............", ES14.6)
 
-	! Calculate uncerntainty in molar volume of solvant (B), Vb: (U_{V_B}/V_B)^2
-	U_MWB_sq = 0.1*2.0 		!U_{MW_A}^2. Assume U_{MW_A} = 10 percent
+	! Calculate uncerntainty in molar volume of solute (A), Va: (U_{V_A}/V_A)^2
+	U_MWA_sq = ( 0.1*MWsolute )**2 		!U_{MW_A}^2. Assume U_{MW_A} = 10 percent
+	U_VaOVa_sq = (U_MWA_sq/(MWsolute**2)) + U_rhoAOrhoA_sq   
+	WRITE(*,30) U_VaOVa_sq 						! (U_{V_A}/V_A)^2
+	30 FORMAT("U_VaOVa_sq................", ES14.6)
+
+	! Calculate uncerntainty in molar volume of solvant (B) squared: (U_{V_B}/V_B)^2
+	U_MWB_sq = ( 0.1*MWsolvent )**2 			! U_{MW_A}^2. Assume U_{MW_A} = 10 percent
 	U_VbOVb_sq = ( U_MWB_sq/(MWsolvent**2) ) + U_rhoBOrhoB_sq
 	WRITE(*,50) U_VbOVb_sq 						! (U_{V_B}/V_B)^2
 	50 FORMAT("U_VbOVb_sq................", ES14.6)
 
-	! Calculate uncertainty in viscosity of solvant (B), ( U_{\eta_B} / \eta_{B} )^2
-	U_AetaB_sq = 0.0 		!U_{A}^2
-	U_BetaB_sq = 0.0 		!U_{B}^2
+
+	! Calculate uncertainty in viscosity of solvant (B) squared: ( U_{\eta_B} / \eta_{B} )^2
+	U_AetaB_sq = 0.0 							! U_{A}^2
+	U_BetaB_sq = 0.0 							! U_{B}^2
 	U_etaBOetaB_sq = U_AetaB_sq + ( U_BetaB_sq / (T**2) ) + ( BandradeSolvent/T )**2 * (U_ToT_sq)**2
-	WRITE(*,60) U_etaBOetaB_sq 						! (U_{V_B}/V_B)^2
+	WRITE(*,60) U_etaBOetaB_sq 					! (U_{V_B}/V_B)^2
 	60 FORMAT("U_etaBOetaB_sq............", ES14.6)
 
-	! Calculate uncertainty in D_{AB}: (U_{D_{AB}}/D_{AB})^2
-	U_sigmaA_sq = 0.15*2.0		! U_sigmaA^2. Assume U_sigmaA = 15 percent
-	U_sigmaB_sq = 0.15*2.0		! U_sigmaB^2. Assume U_sigmaB = 15 percent
-	U_sigmaAosigmaA_sq = U_sigmaA_sq / (sigmaSolute**2)
-	U_sigmaBosigmaB_sq = U_sigmaB_sq / (sigmaSolvent**2)	
+	! Calculate relative uncertainty in D_{AB}: ( U_{D_{AB}}/D_{AB} )^2
+	U_sigmaAosigmaA_sq = (0.15)**2  		! ( U_sigmaA / sigmaA )**2. Assume relative uncertainty in sigmaA = 15 %
+	U_sigmaBosigmaB_sq = (0.15)**2 			! ( U_sigmaB / sigmaB )**2. Assume relative uncertainty in sigmaB = 15 %
 	U_DabODab_sq = U_ToT_sq + 0.187489*U_VaOVa_sq + 0.071289*U_VbOVb_sq + U_etaBOetaB_sq + &
 					0.0225*U_sigmaAosigmaA_sq + 0.0225*U_sigmaBosigmaB_sq
 	WRITE(*,70) U_DabODab_sq 						
 	70 FORMAT("U_DabODab_sq..............", ES14.6)
 
-
 	! Calculate uncertainty in D_{AB}: U_{D_{AB}}
 	U_Dab = DAB*SQRT( U_DabODab_sq )
 	WRITE(*,80) U_Dab 						
 	80 FORMAT("U_Dab.....................", ES14.6)
+
+	! Calculate 95% expanded uncertainty in D_{AB}:
+	! See Coleman, Steele Eqn. 3.19
+	U_Dab_95 = 2*U_Dab
+	WRITE(*,90) U_Dab_95						
+	90 FORMAT("U_Dab_95..................", ES14.6)	
 
 
 END SUBROUTINE DABuncertainty
