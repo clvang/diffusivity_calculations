@@ -227,7 +227,6 @@ loopOverTemp : DO j=1, N
 	WRITE(*,60) TsatSolventChamber
 	60 FORMAT("Solvent Surface Temperature....." ES14.6, " K       (SPECIFIED)" )
 
-
 	!evaluate liquid viscosity of solvent at BP temperature 
 	!corresponding to the chamber pressure
 	CALL AndradeVSL(AandradeSolvent, BandradeSolvent, &
@@ -256,7 +255,7 @@ loopOverTemp : DO j=1, N
 
 
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!  Calculate DAB & DBA !!!!!!!!!!!!!!!!!!!!!!!!!!!
-	!evaluate DAB 
+	!evaluate DAB - solute (A) diffusing into solvant (B)
 	CALL tynCalus(MWsolvent,rhoSatSolventNBP, &
 		MWsolute,rhoSoluteAtSolventTsatNBP,VSLsolventChamber,&
 		TsatSolventChamber, sigmaSolvent, sigmaSolute, DAB)
@@ -264,7 +263,7 @@ loopOverTemp : DO j=1, N
 	WRITE(*,110) DAB, TsatSolventChamber
 	110 FORMAT("DAB..........", ES14.6, " m^2/s   @", ES14.6, "K")
 
-	!evaluate DBA
+	!evaluate DBA - solvant (B) diffusing into solute (A)
 	CALL tynCalus(MWsolute, rhoSoluteAtSolventTsatNBP, &
 		MWsolvent, rhoSatSolventNBP, VSLsoluteChamber, &
 		TsatSolventChamber, sigmaSolute, sigmaSolvent, DBA)
@@ -278,6 +277,15 @@ loopOverTemp : DO j=1, N
 
 END DO loopOverTemp
 	CLOSE(UNIT=4)
+
+!calculate uncertainty in DAB or DBA
+CALL DABuncertainty(MWsolvent,rhoSatSolventNBP, MWsolute,rhoSoluteAtSolventTsatNBP, &
+			Pchamber*101.325, AantoinneSolvent, BantoinneSolvent, CantoinneSolvent, DantoinneSolvent, &
+			TminAntoinneSolvent, TmaxAntoinneSolvent, &
+			ArhoSolvent,BrhoSolvent,CrhoSolvent,nrhoSolvent, &
+			ArhoSolute,BrhoSolute,CrhoSolute,nrhoSolute, &
+			BandradeSolvent, sigmaSolvent, sigmaSolute, DAB )
+
 
 END PROGRAM molecularDiff
 

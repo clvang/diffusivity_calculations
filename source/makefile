@@ -4,7 +4,8 @@ OBJS= molecularDiff.Rev02.o 	\
 	AndradeVSL.o 	\
 	rhoCalc.o 	\
 	TsatAntoinne.o 	\
-	linspace.o
+	linspace.o 	\
+	DABuncertainty.o
 
 FC= gfortran 
 
@@ -28,6 +29,9 @@ TsatAntoinne.o:TsatAntoinne.f90
 
 linspace.o:linspace.f90
 	$(FC) -c linspace.f90
+
+DABuncertainty.o:DABuncertainty.f90
+	$(FC) -c DABuncertainty.f90
 
 clean:
 	rm $(OBJS)
