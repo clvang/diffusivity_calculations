@@ -192,9 +192,6 @@ maxTMIN = CEILING(maxTMIN)	!round to nearest integer greater than or euqal to ar
 minTMAX = FLOOR(minTMAX)	!round to nearest integer less than or equal to argument
 
 
-!create array of temperatures in which we would like to evalute
-!values of DAB and DBA
-CALL linspace(Tvector, maxTMIN, minTMAX, 300)
 
 !open file to write DAB and DBA calculated results
 filenameOUText = "_OUT.txt"
@@ -204,14 +201,21 @@ WRITE(4,*) " DAB [m^2/s]     DBA [m^2/s]    Temperature [K]" !write header for o
 
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!  Calculate SOLVENT Properties !!!!!!!!!!!!!!!!!!!!!!!!!!!
+!evaluate NPB tempearture of solvent using Antoinne Eqn.
+CALL TsatAntoinne(101.325, AantoinneSolvent,&
+	BantoinneSolvent,CantoinneSolvent,DantoinneSolvent, &
+	TminAntoinneSolvent, TmaxAntoinneSolvent,TsatSolventNBP)
+
+!create array of temperatures in which we would like to evalute
+!values of DAB and DBA
+! CALL linspace(Tvector, maxTMIN, minTMAX, 300)
+CALL linspace(Tvector, maxTMIN, TsatSolventNBP, 300)
+
 N = SIZE(Tvector)
 loopOverTemp : DO j=1, N
 	WRITE(*,24) Tvector(j), j 
 	24 	FORMAT(/,/"============SPECIFIED TEMPERATURE: " ES14.6, "K, INDEX:", I3, "============") 
-	!evaluate NPB tempearture of solvent using Antoinne Eqn.
-	CALL TsatAntoinne(101.325, AantoinneSolvent,&
-		BantoinneSolvent,CantoinneSolvent,DantoinneSolvent, &
-		TminAntoinneSolvent, TmaxAntoinneSolvent,TsatSolventNBP)
+
 	WRITE(*,40) TsatSolventNBP
 	40 FORMAT("NBP Tsat for Solvent is........." ES14.6, " K       @  1.0ATM")
 

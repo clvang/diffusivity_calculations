@@ -50,7 +50,8 @@ SUBROUTINE DABuncertainty(MWsolvent,rhoSatSolventNBP, MWsolute,rhoSoluteAtSolven
 		TminAntoinneSolvent, TmaxAntoinneSolvent,T)
 
 	U_Pv_sq = (0.1*Po)**2   					! U_{P_v}^2, Assume U_{P_v} = 10 percent
-	U_ToT_sq = (dTdP(N) / T)**2 * U_Pv_sq       ! (U_T/T)^2
+	! U_ToT_sq = (dTdP(N) / T)**2 * U_Pv_sq     ! (U_T/T)^2 
+	U_ToT_sq = (15.0/T)**2  					! (U_T/T)^2 assume U_T = 15 K
 	WRITE(*,10) U_ToT_sq
 	10 FORMAT("U_ToT_sq..................", ES14.6)
 
@@ -73,13 +74,13 @@ SUBROUTINE DABuncertainty(MWsolvent,rhoSatSolventNBP, MWsolute,rhoSoluteAtSolven
 	40 FORMAT("U_rhoBOrhoB_sq............", ES14.6)
 
 	! Calculate uncerntainty in molar volume of solute (A), Va: (U_{V_A}/V_A)^2
-	U_MWA_sq = ( 0.1*MWsolute )**2 		!U_{MW_A}^2. Assume U_{MW_A} = 10 percent
+	U_MWA_sq = ( 0.01*MWsolute )**2 		!U_{MW_A}^2. Assume U_{MW_A} = 1 percent
 	U_VaOVa_sq = (U_MWA_sq/(MWsolute**2)) + U_rhoAOrhoA_sq   
 	WRITE(*,30) U_VaOVa_sq 						! (U_{V_A}/V_A)^2
 	30 FORMAT("U_VaOVa_sq................", ES14.6)
 
 	! Calculate uncerntainty in molar volume of solvant (B) squared: (U_{V_B}/V_B)^2
-	U_MWB_sq = ( 0.1*MWsolvent )**2 			! U_{MW_A}^2. Assume U_{MW_A} = 10 percent
+	U_MWB_sq = ( 0.01*MWsolvent )**2 			! U_{MW_A}^2. Assume U_{MW_A} = 1 percent
 	U_VbOVb_sq = ( U_MWB_sq/(MWsolvent**2) ) + U_rhoBOrhoB_sq
 	WRITE(*,50) U_VbOVb_sq 						! (U_{V_B}/V_B)^2
 	50 FORMAT("U_VbOVb_sq................", ES14.6)
@@ -110,6 +111,9 @@ SUBROUTINE DABuncertainty(MWsolvent,rhoSatSolventNBP, MWsolute,rhoSoluteAtSolven
 	U_Dab_95 = 2*U_Dab
 	WRITE(*,90) U_Dab_95						
 	90 FORMAT("U_Dab_95..................", ES14.6,' m^2/s')	
+
+	WRITE(*,100) (U_Dab_95 / DAB )*100
+	100 FORMAT("U_Dab_95 / DAB ...........", ES14.6,' %')	
 
 
 END SUBROUTINE DABuncertainty
