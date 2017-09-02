@@ -50,6 +50,6 @@
  C7H16			   !chemical formula for solvent (Heptane)
 
  !INPUTS FOR UNCERTAINTY CALCULATIONS
- 15 			   !relative uncertainty in temperature (plus/minus K)
- 0.01 			   !relative uncertainty in molecular weights (percent)
- 0.15 			   !relative uncertainty in surface tension (percent)
+ 15 			   ! 95% uncertainty in temperature (plus/minus K)
+ 0.01 			   ! 95% relative uncertainty in molecular weights (percent)
+ 0.15 			   ! 95% relative uncertainty in surface tension (percent)
