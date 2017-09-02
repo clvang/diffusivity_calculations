@@ -18,6 +18,7 @@ CHARACTER(len=30) :: filename, filenameOUT, filenameOUText, chemFormula
 CHARACTER(len=100) :: junk
 INTEGER :: status, i, j, N
 REAL, DIMENSION(20) :: soluteProps, solventProps
+REAL, DIMENSION(3) :: uncertaintyInputs
 REAL, DIMENSION(300) :: Tvector
 REAL :: TminRhoSolute, TmaxRhoSolute, ArhoSolute, BrhoSolute, CrhoSolute, &
 nrhoSolute, TminAntoinneSolute, TmaxAntoinneSolute, AantoinneSolute, &
@@ -33,7 +34,8 @@ REAL :: Pchamber, TsatSolventNBP, rhoSatSolventNBP, TsatSolventChamber, &
 VSLsolventChamber, sigmaSolvent
 REAL :: TsatSoluteNBP, rhoSoluteAtSolventTsatNBP, TsatSoluteChamber, &
 VSLsoluteChamber, sigmaSolute
-REAL :: DAB, DBA, maxTMIN, minTMAX
+REAL :: DAB, DBA, maxTMIN, minTMAX 						 
+REAL :: U_T_relative, U_MW_relative, U_sigma_relative    !quantities for uncertainty calculations
 
 
 filename = "inputData.txt"
@@ -168,7 +170,17 @@ openif : IF (status == 0) THEN
 		"Molecular Weight [kg/kmol]..........",ES14.6,/, &
 		"Surface Tension at BP [erg/cm^2]....",ES14.6)
 
-	READ(1,*, IOSTAT = status) chemFormula
+	READ(1,*, IOSTAT = status) chemFormula !read line 50
+	READ(1,*,IOSTAT=status) junk !read line 52 (another headerline)
+
+	!Read inputs required for uncertainty calculations
+	DO i=1,3   !read line 53-55
+	  READ(1,*,IOSTAT=status) uncertaintyInputs(i)
+	  IF (status /= 0) EXIT
+	END DO 
+	U_T_relative = uncertaintyInputs(1)
+	U_MW_relative = uncertaintyInputs(2)
+	U_sigma_relative = uncertaintyInputs(3)
 
 	CLOSE(UNIT=1)
 ELSE
@@ -288,8 +300,8 @@ CALL DABuncertainty(MWsolvent,rhoSatSolventNBP, MWsolute,rhoSoluteAtSolventTsatN
 			TminAntoinneSolvent, TmaxAntoinneSolvent, &
 			ArhoSolvent,BrhoSolvent,CrhoSolvent,nrhoSolvent, &
 			ArhoSolute,BrhoSolute,CrhoSolute,nrhoSolute, &
-			BandradeSolvent, sigmaSolvent, sigmaSolute, DAB )
-
+			BandradeSolvent, sigmaSolvent, sigmaSolute, DAB, &
+			U_T_relative, U_MW_relative, U_sigma_relative )
 
 END PROGRAM molecularDiff
 
