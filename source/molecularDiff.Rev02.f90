@@ -35,7 +35,7 @@ VSLsolventChamber, sigmaSolvent
 REAL :: TsatSoluteNBP, rhoSoluteAtSolventTsatNBP, TsatSoluteChamber, &
 VSLsoluteChamber, sigmaSolute
 REAL :: DAB, DBA, maxTMIN, minTMAX 						 
-REAL :: U_T_relative, U_MW_relative, U_sigma_relative    !quantities for uncertainty calculations
+REAL :: U_T_relative, U_MW_relative, U_sigma_relative, U_Dab_95, U_Dba_95    !quantities for uncertainty calculations
 
 
 filename = "inputData.txt"
@@ -254,7 +254,7 @@ loopOverTemp : DO j=1, N
 
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!  Calculate SOLUTE Properties !!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-	!evaluate solute density at NBP of solvent
+	!evaluate solute density at NBP of solute
 	CALL rhoCalc(ArhoSolute,BrhoSolute,CrhoSolute,nrhoSolute, &
 		TminRhoSolute, TmaxRhoSolute, TsatSolventNBP, rhoSoluteAtSolventTsatNBP)
 	rhoSoluteAtSolventTsatNBP = rhoSoluteAtSolventTsatNBP*1000 !convert to kg/m^3
@@ -277,7 +277,25 @@ loopOverTemp : DO j=1, N
 		TsatSolventChamber, sigmaSolvent, sigmaSolute, DAB)
 	DAB = DAB/(1E4)
 	WRITE(*,110) DAB, TsatSolventChamber
-	110 FORMAT("DAB..........", ES14.6, " m^2/s   @", ES14.6, "K")
+	110 FORMAT("DAB............................", ES14.6, " m^2/s    @", ES14.6, "K")
+
+	!calculate uncertainty in DAB 
+	CALL DABuncertainty(MWsolvent,rhoSatSolventNBP, MWsolute,rhoSoluteAtSolventTsatNBP, &
+				Pchamber*101.325, AantoinneSolvent, BantoinneSolvent, CantoinneSolvent, DantoinneSolvent, &
+				TminAntoinneSolvent, TmaxAntoinneSolvent, &
+				ArhoSolvent,BrhoSolvent,CrhoSolvent,nrhoSolvent, &
+				ArhoSolute,BrhoSolute,CrhoSolute,nrhoSolute, &
+				AandradeSolvent, BandradeSolvent, sigmaSolvent, sigmaSolute, DAB, &
+				U_T_relative, U_MW_relative, U_sigma_relative, U_Dab_95,TsatSolventChamber )
+	WRITE(*,112) U_Dab_95, TsatSolventChamber 
+	112 FORMAT("-> 95% Uncertainty in DAB........ +/-", ES14.6, " m^2/s @", ES14.6, "K")
+	WRITE(*,115) U_Dab_95/DAB * 100.0, TsatSolventChamber
+	115 FORMAT("-> Relative Uncertainty in DAB...", ES14.6, " % @", ES14.6, "K")
+	WRITE(*,113) DAB+U_Dab_95 
+	113 FORMAT("-> DAB Upper Bound...............", ES14.6, " m^2/s ")
+	WRITE(*,114) DAB-U_Dab_95
+	114 FORMAT("-> DAB Lower Bound...............", ES14.6, " m^2/s")
+
 
 	!evaluate DBA - solvant (B) diffusing into solute (A)
 	CALL tynCalus(MWsolute, rhoSoluteAtSolventTsatNBP, &
@@ -285,7 +303,24 @@ loopOverTemp : DO j=1, N
 		TsatSolventChamber, sigmaSolute, sigmaSolvent, DBA)
 	DBA = DBA/(1E4)
 	WRITE(*,120) DBA,  TsatSolventChamber
-	120 FORMAT("DBA..........", ES14.6, " m^2/s   @", ES14.6, "K"/)
+	120 FORMAT("DBA............................", ES14.6, " m^2/s   @", ES14.6, "K")
+
+	!calculate uncertainty in DBA
+	CALL DABuncertainty(MWsolute,rhoSoluteAtSolventTsatNBP, MWsolvent,rhoSatSolventNBP, &
+				Pchamber*101.325, AantoinneSolute, BantoinneSolute, CantoinneSolute, DantoinneSolute, &
+				TminAntoinneSolute, TmaxAntoinneSolute, &
+				ArhoSolute,BrhoSolute,CrhoSolute,nrhoSolute, &
+				ArhoSolvent,BrhoSolvent,CrhoSolvent,nrhoSolvent, &
+				AandradeSolute, BandradeSolute, sigmaSolute, sigmaSolvent, DBA, &
+				U_T_relative, U_MW_relative, U_sigma_relative, U_Dba_95,TsatSolventChamber )
+	WRITE(*,122) U_Dba_95, TsatSolventChamber 
+	122 FORMAT("-> 95% Uncertainty in DBA........ +/-", ES14.6, " m^2/s @", ES14.6, "K")
+	WRITE(*,124) U_Dba_95/DBA * 100.0, TsatSolventChamber
+	124 FORMAT("-> Relative Uncertainty in DBA...", ES14.6, " % @", ES14.6, "K")
+	WRITE(*,126) DBA+U_Dba_95 
+	126 FORMAT("-> DBA Upper Bound...............", ES14.6, " m^2/s ")
+	WRITE(*,128) DBA-U_Dba_95
+	128 FORMAT("-> DBA Lower Bound...............", ES14.6, " m^2/s"/)
 
 	!openoutput file to write DAB and DBA values
 	WRITE(4,130) DAB, DBA, TsatSolventChamber
@@ -294,14 +329,6 @@ loopOverTemp : DO j=1, N
 END DO loopOverTemp
 	CLOSE(UNIT=4)
 
-!calculate uncertainty in DAB or DBA
-CALL DABuncertainty(MWsolvent,rhoSatSolventNBP, MWsolute,rhoSoluteAtSolventTsatNBP, &
-			Pchamber*101.325, AantoinneSolvent, BantoinneSolvent, CantoinneSolvent, DantoinneSolvent, &
-			TminAntoinneSolvent, TmaxAntoinneSolvent, &
-			ArhoSolvent,BrhoSolvent,CrhoSolvent,nrhoSolvent, &
-			ArhoSolute,BrhoSolute,CrhoSolute,nrhoSolute, &
-			AandradeSolvent, BandradeSolvent, sigmaSolvent, sigmaSolute, DAB, &
-			U_T_relative, U_MW_relative, U_sigma_relative )
 
 END PROGRAM molecularDiff
 

@@ -3,6 +3,7 @@ SUBROUTINE tynCalus(MWsolvent,rhoSATsolvent,MWsolute,rhoSATsolute,VSLsolvent,T, 
 
 !subroutine to calculate infinite diffusivities using Tyn-Calus equation
 !(See Poling et. al, p 11.25, Eqn. 11-9.5)
+! Output: D []
 
 	REAL, INTENT(IN) :: MWsolvent, rhoSATsolvent, MWsolute, rhoSATsolute, &
 	VSLsolvent, T, sigmaSolvent, sigmaSolute
