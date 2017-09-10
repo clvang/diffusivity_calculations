@@ -1,14 +1,11 @@
 
 
-D_uncertainty_MC <- function(N,P,T,uT,sigmaA,MW_A,rhoA,u_sigmaA,u_mwA,u_rhoA,
-						sigmaB,MW_B,rhoB,etaB,u_sigmaB,u_mwB,u_rhoB,u_etaB,
-						DAB_upper_TSM,DAB_lower_TSM,DAB_TSM,pltTitle)
+D_uncertainty_MC <- function(N,P,T,uT,MW_A,rhoA,u_mwA,u_rhoA,
+						MW_B,rhoB,etaB,u_mwB,u_rhoB,u_etaB,pltTitle)
 {
 
 	#Calculate D_AB (or D_BA) using Monte Carlo
 	T <- rnorm(n=N,mean=T,sd=uT)
-	sigmaA <- rnorm(n=N,mean=sigmaA,sd=u_sigmaA)
-	sigmaB <- rnorm(n=N,mean=sigmaB,sd=u_sigmaB)
 	MW_A <- rnorm(n=N,mean=MW_A,sd=u_mwA)
 	MW_B <- rnorm(n=N,mean=MW_B,sd=u_mwB)
 	rhoA <- rnorm(n=N,mean=rhoA,sd=u_rhoA)
@@ -17,7 +14,9 @@ D_uncertainty_MC <- function(N,P,T,uT,sigmaA,MW_A,rhoA,u_sigmaA,u_mwA,u_rhoA,
 
 	C1 <- 8.93E-8
 	DAB <- C1 * ((MW_B*1E3/rhoB)^0.267)/((MW_A*1E3/rhoA)^0.433) * 
-			(T/etaB) * (sigmaB/sigmaA)^(0.15) / 1E4 			# m^2/s
+			(T/etaB) * (1.0)^(0.15) / 1E4 			# m^2/s using second form of Tyn-Calus
+													# since surface tension info is not available
+													# for n-Propanol at BP :(
 	DAB_lower <- quantile(DAB,probs=c((1-P)/2,(1+P)/2))[[1]]
 	DAB_upper <- quantile(DAB,probs=c((1-P)/2,(1+P)/2))[[2]]
 	DAB_bar <- mean(DAB)
@@ -38,10 +37,7 @@ D_uncertainty_MC <- function(N,P,T,uT,sigmaA,MW_A,rhoA,u_sigmaA,u_mwA,u_rhoA,
 	abline(v=DAB_upper,col='green',lwd=1.5,lty="dashed")
 	abline(v=DAB_lower,col='green',lwd=1.5,lty="dotted")
 	abline(v=DAB_most_probable,col='green',lwd=2.3)
-	abline(v=DAB_upper_TSM,col='red',lwd=1.5,lty="dashed")
-	abline(v=DAB_lower_TSM,col='red',lwd=1.5,lty="dotted")
-	abline(v=DAB_TSM,col='red',lwd=2.3)
-	legend("topright", c("MC", "TSM"), col=c("green", "red"), lwd=2)
+	legend("topright", c("MC"), col=c("green", "red"), lwd=2)
 	dev.off()
 
 }
