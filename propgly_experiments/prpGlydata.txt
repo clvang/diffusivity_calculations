@@ -29,6 +29,8 @@
  536.85			   !Critical Temperature [K]............ GOOD (Vargaftik)
  60.1      		   !Molecular Weight [kg/kmol].......... GOOD (Vargaftik)
 
+ xxxx 			   !surface tension at BP [erg/cm^2]....
+
 !SOLUTE PROPERTIES: (Glycerol C3H8O3)
  291.33     	   !Low Temp Range Density Eqn [K]...... GOOD (YAW)
  850.00      	   !High Temp Range Density Eqn [K]..... GOOD (YAW)
@@ -52,5 +54,11 @@
  7.260000E+02      !Critical Temperature [K]............ GOOD (CHERIC)
  92.1 		       !Molecular Weight [kg/kmol].......... GOOD (Vargaftik)
 
+ xxxx 			   !surface tension at solvent BP [erg/cm^2]... Vargaftik
+
  C3H8O			   !chemical formula for solvent (Propanol)
 
+ !INPUTS FOR UNCERTAINTY CALCULATIONS
+ 15 			   ! 95% uncertainty in temperature (plus/minus K)
+ 0.01 			   ! 95% relative uncertainty in molecular weights (percent)
+ 0.15 			   ! 95% relative uncertainty in surface tension (percent)

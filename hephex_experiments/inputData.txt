@@ -10,19 +10,23 @@
  2.605800E-01      !B coefficient Density Eqn........... YAW
  5.402000E+02      !C coefficient Density Eqn........... YAW
  2.857100E-01      !n coefficient Density Eqn........... YAW
+
  1.825600E+02      !Low Temp Range Antoinne Eqn [K]..... CHERIC
  5.402600E+02      !High Temp Range Antoinne Eqn [K].... CHERIC
 -1.412388E+01      !A coefficient Antoinne Eqn.......... CHERIC
 -8.030070E+03      !B coefficient Antoinne Eqn.......... CHERIC
  1.081461E+02      !C coefficient Antoinne Eqn.......... CHERIC
  1.204855E-05      !D coefficient Antoinne Eqn.......... CHERIC
+
  1.831500E+02      !Low Temp Range Andrade Eqn [K]...... CHERIC
  3.731500E+02      !High Temp Range Andrade Eqn [K]..... CHERIC
 -4.325000E+00      !A coefficient Andrade Eqn........... CHERIC
  1.006000E+03      !B coefficient Andrade Eqn........... CHERIC
+
  2.740000E+01      !Critical Pressure [bar]............. CHERIC
  5.402000E+02      !Critical Temperature [K]............ CHERIC
  1.002040E+02      !Molecular Weight [kg/kmol].......... CHERIC
+
  12.6191 		   !surface tension at BP [erg/cm^2].... Vargaftik
 
 !SOLUTE PROPERTIES: (Hexadecane)
@@ -32,19 +36,23 @@
  2.662600E-01      !B coefficient Density Eqn........... YAW
  7.230000E+02      !C coefficient Density Eqn........... YAW
  2.857100E-01      !n coefficient Density Eqn........... YAW
+
  2.913200E+02      !Low Temp Range Antoinne Eqn [K]..... CHERIC
  7.206000E+02      !High Temp Range Antoinne Eqn [K].... CHERIC
 -2.059165E+01      !A coefficient Antoinne Eqn.......... CHERIC
 -1.552894E+04      !B coefficient Antoinne Eqn.......... CHERIC
  1.601365E+02      !C coefficient Antoinne Eqn.......... CHERIC
  8.014932E-06      !D coefficient Antoinne Eqn.......... CHERIC
+
  2.931500E+02      !Low Temp Range Andrade Eqn [K]...... CHERIC
  5.531500E+02      !High Temp Range Andrade Eqn [K]..... CHERIC
 -4.643000E+00      !A coefficient Andrade Eqn........... CHERIC
  1.700000E+03      !B coefficient Andrade Eqn........... CHERIC
+
  1.400000E+01      !Critical Pressure [bar]............. CHERIC
  7.230000E+02      !Critical Temperature [K]............ CHERIC
  2.264460E+02      !Molecular Weight [kg/kmol].......... CHERIC
+
  21.03 			   !surface tension at solvent BP [erg/cm^2]... Vargaftik
 
  C7H16			   !chemical formula for solvent (Heptane)
