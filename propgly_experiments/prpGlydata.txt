@@ -54,7 +54,7 @@
  7.260000E+02      !Critical Temperature [K]............ GOOD (CHERIC)
  92.1 		       !Molecular Weight [kg/kmol].......... GOOD (Vargaftik)
 
- xxxx 			   !surface tension at solvent BP [erg/cm^2]... Vargaftik
+ 54.412			   !surface tension at solvent BP [erg/cm^2]... Vargaftik
 
  C3H8O			   !chemical formula for solvent (Propanol)
 
