@@ -12,6 +12,7 @@ do = [2.215
 3.071
 3.181
 2.969
+2.762
 2.091
 4.136
 3.821
@@ -32,6 +33,7 @@ K = [0.857907745
 0.984639004
 1.198449199
 1.06030366
+0.503190516
 0.614689639
 0.941413661
 0.648033754
@@ -46,7 +48,7 @@ K = [0.857907745
 0.284856146];
 
 %specify mass fraction of solute (Hexadecane) in mixture
-sizeBlock1 = 7;
+sizeBlock1 = 8;
 for i=1:length(do)
     if i <= sizeBlock1
         YsuVector(i) = 0.05;      
