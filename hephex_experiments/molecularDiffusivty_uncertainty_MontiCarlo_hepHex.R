@@ -2,7 +2,7 @@
 rm(list=ls(all=TRUE))   #remove all variables in  workspace
 
 
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/D_uncertainty_MC.R')
+source('/Users/changlvang/mygitFiles/diffusivity_calculations/hephex_experiments/D_uncertainty_MC.R')
 
 #See text by Shaw, p. 147 for a similar example
 
