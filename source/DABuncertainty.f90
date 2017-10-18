@@ -1,5 +1,6 @@
 
-! 	Po - pressure in kPa
+! This subroutine calculates the 95% uncertainty bound for the Tyn-Calus
+! equation, using the Taylor Series Method
 
 SUBROUTINE DABuncertainty(MWsolvent,rhoSatSolventNBP, MWsolute,rhoSoluteAtSolventTsatNBP, &
 						Po, AantoinneSolvent, BantoinneSolvent, CantoinneSolvent, DantoinneSolvent, &
