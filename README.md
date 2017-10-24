@@ -10,4 +10,4 @@ These are the fortran and matlab scripts I use to calculate molecular diffusivit
 
 - The "decayTimes.m" script calculates viscous decay time.
 
-- The script "molecularDiffusivty_uncertainty_MontiCarlo_xxxx.R" in the folders "hephex_experiments" and "propgly_experiments" calculates D_{AB} and D_{BA} using a Monte Carlo simulation.
+- The script "molecularDiffusivty_uncertainty_MontiCarlo_xxxx.R" in the folders "hephex_experiments" and "propgly_experiments" calculates D_{AB} and D_{BA} using a Monte Carlo simulation.  These codes may be ran separately in R, and do not depend on the Fortran codes.
