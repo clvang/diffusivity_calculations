@@ -18,22 +18,21 @@ mc_analysis <- function(N, P)
 		dyn.load("mc_uncertainty.so")
 	}
 
-	# read data from fcprops.txt file
-	data_import <- read.table('fcprops.txt',skip=4,nrows=11, sep="!")
-	data_numeric <- as.numeric(as.character(data_import$V1[seq(1,10)]))
+	source('/Users/changlvang/mygitFiles/diffusivity_calculations/enhancement_factors/read_props.R')
 
-	p 			<- data_numeric[1]    # chamber pressure [atm]
-	dc_sq 		<- data_numeric[2]    # drop diameter @ onset of fc squared [mm^2]
-	K 			<- data_numeric[3]    # burning rate constant prior to onset of fc [mm^2/s]
-	do_measured <- data_numeric[4]    # initial drop diameter measured [mm]
-	yo 			<- data_numeric[5]    # initial mass frac of low volitiliy component
-	err_tol 	<- data_numeric[6]    # error tolerrance for bisection method
-	Uk_sq       <- data_numeric[7]^2  # uncertainty in K squared (U_k ^2) [mm^2/s]^2
-	Udo_sq      <- data_numeric[8]^2  # uncertainty in do squared (U_do^2) [mm^2]
-	Udc_sq      <- data_numeric[9]^2  # uncertainty in dc squared (U_dc^2) [mm^2]
-	UYo_sq      <- (data_numeric[10]*yo)^2  #uncertainty in Yo squared
-	sol_id      <- data_import$V1[11] #solvent id (1) - Heptane (2)- Propanol
-
+	# # read data from fcprops.txt file
+	experimental_parameters <- read_props()
+	p <- experimental_parameters$p 
+	dc_sq <- experimental_parameters$dc_sq 
+	K <- experimental_parameters$K 
+	do_measured <- experimental_parameters$do_measured 
+	yo <- experimental_parameters$yo 
+	err_tol <- experimental_parameters$err_tol
+	Uk_sq <- experimental_parameters$Uk_sq
+	Udo_sq <- experimental_parameters$Udo_sq
+	Udc_sq <- experimental_parameters$Udc_sq
+	UYo_sq <- experimental_parameters$UYo_sq
+	sol_id <- experimental_parameters$sol_id
 
 	y_ofc <- 1.0  # (defined) mass fraction of low volatility comp at onset of fc
 
@@ -105,8 +104,6 @@ mc_analysis <- function(N, P)
 	tau_mcN95 <- log(do_mcN95 / dc_mcN95) # tau > 0
 	## sample larger than needed values for K
 	## then throw out-of-range values away
-	set.seed(5)
-	K_temp <- rnorm(n=N*factor, mean= K, sd= sqrt(Uk_sq))
 	K_mcN95 <- 1
 	i <- 5
 	while( length(K_mcN95) < N ){
@@ -162,7 +159,7 @@ mc_analysis <- function(N, P)
 	print(paste(DN95_lower," ",DN95_bar," ",DN95_upper," ",DN95_most_probable) )
 	print(" ")
 
-	list(D_N95 = D_N95)
+	list(D_N95 = D_N95, do_mcN95= do_mcN95, K_mcN95=K_mcN95, Yo_mcN95=Yo_mcN95)
 
 }
 

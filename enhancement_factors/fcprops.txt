@@ -12,4 +12,8 @@
 0.1             !95% Uncertainty in measurement of d_o (mm)
 0.1             !95% Uncertainty in measurement of d_c (mm)
 0.02            !95% relative uncertainty in Yo e.g. U_Yo/Yo (percent)
+800.0			!Characteristic velocity, Uo (mm/s)
+150 			!95% Uncertainty in measurement of Uo (mm/s)
+0.08 			!time delay [s]
+1.0 			!95% uncertainty in measurement of time delay [s]
 1               !solvent (1)-Heptane (2)-Propanol 

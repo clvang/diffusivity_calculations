@@ -78,10 +78,11 @@ rhoSuT0 = rhoCalc(Asu,Bsu,Csu,...
 
 %import in Andrade coefficients and calculate liquid viscosity
 %if each component in (kg/m-s) at ref temp T=T0
+%(1) => solute (hexadecane) and (2) => solvent (heptane)
 [AandSU,BandSU,TminandSU,TmaxandSU]= HexAndradeCoefs();
-[mu1o ]= AndradeVSL(AandSU,BandSU,TminandSU,TmaxandSU, T0)*.001;
+[mu1o ]= AndradeVSL(AandSU,BandSU,TminandSU,TmaxandSU, T0)*.001; %N-s/m^2
 [AandSV,BandSV,TminandSV,TmaxandSV]= HepAndradeCoefs();
-[mu2o ]= AndradeVSL(AandSV,BandSV,TminandSV,TmaxandSV, T0)*.001;
+[mu2o ]= AndradeVSL(AandSV,BandSV,TminandSV,TmaxandSV, T0)*.001; %N-s/m^2
 
 for i=1:length(YsuVector)
     
@@ -94,11 +95,11 @@ for i=1:length(YsuVector)
     %%%%%%%%%%%%%%%%%% calculate density of mixture %%%%%%%%%%%%%%%%%%%%%
     
     %mixture density [kg/m^3]
-    rhoMixT0 = 1/ ( ((1-Ysu)/rhoSvT0) + (Ysu/rhoSuT0) );
+    rhoMixT0 = 1/ ( ((1-Ysu)/rhoSvT0) + (Ysu/rhoSuT0) )
     
     %%%%%%%%%%%%%%%% calculate mixture dynamic viscosity %%%%%%%%%%%%%%%%
     
-    %calculate mixture static viscosity in kg/m-s
+    %calculate mixture static viscosity in kg/m-s or N-s/m^2
     muMixture = exp( X1*log(mu1o) + (1-X1)*log(mu2o) + ...
         X1*(1-X1)*1.08*(1.343-X1*0.685) );
     
