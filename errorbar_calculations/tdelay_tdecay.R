@@ -57,9 +57,9 @@ tdelay_tdecay <- function(do_mcN95, K_mcN95, Yo_mcN95)
 
 	# generate rand numbers for Uo 
 	Uo_mcN95 <- rnorm(n=N,mean=Uo,sd=sqrt(UUo_sq) )
-	beta <- 0.1
 
-	#calculate viscous delay time
+	#calculate viscous decay time
+	beta <- 0.1	
 	tv <- (do_mcN95^2/(4*nu_mix) )*log(Uo_mcN95*do_mcN95/(2*K_mcN95*beta) )
 
 	#calculate ratio td/tv
@@ -105,7 +105,5 @@ tdelay_tdecay <- function(do_mcN95, K_mcN95, Yo_mcN95)
 	abline(v=tdtv_bar,col='red',lwd=2.9)
 	legend("topright", c("MC"), col=c("red"), lwd=2)	
 
-	print(mean(td_mcN95))
-	print(td)
-
+	list(td_mcN95=td_mcN95, tv=tv)
 }

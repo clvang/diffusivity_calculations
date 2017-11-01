@@ -1,4 +1,5 @@
-
+#fucntion to calculate uncertainties for infinite dilution
+#molecular diffusivities, DAB or DBA, using Monte-Carlo method
 
 D_uncertainty_MC <- function(N,P,T,uT,sigmaA,MW_A,rhoA,u_sigmaA,u_mwA,u_rhoA,
 						sigmaB,MW_B,rhoB,etaB,u_sigmaB,u_mwB,u_rhoB,u_etaB,
@@ -29,22 +30,21 @@ D_uncertainty_MC <- function(N,P,T,uT,sigmaA,MW_A,rhoA,u_sigmaA,u_mwA,u_rhoA,
 	print(paste0("MC average value D: ", DAB_bar))
 	print(paste0("MC 95% upper D limit: ", DAB_upper))
 
-	dev.new()
-	# pdf(paste0(pltTitle,"_MCHistogram.pdf"))
-	hist(DAB,prob=TRUE,n=100,xlim=c(0,3.5)*DAB_most_probable,
-		main=paste0("Histogram of ",pltTitle),
-		xlab=pltTitle)
-	d <-density(DAB)
-	lines(d,col="black",lwd=2)
-	abline(v=DAB_upper,col='green',lwd=1.5,lty="dashed")
-	abline(v=DAB_lower,col='green',lwd=1.5,lty="dotted")
-	abline(v=DAB_most_probable,col='green',lwd=2.3)
-	abline(v=DAB_bar,col='green',lwd=3.2)
-	abline(v=DAB_upper_TSM,col='red',lwd=1.5,lty="dashed")
-	abline(v=DAB_lower_TSM,col='red',lwd=1.5,lty="dotted")
-	abline(v=DAB_TSM,col='red',lwd=3.2)
-	legend("topright", c("MC", "TSM"), col=c("green", "red"), lwd=2)
-	# dev.off()
+	# dev.new()
+	# # pdf(paste0(pltTitle,"_MCHistogram.pdf"))
+	# hist(DAB,prob=TRUE,n=100,xlim=c(0,3.5)*DAB_most_probable,
+	# 	main=paste0("Histogram of ",pltTitle),
+	# 	xlab=pltTitle)
+	# d <-density(DAB)
+	# lines(d,col="black",lwd=2)
+	# abline(v=DAB_upper,col='green',lwd=1.5,lty="dashed")
+	# abline(v=DAB_lower,col='green',lwd=1.5,lty="dotted")
+	# abline(v=DAB_most_probable,col='green',lwd=2.3)
+	# abline(v=DAB_bar,col='green',lwd=3.2)
+	# abline(v=DAB_upper_TSM,col='red',lwd=1.5,lty="dashed")
+	# abline(v=DAB_lower_TSM,col='red',lwd=1.5,lty="dotted")
+	# abline(v=DAB_TSM,col='red',lwd=3.2)
+	# legend("topright", c("MC", "TSM"), col=c("green", "red"), lwd=2)
 
 	list(Dmolecular = DAB)
 

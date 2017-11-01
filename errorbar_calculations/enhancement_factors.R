@@ -42,4 +42,5 @@
 	abline(v=EF_bar,col='red',lwd=2.9)
 	legend("topright", c("MC"), col=c("red"), lwd=2)
 
+	list(EF = EF )
 }
