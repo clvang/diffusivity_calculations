@@ -2,7 +2,7 @@
 rm(list=ls(all=TRUE))   #remove all variables in  workspace
 
 
-source('/Users/changlvang/mygitFiles/diffusivity_calculations/hephex_experiments/D_uncertainty_MC.R')
+source('/Users/changlvang/mygitFiles/diffusivity_calculations/hephex_experiments/tynCalus_MC.R')
 
 #See text by Shaw, p. 147 for a similar example
 
@@ -44,14 +44,14 @@ N <- 1000000
 P <- 0.95
 pltTitle <- "DAB"
 print("D_AB uncertainties.........................")
-D_uncertainty_MC(N,P,T,uT,sigmaA,MW_A,rhoA,u_sigmaA,u_mwA,u_rhoA,
+tynCalus_MC(N,P,T,uT,sigmaA,MW_A,rhoA,u_sigmaA,u_mwA,u_rhoA,
 						sigmaB,MW_B,rhoB,etaB,u_sigmaB,u_mwB,u_rhoB,u_etaB,
 						DAB_upper_TSM,DAB_lower_TSM,DAB_TSM,pltTitle)
 print(" ")
 print("D_BA uncertainties.........................")
 #Calculate D_BA using Monte Carlo
 pltTitle <- "DBA"
-D_uncertainty_MC(N,P,T,uT,sigmaB,MW_B,rhoB,u_sigmaB,u_mwB,u_rhoB,
+tynCalus_MC(N,P,T,uT,sigmaB,MW_B,rhoB,u_sigmaB,u_mwB,u_rhoB,
 						sigmaA,MW_A,rhoA,etaA,u_sigmaA,u_mwA,u_rhoA,u_etaA,
 						DBA_upper_TSM,DBA_lower_TSM,DBA_TSM,pltTitle)
 

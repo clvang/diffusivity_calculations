@@ -1,5 +1,5 @@
 
-mc_analysis <- function(N, P)
+mc_analysis <- function(N, P, expname)
 {
 	calcRoot <- function(tau_vector, LHS_vector, K_vector, err_tol, N){
 	# SUBROUTINE mc_uncertainty( tau_vector, LHS_vector, err_tol, N, D_vector )
@@ -18,7 +18,7 @@ mc_analysis <- function(N, P)
 		dyn.load("mc_uncertainty.so")
 	}
 
-	source('/Users/changlvang/mygitFiles/diffusivity_calculations/enhancement_factors/read_props.R')
+	source('/Users/changlvang/mygitFiles/diffusivity_calculations/errorbar_calculations/read_props.R')
 
 	# # read data from fcprops.txt file
 	experimental_parameters <- read_props()
@@ -238,15 +238,17 @@ mc_analysis <- function(N, P)
 	print("MC 95% uncertainty MOST PROBABLE D [m^2/s]: ")
 	print(DN95_most_probable)
 
-	# hist(D_N95,prob=TRUE,n=100,  
-	# 	main=paste0("Distribution of D"),
-	# 	xlab="D [m^2/s]", col="lightgreen")	
-	# d <- density(D_N95)
-	# lines(d,col="black",lwd=2)
-	# abline(v=DN95_upper,col='red',lwd=2.3,lty="dashed")
-	# abline(v=DN95_lower,col='red',lwd=2.3,lty="dotted")
-	# abline(v=DN95_bar,col='red',lwd=2.9)
-	# legend("topright", c("MC"), col=c("red"), lwd=2)
+	dev.new()
+	pdf(paste0(expname,"_Ddist.pdf") )
+	hist(D_N95,prob=TRUE,n=100,  
+		main=paste0(expname,": Distribution of D"),
+		xlab="D [m^2/s]", col="lightgreen")	
+	d <- density(D_N95)
+	lines(d,col="black",lwd=2)
+	abline(v=DN95_upper,col='red',lwd=2.3,lty="dashed")
+	abline(v=DN95_lower,col='red',lwd=2.3,lty="dotted")
+	abline(v=DN95_bar,col='red',lwd=2.9)
+	legend("topright", c("MC"), col=c("red"), lwd=2)
 
 
 	#---------------- calculate normal standard errors ------------------------ ###
@@ -266,7 +268,7 @@ mc_analysis <- function(N, P)
 	D_NS_most_probable <- d$x[which(d$y==max(d$y))]
 
 	print("********************************************************************")
-	print("--- results assume dependent variables are from NORMAL distribution ---")
+	print("--- results assume independent variables are from NORMAL distribution ---")
 	print("MC upper bound Standard ERROR of the MEAN D limit [m^2/s]: ")
 	print(DNS_lower)
 	print("MC MEAN value D [m^2/s]: ")
@@ -302,7 +304,7 @@ mc_analysis <- function(N, P)
 	DUS_lower <- DUS_bar - sigma_DUS #(sigma_DUS/sqrt(N))
 
 	print("********************************************************************")
-	print("--- results assume dependent variables are from UNIFORM distribution ---")
+	print("--- results assume independent variables are from UNIFORM distribution ---")
 	print("MC lower bound Standard ERROR of MEAN D limit [m^2/s]: ")
 	print(DUS_lower)
 	print("MC MEAN value D [m^2/s]: ")
@@ -322,13 +324,24 @@ mc_analysis <- function(N, P)
 	# legend("topright", c("MC"), col=c("red"), lwd=2)
 
 	#print out values to screen in a format that's easy to cut and paste into excel
-	print(" ")
-	print(paste(DN95_lower," ",DN95_bar," ",DN95_upper," ",DN95_most_probable," ",
-			DNS_bar," ",sigma_DNS," ",
-			" ",DUS_bar," ",sigma_DUS) )
-	print(" ")
+	# print(" ")
+	# print(paste(DN95_lower," ",DN95_bar," ",DN95_upper," ",DN95_most_probable," ",
+	# 		DNS_bar," ",sigma_DNS," ",
+	# 		" ",DUS_bar," ",sigma_DUS) )
+	# print(" ")
 
-	list(D_N95 = D_N95, do_mcN95= do_mcN95, K_mcN95=K_mcN95, Yo_mcN95=Yo_mcN95)
+	list(DN95_lower = DN95_lower, #---- required to output to screen ---- #
+		DN95_bar = DN95_bar, 	  #					|
+		DN95_upper = DN95_upper,  #					|
+		DN95_most_probable = DN95_most_probable,#   |
+		DNS_bar = DNS_bar,		  # 				|
+		sigma_DNS = sigma_DNS, 	  #					|
+		DUS_bar = DUS_bar,		  #					|
+		sigma_DUS = sigma_DUS,   #----------------------------------------#
+		D_N95 = D_N95,  		 #--- required for calculations of tdtv ratio ---#
+		do_mcN95= do_mcN95,      #             |
+		K_mcN95=K_mcN95,  		 # 			   |
+		Yo_mcN95=Yo_mcN95)       #-----------------------------------------------
 
 }
 

@@ -1,10 +1,12 @@
 
 
- enhancement_factors <- function(N, P){
+ enhancement_factors <- function(N, P, Deffective, expname){
 
-	source('/Users/changlvang/mygitFiles/diffusivity_calculations/enhancement_factors/molecularDiffusivty_uncertainty_MontiCarlo_hepHex.R')
+	source('/Users/changlvang/mygitFiles/diffusivity_calculations/errorbar_calculations/molecularDiffusivty_uncertainty_MontiCarlo_hepHex.R')
+
 
 	# call function to solve for infinite dilution molecular diffusivities
+	# for Heptane/Hexadecane experiments
 	Dmolecular <- molecularDiffusivty_uncertainty_MontiCarlo_hepHex( N, P )
 	DAB <- Dmolecular$DAB 
 	DBA <- Dmolecular$DBA
@@ -32,8 +34,9 @@
 	print(EF_most_probable)
 
 	dev.new()
+	pdf(paste0(expname,"_EFdist.pdf") )
 	hist(EF,prob=TRUE,n=100,  
-		main=paste0("Distribution of EF"),
+		main=paste0(expname, ": Distribution of EF"),
 		xlab="EF", col="lightgreen")
 	d <-density(EF)
 	lines(d,col="black",lwd=2)
@@ -42,5 +45,8 @@
 	abline(v=EF_bar,col='red',lwd=2.9)
 	legend("topright", c("MC"), col=c("red"), lwd=2)
 
-	list(EF = EF )
+	list(EF = EF,
+		EF_lower = EF_lower,
+		EF_bar = EF_bar,
+		EF_upper = EF_upper)
 }

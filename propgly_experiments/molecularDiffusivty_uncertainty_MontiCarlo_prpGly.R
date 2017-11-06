@@ -16,7 +16,7 @@ source('/Users/changlvang/mygitFiles/diffusivity_calculations/propgly_experiment
 # # A ==> Solute (Glycerol) - 1 atm
 # rhoA <- 1212.7   	    # kg/m^3 @ BP: 1atm => 97.3C=370.5 K   (check)
 # MW_A <- 92.1        	# kg/kmol (check)
-# etaA <- 14.385          # solute liquid viscosity at BP [cP]
+# etaA <- 14.385          # solute liquid viscosity at BP [cP] Vargaftik
 
 # T <- 370.5 				# boiling point of solvent @ 1 atm [K] - 1 atm
 # #------------------------------------------------------------------------#
@@ -30,7 +30,7 @@ etaB <- 0.313     		# solvant liquid viscosity at BP [cP] CHERIC (check)
 # A ==> Solute (Glycerol) - 3 atm
 rhoA <- 1191.0  	    # kg/m^3 @ BP: 3atm => 129.85C=403K   (check)
 MW_A <- 92.1        	# kg/kmol (check)
-etaA <- 3.5255          # solute liquid viscosity at BP [cP]
+etaA <- 3.5255          # solute liquid viscosity at BP [cP] Vargaftik
 
 T <- 403.0 				# boiling point of solvent @ 3 atm [K] - 1 atm
 #------------------------------------------------------------------------#

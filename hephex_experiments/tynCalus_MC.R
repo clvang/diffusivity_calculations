@@ -1,6 +1,6 @@
 
 
-D_uncertainty_MC <- function(N,P,T,uT,sigmaA,MW_A,rhoA,u_sigmaA,u_mwA,u_rhoA,
+tynCalus_MC <- function(N,P,T,uT,sigmaA,MW_A,rhoA,u_sigmaA,u_mwA,u_rhoA,
 						sigmaB,MW_B,rhoB,etaB,u_sigmaB,u_mwB,u_rhoB,u_etaB,
 						DAB_upper_TSM,DAB_lower_TSM,DAB_TSM,pltTitle)
 {

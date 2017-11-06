@@ -1,10 +1,11 @@
 
 #------------- calculating error bars for viscous decay time ----------#
 
-tdelay_tdecay <- function(do_mcN95, K_mcN95, Yo_mcN95)
+tdelay_tdecay <- function(do_mcN95, K_mcN95, Yo_mcN95, expname)
 {
-
-	source('/Users/changlvang/mygitFiles/diffusivity_calculations/enhancement_factors/read_props.R')
+	library(triangle)
+	source('/Users/changlvang/mygitFiles/diffusivity_calculations/errorbar_calculations/read_props.R')
+	source('/Users/changlvang/mygitFiles/diffusivity_calculations/errorbar_calculations/staticProps.R')
 
 	#read data from fcfprops.txt file
 	experimental_parameters <- read_props()
@@ -12,30 +13,30 @@ tdelay_tdecay <- function(do_mcN95, K_mcN95, Yo_mcN95)
 	UUo_sq <- experimental_parameters$UUo_sq
 	td <- experimental_parameters$td 
 	Utd_sq <- experimental_parameters$Utd_sq
+	sol_id <- experimental_parameters$sol_id
 
-	# script to calculate viscous delay time along with its error bars
+	# call staticProps function to read in the appropriate
+	# static properties for the component densities,
+	# viscosities, and molecualr weights
+	static_properties <- staticProps(sol_id)
+	mu_Ao <- static_properties$mu_Ao
+	rho_Ao <- static_properties$rho_Ao
+	MW_A <- static_properties$MW_A
+	mu_Bo <- static_properties$mu_Bo
+	rho_Bo <- static_properties$rho_Bo
+	MW_B <- static_properties$MW_B
 
-	#first, define component viscosities and densities
-	#see the code decayTimes.m for the origin of these numbers
-	mu_relative_error <- 0.15   #15% relative error for 95% confidence 
-	rho_relative_error <- 0.15
-	mu_Ao <- 2.891e-3  			#static viscosity of Hexadecane (N-s/m^2) at 1 atm, 298 K
-	rho_Ao <- 7.702e2  			#density of Hexadecane (kg/m^3) at 1 atm, 298 K
-	u_muAo <- mu_Ao*mu_relative_error 		#relative error U_mu10/mu_10 = 15% 
-											#for 95% confidence
+	# errors for static viscosities and densitities
+	mu_relative_error <- 0.15   			#viscosity 15% relative error for 95% confidence 
+	rho_relative_error <- 0.15 				#density 15% relative error for 95% confidnece
+	u_muAo <- mu_Ao*mu_relative_error 		#relative error U_mu10/mu_10 = 15% for 95% confidence
 	u_rhoAo <- rho_Ao*rho_relative_error    #relative error U_rho/rho = 15% for 95% confidence
-
-	mu_Bo <- 3.871e-4  #static viscosity of Heptane at 1 atm, 298K (kg/m^3)
-	rho_Bo <- 6.821e2  #density of Heptane at 1 atm, 298 K (kg/m^3)
 	u_muBo <- mu_Bo*mu_relative_error 
 	u_rhoBo <- rho_Bo*rho_relative_error
 
-	#define molecular weights of each species
-	MW_A <- 2.264460E+02 	# molecualr weight of solute, Hexadecane (kg/kmol)
+	#uncertainties in molecular weights
 	u_mwA <- 0.01*MW_A		# uncertainty MW_A, p/m [kg/kmol]
-	MW_B <- 1.002040E+02  	# molecular weight of solvent, Heptane (kg/kmol)
 	u_mwB <- 0.01*MW_B      # uncertainty MW_B, p/m [kg/kmol]
-
 
 	#generate random variables and compute viscosity of liquid mixture
 	set.seed(5)
@@ -62,18 +63,23 @@ tdelay_tdecay <- function(do_mcN95, K_mcN95, Yo_mcN95)
 	beta <- 0.1	
 	tv <- (do_mcN95^2/(4*nu_mix) )*log(Uo_mcN95*do_mcN95/(2*K_mcN95*beta) )
 
-	#calculate ratio td/tv
-	factor <- 2
-	td_mcN95 <- 1
-	i <- 5
-	while( length(td_mcN95) < N ){
-		set.seed(i)	
-		td_mcN95 <- rnorm(n=N*factor, mean= td, sd= sqrt(Utd_sq))
-		td_mcN95 <- td_mcN95[which( td_mcN95 > 0)]
-		i <- i + 1	
+	#generate random variables for td and calculate ratio td/tv
+	td_mcN95 <- rnorm(n=N, mean= td, sd= sqrt(Utd_sq))
+	#if it turns out that negative values are generated for td_mcN95,
+	#then generate random variables from triangular distribution instead
+	if ( min(td_mcN95) < 0 ){
+		numFrame <- 2
+		L_a <- td - (numFrame/30)
+		L_b <- td + (numFrame/30)
+
+		if ( L_a < 0){
+			td_mcN95 <- rtriangle(N, a=1e-3, b=L_b, c=td )
+		}else{
+			td_mcN95 <- rtriangle(N, a=L_a, b=L_b, c=td )
+		}
+
 	}
-	td_mcN95seed <- i-1
-	td_mcN95 <- td_mcN95[1:N]
+
 
 	td_tv <- td_mcN95 / tv 
 
@@ -95,8 +101,9 @@ tdelay_tdecay <- function(do_mcN95, K_mcN95, Yo_mcN95)
 	print(tdtv_most_probable)
 
 	dev.new()
+	pdf(paste0(expname,"_tdtvdist.pdf") )	
 	hist(td_tv,prob=TRUE,n=100,  
-		main=paste0("Distribution of td/tv"),
+		main=paste0(expname,": Distribution of td/tv"),
 		xlab=expression("t"[d]*"/t"[v]), col="lightgreen")
 	d <-density(td_tv)
 	lines(d,col="black",lwd=2)
@@ -105,5 +112,9 @@ tdelay_tdecay <- function(do_mcN95, K_mcN95, Yo_mcN95)
 	abline(v=tdtv_bar,col='red',lwd=2.9)
 	legend("topright", c("MC"), col=c("red"), lwd=2)	
 
-	list(td_mcN95=td_mcN95, tv=tv)
+	list( tdtv_lower = tdtv_lower,
+		tdtv_bar = tdtv_bar,
+		tdtv_upper = tdtv_upper,
+		td_mcN95=td_mcN95, 
+		tv=tv)
 }
