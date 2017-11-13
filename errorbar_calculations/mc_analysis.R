@@ -2,22 +2,26 @@
 mc_analysis <- function(N, P, expname)
 {
 	calcRoot <- function(tau_vector, LHS_vector, K_vector, err_tol, N){
-	# SUBROUTINE mc_uncertainty( tau_vector, LHS_vector, err_tol, N, D_vector )
+	# SUBROUTINE mc_uncertainty( tau_vector, LHS_vector, err_tol, N, D_vector, eps_vector )
 		retvals <- .Fortran("mc_uncertainty",
 					tau_vector=as.double(tau_vector),
 					LHS_vector=as.double(LHS_vector),
 					K_vector = as.double(K_vector),
 					err_tol = as.double(err_tol),
 					N = as.integer(N),
-					D_vector = double(N) )
+					D_vector = double(N),
+					eps_vector = double(N) )
 		#there are the returned values
-		list(dc_mcVals=retvals$D_vector)         #values for D
+		list(dc_mcVals=retvals$D_vector,
+		eps_mcVals = retvals$eps_vector)         #values for D
 	}
 
 	if (!is.loaded('mc_uncertainty')){
 		dyn.load("mc_uncertainty.so")
 	}
 
+	library(triangle)
+	library(moments)
 	source('/Users/changlvang/mygitFiles/diffusivity_calculations/errorbar_calculations/read_props.R')
 
 	# # read data from fcprops.txt file
@@ -76,22 +80,28 @@ mc_analysis <- function(N, P, expname)
 
 	print("----- BEGIN random number generation----- ")
 	#---- generate NORMAL random variables for 95% uncertianties --- ###
-	factor <- 2  #this just specifies factor to increase number of random numbers genrated
+	## convert 95% uncertainties to standard deviations for normal distributions
+	cf <- 2.0
+	sigma_do <- sqrt(Udo_sq) / cf
+	sigma_dc <- sqrt(Udc_sq) / cf
+	sigma_K <- sqrt(Uk_sq) / cf
+	sigma_Y <- sqrt(UYo_sq) / cf	
 
 	set.seed(5)
-	do_temp <- rnorm( n=N*factor, mean=d_o, sd= sqrt(Udo_sq) )
-
-	set.seed(5)
-	Yo_mcN95 <- rnorm( n=N, mean=yo, sd=sqrt(UYo_sq) )
+	Yo_mcN95 <- rnorm( n=N, mean=yo, sd=sigma_Y )
 
 	LHS_mcN95 <- y_ofc / Yo_mcN95
-	## sample larger than needed values for dc
+
+	## sample larger than needed values for dc and do
 	## then throw out-of-range values away, element-wise
+	factor <- 2  #this just specifies factor to increase number of random numbers genrated
+	set.seed(5)
+	do_temp <- rnorm( n=N*factor, mean=d_o, sd= sigma_do )
 	dc_mcN95 <- 1
 	i <- 5
 	while(length(dc_mcN95) < N){
 		set.seed(i)
-		dc_mcN95 <- rnorm(n=N*factor, mean = sqrt(dc_sq), sd=sqrt(Udc_sq) )
+		dc_mcN95 <- rnorm(n=N*factor, mean = sqrt(dc_sq), sd=sigma_dc )
 		index <- which(do_temp > dc_mcN95)
 		dc_mcN95 <- dc_mcN95[index]
 		i <- i + 1
@@ -102,13 +112,24 @@ mc_analysis <- function(N, P, expname)
 	do_mcN95 <- do_temp[index]
 	do_mcN95 <- do_mcN95[1:N]
 	tau_mcN95 <- log(do_mcN95 / dc_mcN95) # tau > 0
-	## sample larger than needed values for K
-	## then throw out-of-range values away
+
+	# # -----------------
+	# U_tau <- 2.0*sqrt( (1/d_o)^2*Udo_sq + (1/sqrt(dc_sq))^2*Udc_sq )
+	# # print(U_tau)
+	# tau_L <- tau_o - U_tau 
+	# tau_R <- tau_o + U_tau
+	# if( tau_L < 0 ){
+	# 	tau_L <- 0
+	# }
+	# tau_mcN95 <- rtriangle(n=N, a=tau_L,b=tau_R, c=tau_o)
+
+	# sample larger than needed values for K
+	# then throw out-of-range values away
 	K_mcN95 <- 1
 	i <- 5
 	while( length(K_mcN95) < N ){
 		set.seed(i)	
-		K_mcN95 <- rnorm(n=N*factor, mean= K, sd= sqrt(Uk_sq))
+		K_mcN95 <- rnorm(n=N*factor, mean= K, sd= sigma_K)
 		K_mcN95 <- K_mcN95[which( K_mcN95 > 0)]
 		i <- i + 1	
 	}
@@ -116,57 +137,10 @@ mc_analysis <- function(N, P, expname)
 	K_mcN95 <- K_mcN95[1:N]
 
 
-	#---- generate random variables from NORMAL to calculate STANDARD uncertianties --- ###
-	## convert 95% uncertainties to standard deviations
-	cf <- 2.0
-	sigma_do <- sqrt(Udo_sq) / cf
-	sigma_dc <- sqrt(Udc_sq) / cf
-	sigma_K <- sqrt(Uk_sq) / cf
-	sigma_Y <- sqrt(UYo_sq) / cf
-
-	set.seed(5)
-	do_temp <- rnorm(n=N*factor, mean=d_o, sd= sigma_do )
-
-	set.seed(5)
-	Yo_mcNS <- rnorm( n=N, mean=yo, sd=sigma_Y )
-
-	LHS_mcNS <- y_ofc / Yo_mcNS
-	dc_mcNS <- 1
-	## sample larger than needed values for dc
-	## then throw out-of-range values away, element-wise
-	i <- 5
-	while( length(dc_mcNS) < N ){
-		set.seed(i)
-		dc_mcNS <- rnorm(n=N*factor, mean = sqrt(dc_sq), sd=sigma_dc )
-		index <- which(do_temp > dc_mcNS)
-		dc_mcNS <- dc_mcNS[index]
-		i <- i + 1
-	}
-	dc_mcNSseed <- i-1
-
-	dc_mcNS <- dc_mcNS[1:N]
-	do_mcNS <- do_temp[index]
-	do_mcNS <- do_mcNS[1:N]
-	tau_mcNS <- log(do_mcNS / dc_mcNS)
-	## sample larger than needed values for K
-	## then throw out-of-range values away
-	set.seed(5)
-	K_temp <- rnorm(n=N*factor, mean= K, sd= sigma_K)
-	K_mcNS <- 1
-	i <- 5
-	while( length(K_mcNS) < N ){
-		set.seed(i)
-		K_mcNS <- rnorm( n=N*factor, mean= K, sd= sigma_K )
-		K_mcNS <- K_mcNS[ which( K_mcNS > 0) ]
-		i <- i + 1
-	}
-	K_mcNSseed <- i-1
-	K_mcNS <- K_mcNS[1:N]
-
 	#-------------------------------------------------------------------- ###
 
 	#---- generate UNIFORM random variables for STANDARD uncertianties --- ###
-	## convert 95% uncertainties to standard deviations
+	## convert 95% uncertainties to standard deviations for uniform distributions
 	do_max <- d_o + sqrt(Udo_sq)
 	do_min <- d_o - sqrt(Udo_sq)
 	sigma_do <- (do_max - do_min) / sqrt(12)
@@ -214,14 +188,39 @@ mc_analysis <- function(N, P, expname)
 	print("----- END random number generation----- ")
 
 	#---------------- calculate normal 95% uncertainties ------------------------ ###
-	D_N95 <- calcRoot(tau_vector=tau_mcN95, 
+	results_N95 <- calcRoot(tau_vector=tau_mcN95, 
 						LHS_vector=LHS_mcN95, 
 						K_vector=K_mcN95,
 						err_tol =err_tol, 
-						N = N)$dc_mcVals
+						N = N)
+
+	D_N95 <- results_N95$dc_mcVals
+
+	if( abs(skewness(D_N95)) > 1.0 ){
+		print("Distribution for D is too skewed...")
+		print("generating RNs for K from triangular distribution...")
+		# generate K from triangular distribution
+		K_low <- K - sqrt(Uk_sq)
+		K_upper <- K + sqrt(Uk_sq)
+		if( K_low < 0){
+			print("min of K RNs is negative...")
+			print("setting lower RN limit = 0...")
+			K_low <- 0
+		}
+
+		K_mcN95 <- rtriangle(n=N, a=K_low, b=K_upper, c=K)
+
+		results_N95 <- calcRoot(tau_vector=tau_mcN95, 
+							LHS_vector=LHS_mcN95, 
+							K_vector=K_mcN95,
+							err_tol =err_tol, 
+							N = N)		
+		D_N95 <- results_N95$dc_mcVals		
+	}
+
 	D_N95 <- D_N95* (1/1000)^2  #convert to m^2/s
-	DN95_lower <- quantile(D_N95,probs=c((1-P)/2,(1+P)/2))[[1]]
-	DN95_upper <- quantile(D_N95,probs=c((1-P)/2,(1+P)/2))[[2]] 
+	DN95_lower <- quantile(D_N95,probs=c((1-P)/2,(1+P)/2), type=1)[[1]]
+	DN95_upper <- quantile(D_N95,probs=c((1-P)/2,(1+P)/2), type=1)[[2]] 
 	DN95_bar <- mean(D_N95 )
 	d <- density(D_N95)
 	DN95_most_probable <- d$x[which(d$y==max(d$y))]
@@ -238,6 +237,7 @@ mc_analysis <- function(N, P, expname)
 	print("MC 95% uncertainty MOST PROBABLE D [m^2/s]: ")
 	print(DN95_most_probable)
 
+	# plot distribution in D for normal RNs
 	dev.new()
 	pdf(paste0(expname,"_Ddist.pdf") )
 	hist(D_N95,prob=TRUE,n=100,  
@@ -250,44 +250,59 @@ mc_analysis <- function(N, P, expname)
 	abline(v=DN95_bar,col='red',lwd=2.9)
 	legend("topright", c("MC"), col=c("red"), lwd=2)
 
+	# plot distribution in tau 
+	tau_lower <- quantile(tau_mcN95,probs=c((1-P)/2,(1+P)/2), type=1)[[1]]
+	tau_upper <- quantile(tau_mcN95,probs=c((1-P)/2,(1+P)/2), type=1)[[2]] 
+	tau_bar <- mean(tau_mcN95)
+	d <- density(tau_mcN95)
+	tau_most_probable <- d$x[which(d$y==max(d$y))]	
 
-	#---------------- calculate normal standard errors ------------------------ ###
-	#only calculating these results because they are already on the 
-	#FLEX_DATA_MASTER_Rev.0X.xlsx spreadsheet
-	D_NS <- calcRoot(tau_vector=tau_mcNS, 
-						LHS_vector=LHS_mcNS, 
-						K_vector=K_mcNS,
-						err_tol =err_tol, 
-						N = N)$dc_mcVals
-	D_NS <- D_NS * (1/1000)^2  #convert to m^2/s
-	DNS_bar <- mean(D_NS)
-	sigma_DNS <- sd(D_NS)
-	d <- density(D_NS)
-	DNS_upper <- DNS_bar + sigma_DNS #(sigma_DNS/sqrt(N))
-	DNS_lower <- DNS_bar - sigma_DNS #(sigma_DNS/sqrt(N) )
-	D_NS_most_probable <- d$x[which(d$y==max(d$y))]
+	dev.new()
+	pdf(paste0(expname,"_Taudist.pdf") )
+	hist(tau_mcN95,prob=TRUE,n=100,  
+		main=paste0(expname,": Distribution of tau"),
+		xlab="tau", col="lightgreen")	
+	lines(d,col="black",lwd=2)
+	abline(v=tau_upper,col='red',lwd=2.3,lty="dashed")
+	abline(v=tau_lower,col='red',lwd=2.3,lty="dotted")
+	abline(v=tau_bar,col='red',lwd=2.9)
+	legend("topright", c("MC"), col=c("red"), lwd=2)	
 
-	print("********************************************************************")
-	print("--- results assume independent variables are from NORMAL distribution ---")
-	print("MC upper bound Standard ERROR of the MEAN D limit [m^2/s]: ")
-	print(DNS_lower)
-	print("MC MEAN value D [m^2/s]: ")
-	print(DNS_bar )
-	print("MC lower bound Standard ERROR of the MEAN D limit [m^2/s]: ")
-	print(DNS_upper)
-	print("MC Standard ERROR MOST PROBABLE D [m^2/s]: ")
-	print(D_NS_most_probable)
+	# plot distribution in K 
+	K_lower <- quantile(K_mcN95,probs=c((1-P)/2,(1+P)/2), type=1)[[1]]
+	K_upper <- quantile(K_mcN95,probs=c((1-P)/2,(1+P)/2), type=1)[[2]] 
+	K_bar <- mean(K_mcN95)
+	d <- density(K_mcN95)
+	K_most_probable <- d$x[which(d$y==max(d$y))]	
 
-	# dev.new()
-	# hist(D_NS,prob=TRUE,n=100,  
-	# 	main=paste0("Normal Standard Error Histogram of D effective"),
-	# 	xlab="D [m^2/s]")
-	# d <-density(D_NS)
-	# lines(d,col="black",lwd=2)
-	# abline(v=DNS_upper,col='red',lwd=1.5,lty="dashed")
-	# abline(v=DNS_lower,col='red',lwd=1.5,lty="dotted")
-	# abline(v=DNS_bar,col='red',lwd=2.3)
-	# legend("topright", c("MC"), col=c("red"), lwd=2)
+	dev.new()
+	pdf(paste0(expname,"_Kdist.pdf") )
+	hist(K_mcN95,prob=TRUE,n=100,  
+		main=paste0(expname,": Distribution of K"),
+		xlab="K", col="lightgreen")	
+	lines(d,col="black",lwd=2)
+	abline(v=K_upper,col='red',lwd=2.3,lty="dashed")
+	abline(v=K_lower,col='red',lwd=2.3,lty="dotted")
+	abline(v=K_bar,col='red',lwd=2.9)
+	legend("topright", c("MC"), col=c("red"), lwd=2)	
+
+	# plot distribution in epsilon values
+	eps_lower <- quantile(results_N95$eps_mcVals,probs=c((1-P)/2,(1+P)/2), type=1)[[1]]
+	eps_upper <- quantile(results_N95$eps_mcVals,probs=c((1-P)/2,(1+P)/2), type=1)[[2]] 
+	eps_bar <- mean(results_N95$eps_mcVals)
+	d <- density(results_N95$eps_mcVals)
+	eps_most_probable <- d$x[which(d$y==max(d$y))]	
+
+	dev.new()
+	pdf(paste0(expname,"_epsdist.pdf") )
+	hist(results_N95$eps_mcVals,prob=TRUE,n=100,  
+		main=paste0(expname,": Distribution of Epsilon"),
+		xlab="Epsilon", col="lightgreen")	
+	lines(d,col="black",lwd=2)
+	abline(v=eps_upper,col='red',lwd=2.3,lty="dashed")
+	abline(v=eps_lower,col='red',lwd=2.3,lty="dotted")
+	abline(v=eps_bar,col='red',lwd=2.9)
+	legend("topright", c("MC"), col=c("red"), lwd=2)	
 
 
 	#---------------- calculate uniform standard error ------------------------ ###
@@ -298,50 +313,32 @@ mc_analysis <- function(N, P, expname)
 						N = N)$dc_mcVals
 	D_US <- D_US * (1/1000)^2  #convert to m^2/s
 	DUS_bar <- mean(D_US)
-	sigma_DUS <- sd(D_US)
 	d <- density(D_US)
-	DUS_upper <- DUS_bar + sigma_DUS #(sigma_DUS/sqrt(N))
-	DUS_lower <- DUS_bar - sigma_DUS #(sigma_DUS/sqrt(N))
+	DUS_upper <- quantile(D_US,probs=c((1-P)/2,(1+P)/2), type=1)[[1]] #DUS_bar + sigma_DUS #(sigma_DUS/sqrt(N))
+	DUS_lower <- quantile(D_US,probs=c((1-P)/2,(1+P)/2), type=1)[[2]] #DUS_bar - sigma_DUS #(sigma_DUS/sqrt(N))
 
 	print("********************************************************************")
 	print("--- results assume independent variables are from UNIFORM distribution ---")
-	print("MC lower bound Standard ERROR of MEAN D limit [m^2/s]: ")
+	print("MC lower bound D limit [m^2/s]: ")
 	print(DUS_lower)
 	print("MC MEAN value D [m^2/s]: ")
 	print(DUS_bar )
-	print("MC upper bound Standard ERROR of MEAN D limit [m^2/s]: ")
+	print("MC upper bound D limit [m^2/s]: ")
 	print(DUS_upper)
 
-	# dev.new()
-	# hist(D_US,prob=TRUE,n=100,  
-	# 	main=paste0("Uniform Standard Error Histogram of D effective"),
-	# 	xlab="D [m^2/s]")
-	# d <-density(D_US)
-	# lines(d,col="black",lwd=2)
-	# abline(v=DUS_upper,col='red',lwd=1.5,lty="dashed")
-	# abline(v=DUS_lower,col='red',lwd=1.5,lty="dotted")
-	# abline(v=DUS_bar,col='red',lwd=2.3)
-	# legend("topright", c("MC"), col=c("red"), lwd=2)
-
-	#print out values to screen in a format that's easy to cut and paste into excel
-	# print(" ")
-	# print(paste(DN95_lower," ",DN95_bar," ",DN95_upper," ",DN95_most_probable," ",
-	# 		DNS_bar," ",sigma_DNS," ",
-	# 		" ",DUS_bar," ",sigma_DUS) )
-	# print(" ")
 
 	list(DN95_lower = DN95_lower, #---- required to output to screen ---- #
 		DN95_bar = DN95_bar, 	  #					|
 		DN95_upper = DN95_upper,  #					|
 		DN95_most_probable = DN95_most_probable,#   |
-		DNS_bar = DNS_bar,		  # 				|
-		sigma_DNS = sigma_DNS, 	  #					|
+		DUS_lower = DUS_lower,
 		DUS_bar = DUS_bar,		  #					|
-		sigma_DUS = sigma_DUS,   #----------------------------------------#
+		DUS_upper = DUS_upper,
 		D_N95 = D_N95,  		 #--- required for calculations of tdtv ratio ---#
 		do_mcN95= do_mcN95,      #             |
 		K_mcN95=K_mcN95,  		 # 			   |
-		Yo_mcN95=Yo_mcN95)       #-----------------------------------------------
+		Yo_mcN95=Yo_mcN95,
+		eps_values = results_N95$eps_mcVals)       #-----------------------------------------------
 
 }
 

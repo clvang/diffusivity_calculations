@@ -75,14 +75,14 @@ molecularDiffusivty_uncertainty_MontiCarlo_hepHex <- function(N, P)
 	} # if sold_id
 
 	uT <- 15.0    			# uncertainty T, p/m 15 [K]  
-	u_sigmaA <- 0.15*sigmaA # uncertainty sigmaA, p/m [erg/cm^2]
-	u_sigmaB <- 0.15*sigmaB # uncertainty sigmaB, p/m [erg/cm^2]
+	u_sigmaA <- 0.15*sigmaA # uncertainty sigmaA, p/m [erg/cm^2] changed to 15% since at boiling point
+	u_sigmaB <- 0.15*sigmaB # uncertainty sigmaB, p/m [erg/cm^2] changed to 15% since at boiling point
 	u_mwA <- 0.01*MW_A		# uncertainty MW_A, p/m [kg/kmol]
 	u_mwB <- 0.01*MW_B      # uncertainty MW_B, p/m [kg/kmol]
 	u_rhoA <- 0.10*rhoA     # uncertainty rhoA, p/m [kg/m^3]
 	u_rhoB <- 0.10*rhoB     # uncertainty rhoB, p/m [kg/m^3]
-	u_etaB <- 0.15*etaB     # uncertainty etaB, p/m [cP]
-	u_etaA <- 0.15*etaA     # uncertainty etaA, p/m [cP]
+	u_etaB <- 0.15*etaB     # uncertainty etaB, p/m [cP] changed to 15% since at boiling point
+	u_etaA <- 0.15*etaA     # uncertainty etaA, p/m [cP] changed to 15% since at boiling point
 
 
 	#Calculate D_AB using Monte Carlo

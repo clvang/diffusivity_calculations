@@ -5,20 +5,22 @@
 tynCalus_MC <- function(N,P,T,uT,sigmaA,MW_A,rhoA,u_sigmaA,u_mwA,u_rhoA,
 						sigmaB,MW_B,rhoB,etaB,u_sigmaB,u_mwB,u_rhoB,u_etaB, pltTitle)
 {
-
+	cf <- 2.0
 	set.seed(5)
-	T <- rnorm(n=N,mean=T,sd=uT)
-	MW_A <- rnorm(n=N,mean=MW_A,sd=u_mwA)
-	MW_B <- rnorm(n=N,mean=MW_B,sd=u_mwB)
-	rhoA <- rnorm(n=N,mean=rhoA,sd=u_rhoA)
-	rhoB <- rnorm(n=N,mean=rhoB,sd=u_rhoB)
-	etaB <- rnorm(n=N,mean=etaB,sd=u_etaB)
+	#NOTE: convert all uncertainties to standard deviations by 
+	#dividing by 2.0 for RNs from normal distribution
+	T <- rnorm(n=N,mean=T,sd=uT/cf)
+	MW_A <- rnorm(n=N,mean=MW_A,sd=u_mwA/cf)
+	MW_B <- rnorm(n=N,mean=MW_B,sd=u_mwB/cf)
+	rhoA <- rnorm(n=N,mean=rhoA,sd=u_rhoA/cf)
+	rhoB <- rnorm(n=N,mean=rhoB,sd=u_rhoB/cf)
+	etaB <- rnorm(n=N,mean=etaB,sd=u_etaB/cf)
 
 	# if surface tension data is available, then
 	# go ahead and generate random variables
 	if ( sigmaA != 0 ){  
-		sigmaA <- rnorm(n=N,mean=sigmaA,sd=u_sigmaA)
-		sigmaB <- rnorm(n=N,mean=sigmaB,sd=u_sigmaB)		
+		sigmaA <- rnorm(n=N,mean=sigmaA,sd=u_sigmaA/cf)
+		sigmaB <- rnorm(n=N,mean=sigmaB,sd=u_sigmaB/cf)		
 	} 
 
 	#use Tyn-Calus equation to evalute D_{AB} or D_{BA}

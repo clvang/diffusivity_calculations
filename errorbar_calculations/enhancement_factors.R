@@ -15,8 +15,8 @@
 	EF <- (Deffective)/(0.5*(DAB + DBA) )
 
 
-	EF_lower <- quantile(EF,probs=c((1-P)/2,(1+P)/2))[[1]]
-	EF_upper <- quantile(EF,probs=c((1-P)/2,(1+P)/2))[[2]] 
+	EF_lower <- quantile(EF,probs=c((1-P)/2,(1+P)/2), type=1)[[1]]
+	EF_upper <- quantile(EF,probs=c((1-P)/2,(1+P)/2), type=1)[[2]] 
 	EF_bar <- mean(EF )
 	d <- density(EF)
 	EF_most_probable <- d$x[which(d$y==max(d$y))]
