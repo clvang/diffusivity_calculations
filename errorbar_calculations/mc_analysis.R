@@ -219,9 +219,9 @@ mc_analysis <- function(N, P, expname)
 	}
 
 	D_N95 <- D_N95* (1/1000)^2  #convert to m^2/s
-	DN95_lower <- quantile(D_N95,probs=c((1-P)/2,(1+P)/2), type=1)[[1]]
-	DN95_upper <- quantile(D_N95,probs=c((1-P)/2,(1+P)/2), type=1)[[2]] 
-	DN95_bar <- mean(D_N95 )
+	DN95_lower <- quantile(D_N95,probs=c( (1-P)/2,(1+P)/2), type=1)[[1]]
+	DN95_upper <- quantile(D_N95,probs=c( (1-P)/2,(1+P)/2), type=1)[[2]] 
+	DN95_bar <- mean( D_N95 )
 	d <- density(D_N95)
 	DN95_most_probable <- d$x[which(d$y==max(d$y))]
 
@@ -287,15 +287,16 @@ mc_analysis <- function(N, P, expname)
 	legend("topright", c("MC"), col=c("red"), lwd=2)	
 
 	# plot distribution in epsilon values
-	eps_lower <- quantile(results_N95$eps_mcVals,probs=c((1-P)/2,(1+P)/2), type=1)[[1]]
-	eps_upper <- quantile(results_N95$eps_mcVals,probs=c((1-P)/2,(1+P)/2), type=1)[[2]] 
-	eps_bar <- mean(results_N95$eps_mcVals)
-	d <- density(results_N95$eps_mcVals)
+	eps_N95 <- results_N95$eps_mcVals
+	eps_lower <- quantile(eps_N95,probs=c((1-P)/2,(1+P)/2), type=1)[[1]]
+	eps_upper <- quantile(eps_N95,probs=c((1-P)/2,(1+P)/2), type=1)[[2]] 
+	eps_bar <- mean(eps_N95)
+	d <- density(eps_N95)
 	eps_most_probable <- d$x[which(d$y==max(d$y))]	
 
 	dev.new()
 	pdf(paste0(expname,"_epsdist.pdf") )
-	hist(results_N95$eps_mcVals,prob=TRUE,n=100,  
+	hist(eps_N95,prob=TRUE,n=100,  
 		main=paste0(expname,": Distribution of Epsilon"),
 		xlab="Epsilon", col="lightgreen")	
 	lines(d,col="black",lwd=2)
@@ -337,8 +338,13 @@ mc_analysis <- function(N, P, expname)
 		D_N95 = D_N95,  		 #--- required for calculations of tdtv ratio ---#
 		do_mcN95= do_mcN95,      #             |
 		K_mcN95=K_mcN95,  		 # 			   |
-		Yo_mcN95=Yo_mcN95,
-		eps_values = results_N95$eps_mcVals)       #-----------------------------------------------
+		Yo_mcN95=Yo_mcN95,		 #-----------------------------------------------
+		eps_N95 = eps_N95,
+		eps_lower = eps_lower,
+		eps_bar = eps_bar,
+		eps_upper = eps_upper,
+		LHS_mcN95 = LHS_mcN95,
+		tau_mcN95 = tau_mcN95)       
 
 }
 

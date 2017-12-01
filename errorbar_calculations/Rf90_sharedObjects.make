@@ -9,6 +9,9 @@ FC= gfortran
 mc_uncertainty.so: $(OBJS)
 	$(FC) -shared -o mc_uncertainty.so $(OBJS)
 
+Fx_Eval.so: Fx_Eval.o
+	$(FC) -shared -o Fx_Eval.so Fx_Eval.o
+	
 Fx_Eval.o:Fx_Eval.f90
 	$(FC) -c Fx_Eval.f90
 

@@ -2,12 +2,12 @@
 
  enhancement_factors <- function(N, P, Deffective, expname){
 
-	source('/Users/changlvang/mygitFiles/diffusivity_calculations/errorbar_calculations/molecularDiffusivty_uncertainty_MontiCarlo_hepHex.R')
+	source('/Users/changlvang/mygitFiles/diffusivity_calculations/errorbar_calculations/tynCalus.R')
 
 
 	# call function to solve for infinite dilution molecular diffusivities
 	# for Heptane/Hexadecane experiments
-	Dmolecular <- molecularDiffusivty_uncertainty_MontiCarlo_hepHex( N, P )
+	Dmolecular <- tynCalus( N, P , expname)
 	DAB <- Dmolecular$DAB 
 	DBA <- Dmolecular$DBA
 

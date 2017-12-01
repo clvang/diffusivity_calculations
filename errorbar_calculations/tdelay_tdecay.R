@@ -27,8 +27,8 @@ tdelay_tdecay <- function(do_mcN95, K_mcN95, Yo_mcN95, expname)
 	MW_B <- static_properties$MW_B
 
 	# errors for static viscosities and densitities
-	mu_relative_error <- 0.10   			#viscosity 10% relative error for 95% confidence 
-	rho_relative_error <- 0.10 				#density 10% relative error for 95% confidnece
+	mu_relative_error <- 0.15   			#viscosity 10% relative error for 95% confidence 
+	rho_relative_error <- 0.01 				#density 10% relative error for 95% confidnece
 	u_muAo <- mu_Ao*mu_relative_error 		#relative error U_mu10/mu_10 = 15% for 95% confidence
 	u_rhoAo <- rho_Ao*rho_relative_error    #relative error U_rho/rho = 15% for 95% confidence
 	u_muBo <- mu_Bo*mu_relative_error 
@@ -67,6 +67,7 @@ tdelay_tdecay <- function(do_mcN95, K_mcN95, Yo_mcN95, expname)
 
 	nu_mix <- (mu_mix / rho_mix ) * 1e6  #kinematic visocity of liquid mixture (mm^2/s)
 	# print( paste0("avg kinematic vis.: ",mean(nu_mix)," mm^2/s") )
+	# readline("--press enter--")
 
 	# generate rand numbers for Uo 
 	Uo_mcN95 <- rnorm( n=N, mean=Uo, sd=sigma_Uo )

@@ -7,7 +7,7 @@ staticProps <- function( sol_id ){
 	# CHERIC, YAW imperical relations
 	if (sol_id == 1){
 		# Define solute (hexadecane) static viscosity and density
-		mu_Ao <- 3.1025e-3 #(Vargaftik) 2.891e-3  			#static viscosity of Hexadecane (N-s/m^2) at 1 atm, 298 K
+		mu_Ao <- 3.1025e-3 			#(Vargaftik) 2.891e-3  	#static viscosity of Hexadecane (N-s/m^2) at 1 atm, 298 K
 		rho_Ao <- 7.702e2  			#density of Hexadecane (kg/m^3) at 1 atm, 298 K
 
 		# Define solvent (Heptane) static viscosity and density
