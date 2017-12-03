@@ -113,15 +113,15 @@ mc_analysis <- function(N, P, expname)
 	do_mcN95 <- do_mcN95[1:N]
 	tau_mcN95 <- log(do_mcN95 / dc_mcN95) # tau > 0
 
-	# # -----------------
+	# -----------------
 	# U_tau <- 2.0*sqrt( (1/d_o)^2*Udo_sq + (1/sqrt(dc_sq))^2*Udc_sq )
-	# # print(U_tau)
 	# tau_L <- tau_o - U_tau 
 	# tau_R <- tau_o + U_tau
 	# if( tau_L < 0 ){
 	# 	tau_L <- 0
 	# }
 	# tau_mcN95 <- rtriangle(n=N, a=tau_L,b=tau_R, c=tau_o)
+	# tau_mcN95 <- rnorm(n=N, mean=tau_o, sd=U_tau/2) # can run into tau<0 values when doing this
 
 	# sample larger than needed values for K
 	# then throw out-of-range values away

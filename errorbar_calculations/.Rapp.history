@@ -1,779 +1,3 @@
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-names(HepHexDataOnly_all)
-names(HepHexDataOnly_noCoolFlame)
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-HepHexDataOnly_noCoolFlame$coolFlame
-HepHexDataOnly_all$coolFlame
-name(HepHexDataOnly_noCoolFlame)
-names(HepHexDataOnly_noCoolFlame)
-HepHexDataOnly_noCoolFlame
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-names(HepHexDataOnly_noCoolFlame)
-HepHexDataOnly_noCoolFlame$Iner
-HepHexDataOnly_noCoolFlame$Inert
-HepHexDataOnly_noCoolFlame$Ine
-HepHexDataOnly_noCoolFlame$In
-HepHexDataOnly_noCoolFlame$Int
-HepHexDataOnly_noCoolFlame$Iners
-HepHexDataOnly_noCoolFlame$Iner
-dyn.load('/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/server/libjvm.dylib')
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-HepHexDataOnly_noCoolFlame$K
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-DABhephex1atm
-DBAhephex1atm
-rangeDdiscreteMC
-names(HepHexDataOnly_noCoolFlame)
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-HepHexDataOnly_noCoolFlame$dataSet.factors
-HepHexDataOnly_noCoolFlame$Inert
-HepHexDataOnly_noCoolFlame$DmcHigh_N95
-unique(HepHexDataOnly_noCoolFlame$dataSet.factors)
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-nrow(HephexDataOnly_noCoolFlame)
-nrow(HepHexDataOnly_noCoolFlame)
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-nrow(HepHexDataOnly_noCoolFlame)
-nrow(HepHexDataOnly_all)
-names(HepHexDataOnly_all)
-HepHexDataOnly_all$dataSet.factors
-HepHexDataOnly_nocoolFlame$dataSet.factors
-HepHexDataOnly_noCoolFlame$dataSet.factors
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-plotOut <- ggplot(HepHexDataOnly_noCoolFlame)  #initialize plot on dataframe#
-#
-	#maps x position to xvar and y position to yvar#
-	plotOut <- plotOut + aes(x=HepHexDataOnly_noCoolFlame$K, y=HepHexDataOnly_noCoolFlame$Dmc_AV_N95) #
-#
-	#map asthetics#
-	plotOut <- plotOut + aes(group=dataSet.factors, colour = dataSet.factors,shape=dataSet.factors)
-plotOut
-plotOut <- ggplot(HepHexDataOnly_noCoolFlame)  #initialize plot on dataframe#
-#
-	#maps x position to xvar and y position to yvar#
-	plotOut <- plotOut + aes(x=HepHexDataOnly_noCoolFlame$K, y=HepHexDataOnly_noCoolFlame$Dmc_AV_N95) #
-#
-	#map asthetics#
-	plotOut <- plotOut + aes(group=dataSet.factors, colour = dataSet.factors,shape=dataSet.factors)#
-	plotOut <- plotOut +#
-	# geom_point(size=4.5) + #
-	scale_shape_manual( values=c(25,18,17,22,15,16,20) ) #
-#
-			plotOut <- plotOut + geom_point(size=4.0) +#
-				scale_colour_manual(#
-					values=c(#
-						"#e41a1c",  #red (set1)#
-						"#984ea3",  #purple (set1)#
-						"#ff7f00",  #orange (set1)#
-						"#4daf4a",  #green (set1)#
-						"#e7298a",  #pink (dark2)#
-						"#d95f02",  #brown (dark2)#
-						"#377eb8",  #blue (set1)#
-						"#66c2a5"))  #army grn (dark2)
-plotOut
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-names(HepHexDataOnly_noCoolFlame)
-# plot D vs K for hep/hex experiments only, using MC results for D#
-#data excludes cool flame experiments#
-HepHexDataOnly_noCoolFlame <- subset(HepHexDataOnly_all, coolFlame=="N")
-names(HepHexDataOnly_noCoolFlame)
-HepHexDataOnly_noCoolFlame$K
-HepHexDataOnly_noCoolFlame$DmcLow_N95
-# plot D vs K for hep/hex experiments only, using MC results for D#
-#data excludes cool flame experiments#
-HepHexDataOnly_noCoolFlame <- subset(HepHexDataOnly_all, coolFlame=="N")
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-length(HepHexDataOnly_noCoolFlame$DmcLow_N95)
-length(HepHexDataOnly_noCoolFlame$DmcHigh_N95)
-length(HepHexDataOnly_noCoolFlame$K)
-length(HepHexDataOnly_noCoolFlame$Dmc_AV_N95)
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
-Tnb_prop <- 97.8          # normal boiling point of propanol, Celsius#
-			T_1 <- 90 				  #Temperature 1, [C] 			--Vargaftik Table Value#
-			rho_1 <- 0.7435e3		  #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-			T_2 <- 100 				  #Temperature 2, [C]			--Vargaftik Table Value#
-			rho_2 <- 0.7325e3 		  #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-			rhoB <- rho_1 + (Tnb_prop)*(rho_2-rho_1)/(T_2-T1)
-# B ==> Solvent (Propanol) - 1 atm#
-			Tnb_prop <- 97.8          # normal boiling point of propanol, Celsius#
-			T_1 <- 90 				  #Temperature 1, [C] 			--Vargaftik Table Value#
-			rho_1 <- 0.7435e3		  #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-			T_2 <- 100 				  #Temperature 2, [C]			--Vargaftik Table Value#
-			rho_2 <- 0.7325e3 		  #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-			rhoB <- rho_1 + (Tnb_prop)*(rho_2-rho_1)/(T_2-T_1)
-rhoB
-Tnb_prop <- 97.8          # normal boiling point of propanol, Celsius#
-			T_1 <- 90 				  #Temperature 1, [C] 			--Vargaftik Table Value#
-			rho_1 <- 0.7435e3		  #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-			T_2 <- 100 				  #Temperature 2, [C]			--Vargaftik Table Value#
-			rho_2 <- 0.7325e3 		  #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-			rhoB <- rho_1 + (Tnb_prop-T_1)*(rho_2-rho_1)/(T_2-T_1)
-rhoB
-# #
-			T_1 <- 90#
-			eta_1 <- 0.530e-3#
-			T_2 <- 100#
-			eta_2 <- 0.447e-3#
-			# linear inter to find liquid viscosity of solvent at#
-			# the normal boiling point of the solvent#
-			etaB <- (eta_1 + (Tnb_prop-T_1)*(eta_2-eta_1)/(T_2-T_1) )*1e3  # [cP]
-etaB
-# A ==> Solute (Glycerol) - 1 atm#
-			# intear interp to find density at the normal boilng point of the solute#
-			Tnb_gly <- 290+273.15			  # normal bp of glycerol, [K]  --Vargaftik#
-			A_yaw <- 0.3488#
-			B_yaw <- 0.25408#
-			C_yaw <- 850.00#
-			n_yaw <- 0.15410#
-			rhoA_nbp <- A_yaw*B_yaw^(-(1-Tnb_gly/C_yaw)^n_yaw)
-rhoA_nbp
-# intear interp to find density at the normal boilng point of the solute#
-			Tnb_gly <- 290+273.15			  # normal bp of glycerol, [K]  --Vargaftik#
-			A_yaw <- 0.3488#
-			B_yaw <- 0.25408#
-			C_yaw <- 850.00#
-			n_yaw <- 0.15410#
-			# eqn. taken from Yaw (Tmin = , Tmax= )#
-			rhoA_nbp <- A_yaw*B_yaw^(-(1-Tnb_gly/C_yaw)^n_yaw)  #g/ml#
-			rhoA_nbp <- rhoA_nbp*(1/1000)*(1000/0.001)          #kg/m^3
-rhoA_nbp
-290+273.15
-rhoA
-# point of the solute#
-			Tnb_gly <- 290+273.15     # normal bp of glycerol, [K]  --Vargaftik#
-			A_yaw <- 0.3488			  # --Yaw Table Value#
-			B_yaw <- 0.25408		  # --Yaw Table Value#
-			C_yaw <- 850.00			  # --Yaw Table Value#
-			n_yaw <- 0.15410		  # --Yaw Table Value#
-			# eqn. taken from Yaw (Tmin = 291.33, Tmax= 850.00) for Glycerol#
-			rhoA_nbp <- A_yaw*B_yaw^(-(1-Tnb_gly/C_yaw)^n_yaw)  #g/ml#
-			rhoA_nbp <- rhoA_nbp*(1/1000)*(1000/0.001)          #kg/m^3#
-			rhoA <- rhoA_nbp
-rhoA
-(rhoA-1095.8)/(rhoA)
-source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
-Tnb_prop <- 97.8          # normal boiling point of propanol, [C] --Vargaftik#
-			T_1 <- 90 				  #Temperature 1, [C] 			--Vargaftik Table Value#
-			rho_1 <- 0.7425e3		  #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-			T_2 <- 100 				  #Temperature 2, [C]			--Vargaftik Table Value#
-			rho_2 <- 0.7325e3 		  #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-			rhoB_nbp <- rho_1 + (Tnb_prop-T_1)*(rho_2-rho_1)/(T_2-T_1)  # kg/m^3#
-			rhoB <- rhoB_nbp
-rhoB
-sigma = 44.605*(1-370.95/536.78)*0.8
-sigma
-(60.1/0.7347)*(11.02403)^(1/4)
-sigma = 44.605*(1-298.15/536.78)*0.8
-sigma
-sigma = 44.605*(1-298.15/536.78)^0.8
-sigma
-sigma = 44.605*(1-370.95/536.78)^0.8
-sigma
-(60.1/0.7347)*(17.42918)^(1/4)
-Tnb_prop <- 98.43          # normal boiling point of propanol, [C] --Vargaftik#
-			T_1 <- 90 				  #Temperature 1, [C] 			--Vargaftik Table Value#
-			rho_1 <- 0.6218e3		  #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-			T_2 <- 100 				  #Temperature 2, [C]			--Vargaftik Table Value#
-			rho_2 <-0.6124e3 		  #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-			rhoB_nbp <- rho_1 + (Tnb_prop-T_1)*(rho_2-rho_1)/(T_2-T_1)  # kg/m^3
-rhoB_nbp
-sigma = 53.649*(1-371.58/540.20)^1.24310
-sigma
-(100.204/0.6139)*(12.61809^(1/4))
-T <- 97.8 + 273.15		# Temperature of the droplet surface#
-									# assumed to be equal to about
-T_1 <- 80 				  #Temperature 1, [C] 			--Vargaftik Table Value#
-			rho_1 <- 1224		  #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-			T_2 <- 100 				  #Temperature 2, [C]			--Vargaftik Table Value#
-			rho_2 <- 1208 		  #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-			rhoB_nbp <- rho_1 + ( (T-273.15)-T_1 )*(rho_2-rho_1)/(T_2-T_1)  # kg/m^3
-rhoB_nbP
-rhoB_nbp
-T
-T-273.15
-T_1 <- 80 				  #Temperature 1, [C] 			--Vargaftik Table Value#
-			rho_1 <- 1224		  #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-			T_2 <- 100 				  #Temperature 2, [C]			--Vargaftik Table Value#
-			rho_2 <- 1208 		  #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-			rhoB_nbp <- rho_1 + ( (T-273.15)-T_1 )*(rho_2-rho_1)/(T_2-T_1)  # kg/m^3
-rhoB_nbp
-T_1 <- 90			#Temp. 1, [C] 					--Vargaftik Table Value#
-			eta_1 <- 21e-3		#Viscosity at T_1 [N-s/m^2] 	--Vargaftik Table Value#
-			T_2 <- 100			#Temp. 2, [C] 					--Vargaftik Table Value#
-			eta_2 <- 13e-3		#Viscosity at T_2 [N-s/m^2]		--Vargaftik Table Value#
-			etaA_T <- ( eta_1 + ( (T-273.15)-T_1 )*(eta_2-eta_1)/(T_2-T_1) )*1e3  # [cP]
-etaA_T
-T <- 403.0 				# boiling point of solvent @ 3 atm [K] (129.85 C)#
-#
-			# B ==============> Solvent (Propanol) - 3 atm =======================>#
-#
-			# linear interp to find density at the normal boiling point of the solvent #
-			# This value willbe used to compute molar volume of solvent, V_{A}#
-			Tnb_prop <- 97.8 + 273.15 # normal boiling point of propanol, [C] --Vargaftik#
-			T_1 <- 90 				  #Temperature 1, [C] 			--Vargaftik Table Value#
-			rho_1 <- 0.7425e3		  #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-			T_2 <- 100 				  #Temperature 2, [C]			--Vargaftik Table Value#
-			rho_2 <- 0.7325e3 		  #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-			rhoB_nbp <- rho_1 + (Tnb_prop-T_1)*(rho_2-rho_1)/(T_2-T_1)  # kg/m^3#
-#
-			# define the density of the solvent at the temperture of the droplet surface#
-			# this value will be used to compute parachor of the Solvent, P_{A}#
-			T_1 <- 120 				  #Temperature 1, [C] 			--Vargaftik Table Value#
-			rho_1 <- 0.7110e3		  #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-			T_2 <- 130 				  #Temperature 2, [C]			--Vargaftik Table Value#
-			rho_2 <- 0.6995e3 		  #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-			rhoB_nbp <- rho_1 + ((T-273.15)-T_1)*(rho_2-rho_1)/(T_2-T_1)  # kg/m^3#
-			rhoB_T <- rhoB_nbp 		# kg/m^3
-rhoB_T
-T <- 3.716167E+02 		# boiling point of solvent @ 1 atm [K] (CHERIC)	(98.47 deg. C)	#
-#
-			# ------------- Heptane/Hexadecane 1 atm properties -------------------##
-			# NOTE: These values are from imperical relations provided#
-			# by CHERIC, YAW, etc.  See the contents of the folder#
-			# "hephex_experiments" for the origins of these numbers#
-			# B ==============> Solvent (Heptane) - 1 atm =======================>#
-#
-				# linear interp to find DENSITY at the normal boiling point of the solvent #
-				# This value willbe used to compute molar volume of solvent, V_{A}#
-				Tnb_hep <- 3.716167E+02   #normal boiling point of propanol, [C] --Vargaftik#
-				T_1 <- 90 				   #Temperature 1, [C] 			--Vargaftik Table Value#
-				rho_1 <- 0.6218e3		   #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-				T_2 <- 100 				   #Temperature 2, [C]			--Vargaftik Table Value#
-				rho_2 <- 0.6124e3 		   #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-				rhoB_nbp <- rho_1 + (Tnb_hep-T_1)*(rho_2-rho_1)/(T_2-T_1)  # kg/m^3#
-#
-				# define the DENSITY of the solvent at the temperture of the droplet surface#
-				# this value will be used to compute parachor of the Solvent, P_{A}#
-				rhoB_T <- rhoB_nbp 		# kg/m^3#
-#
-				# find surface tension of solvent at the temperature of the drplet surface#
-				# (assumed to be equal to the normal boiling point of the solvent)#
-				# this quantity will be used to calculate Parachor of the solvent, P_{A}#
-				A_sigma <- 53.649#
-				B_sigma <- 540.20#
-				n_sigma <- 1.24310#
-				# Equation from Yaw, p. 725  182.55K <= T <= 540.20 K#
-				sigmaB_T <- A_sigma*(1-T/B_sigma)^n_sigma  #[dynes/cm] #
-#
-				# linear interp to find liquid VISCOSITY of the solvent at the #
-				# droplet surface (assumed to be equal to the normal boiling point of the solvent)#
-				T_1 <- 90				#Temp. 1, [C] 					--Vargaftik Table Value#
-				eta_1 <- 2170e-7		#Viscosity at T_1 [N-s/m^2] 	--Vargaftik Table Value#
-				T_2 <- 100				#Temp. 2, [C] 					--Vargaftik Table Value#
-				eta_2 <- 1980e-7		#Viscosity at T_2 [N-s/m^2]		--Vargaftik Table Value#
-				etaB_T <- ( eta_1 + ( (T-273.15)-T_1 )*(eta_2-eta_1)/(T_2-T_1) )*1e3  # [cP]#
-#
-				# molecular weight of solvent#
-				MW_B <- 1.002040E+02  	# kg/kmol  #
-			# A ===============> Solute (Hexadecane) - 1 atm =========================>#
-#
-				# linear interp to find density of the solute at the normal boilng #
-				# point of the solute. This value will be used to compute molar volume#
-				# of the solute, V_{B}#
-				Tnb_hex <- 560.2          # normal bp of glycerol, [K]  --Vargaftik#
-				A_rho <- 0.2471			  # --Yaw Table Value#
-				B_rho <- 0.26626		  # --Yaw Table Value#
-				C_rho <- 723.00			  # --Yaw Table Value#
-				n_rho <- 0.28571		  # --Yaw Table Value#
-				# eqn. taken from Yaw (Tmin = 291.31, Tmax= 723.00) for hexadecane#
-				rhoA_nbp <- A_rho*B_rho^(-(1-Tnb_hex/C_rho)^n_rho)  #g/ml#
-				rhoA_nbp <- rhoA_nbp*(1/1000)*(1000/0.001)          #kg/m^3#
-#
-				# define density of the solute at the temperature of the droplet surface, T,#
-				# assumed to be approximate the boiling point of the solvent. This value#
-				# will be used to calculate parachor, P_{B}#
-				T_1 <- 90 			    	  #Temperature 1, [C] 			--Vargaftik Table Value#
-				rho_1 <- 0.7249e3		      #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-				T_2 <- 100 		     		  #Temperature 2, [C]			--Vargaftik Table Value#
-				rho_2 <- 0.7179e3 		      #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-				rhoA_T <- rho_1 + ( (T-273.15)-T_1 )*(rho_2-rho_1)/(T_2-T_1)  # kg/m^3#
-#
-				# compute surface tension of solute at the droplet surface temperture, T. Required#
-				# for computing parachor of solute, P_{B}#
-				A_sigma <- 56.805#
-				B_sigma <- 723.00#
-				n_sigma <- 1.39290#
-				# eqn from Yaw, p. 812 291.31 K <= T <= 723.00#
-				sigmaA_T <- A_sigma*(1-T/B_sigma)^n_sigma  #[dynes/cm] #
-#
-				# solute liquid viscosity at the droplet surface temperature, T. Rquired#
-				# for computing parachor of solut, P_{B}#
-				T_1 <- 90			    #Temp. 1, [C] 					--Vargaftik Table Value#
-				eta_1 <- 2170e-7		#Viscosity at T_1 [N-s/m^2] 	--Vargaftik Table Value#
-				T_2 <- 100			    #Temp. 2, [C] 					--Vargaftik Table Value#
-				eta_2 <- 1980e-7		#Viscosity at T_2 [N-s/m^2]		--Vargaftik Table Value#
-				etaA_T <- ( eta_1 + ( (T-273.15)-T_1 )*(eta_2-eta_1)/(T_2-T_1) )*1e3  # [cP]#
-#
-				# specify molecular weight of solute#
-				MW_A <- 2.264460E+02 	# kg/kmol
-rhoB_T
-rhoB_nbp
-T <- 3.716167E+02 		# boiling point of solvent @ 1 atm [K] (CHERIC)	(98.47 deg. C)	#
-#
-			# ------------- Heptane/Hexadecane 1 atm properties -------------------##
-			# NOTE: These values are from imperical relations provided#
-			# by CHERIC, YAW, etc.  See the contents of the folder#
-			# "hephex_experiments" for the origins of these numbers#
-			# B ==============> Solvent (Heptane) - 1 atm =======================>#
-#
-				# linear interp to find DENSITY at the normal boiling point of the solvent #
-				# This value willbe used to compute molar volume of solvent, V_{A}#
-				Tnb_hep <- 3.716167E+02   #normal boiling point of propanol, [C] --Vargaftik#
-				T_1 <- 90 				   #Temperature 1, [C] 			--Vargaftik Table Value#
-				rho_1 <- 0.6218e3		   #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-				T_2 <- 100 				   #Temperature 2, [C]			--Vargaftik Table Value#
-				rho_2 <- 0.6124e3 		   #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-				rhoB_nbp <- rho_1 + ( (Tnb_hep-273.15)-T_1 )*(rho_2-rho_1)/(T_2-T_1)  # kg/m^3#
-#
-				# define the DENSITY of the solvent at the temperture of the droplet surface#
-				# this value will be used to compute parachor of the Solvent, P_{A}#
-				rhoB_T <- rhoB_nbp 		# kg/m^3#
-#
-				# find surface tension of solvent at the temperature of the drplet surface#
-				# (assumed to be equal to the normal boiling point of the solvent)#
-				# this quantity will be used to calculate Parachor of the solvent, P_{A}#
-				A_sigma <- 53.649#
-				B_sigma <- 540.20#
-				n_sigma <- 1.24310#
-				# Equation from Yaw, p. 725  182.55K <= T <= 540.20 K#
-				sigmaB_T <- A_sigma*(1-T/B_sigma)^n_sigma  #[dynes/cm] #
-#
-				# linear interp to find liquid VISCOSITY of the solvent at the #
-				# droplet surface (assumed to be equal to the normal boiling point of the solvent)#
-				T_1 <- 90				#Temp. 1, [C] 					--Vargaftik Table Value#
-				eta_1 <- 2170e-7		#Viscosity at T_1 [N-s/m^2] 	--Vargaftik Table Value#
-				T_2 <- 100				#Temp. 2, [C] 					--Vargaftik Table Value#
-				eta_2 <- 1980e-7		#Viscosity at T_2 [N-s/m^2]		--Vargaftik Table Value#
-				etaB_T <- ( eta_1 + ( (T-273.15)-T_1 )*(eta_2-eta_1)/(T_2-T_1) )*1e3  # [cP]#
-#
-				# molecular weight of solvent#
-				MW_B <- 1.002040E+02  	# kg/kmol  #
-			# A ===============> Solute (Hexadecane) - 1 atm =========================>#
-#
-				# linear interp to find density of the solute at the normal boilng #
-				# point of the solute. This value will be used to compute molar volume#
-				# of the solute, V_{B}#
-				Tnb_hex <- 560.2          # normal bp of glycerol, [K]  --Vargaftik#
-				A_rho <- 0.2471			  # --Yaw Table Value#
-				B_rho <- 0.26626		  # --Yaw Table Value#
-				C_rho <- 723.00			  # --Yaw Table Value#
-				n_rho <- 0.28571		  # --Yaw Table Value#
-				# eqn. taken from Yaw (Tmin = 291.31, Tmax= 723.00) for hexadecane#
-				rhoA_nbp <- A_rho*B_rho^(-(1-Tnb_hex/C_rho)^n_rho)  #g/ml#
-				rhoA_nbp <- rhoA_nbp*(1/1000)*(1000/0.001)          #kg/m^3#
-#
-				# define density of the solute at the temperature of the droplet surface, T,#
-				# assumed to be approximate the boiling point of the solvent. This value#
-				# will be used to calculate parachor, P_{B}#
-				T_1 <- 90 			    	  #Temperature 1, [C] 			--Vargaftik Table Value#
-				rho_1 <- 0.7249e3		      #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-				T_2 <- 100 		     		  #Temperature 2, [C]			--Vargaftik Table Value#
-				rho_2 <- 0.7179e3 		      #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-				rhoA_T <- rho_1 + ( (T-273.15)-T_1 )*(rho_2-rho_1)/(T_2-T_1)  # kg/m^3#
-#
-				# compute surface tension of solute at the droplet surface temperture, T. Required#
-				# for computing parachor of solute, P_{B}#
-				A_sigma <- 56.805#
-				B_sigma <- 723.00#
-				n_sigma <- 1.39290#
-				# eqn from Yaw, p. 812 291.31 K <= T <= 723.00#
-				sigmaA_T <- A_sigma*(1-T/B_sigma)^n_sigma  #[dynes/cm] #
-#
-				# solute liquid viscosity at the droplet surface temperature, T. Rquired#
-				# for computing parachor of solut, P_{B}#
-				T_1 <- 90			    #Temp. 1, [C] 					--Vargaftik Table Value#
-				eta_1 <- 2170e-7		#Viscosity at T_1 [N-s/m^2] 	--Vargaftik Table Value#
-				T_2 <- 100			    #Temp. 2, [C] 					--Vargaftik Table Value#
-				eta_2 <- 1980e-7		#Viscosity at T_2 [N-s/m^2]		--Vargaftik Table Value#
-				etaA_T <- ( eta_1 + ( (T-273.15)-T_1 )*(eta_2-eta_1)/(T_2-T_1) )*1e3  # [cP]#
-#
-				# specify molecular weight of solute#
-				MW_A <- 2.264460E+02 	# kg/kmol
-rhoB_T
-sigmaB_T
-etaB_T
-rhoA_T
-rhoA_nbp
-sigmaA_T
-etaA_T
-# solute liquid viscosity at the droplet surface temperature, T. Rquired#
-				# for computing parachor of solut, P_{B}#
-				T_1 <- 90			#Temp. 1, [C] 					--Vargaftik Table Value#
-				eta_1 <- 1.014e3		#Viscosity at T_1 [N-s/m^2] 	--Vargaftik Table Value#
-				T_2 <- 100			#Temp. 2, [C] 					--Vargaftik Table Value#
-				eta_2 <- 0.892e3		#Viscosity at T_2 [N-s/m^2]		--Vargaftik Table Value#
-				etaA_T <- ( eta_1 + ( (T-273.15)-T_1 )*(eta_2-eta_1)/(T_2-T_1) )*1e3  # [cP]
-etaA_T
-T_1 <- 90			    #Temp. 1, [C] 					--Vargaftik Table Value#
-				eta_1 <- 1.014e3		#Viscosity at T_1 [N-s/m^2] 	--Vargaftik Table Value#
-				T_2 <- 100			    #Temp. 2, [C] 					--Vargaftik Table Value#
-				eta_2 <- 0.892e3		#Viscosity at T_2 [N-s/m^2]		--Vargaftik Table Value#
-				etaA_T <- ( eta_1 + ( (T-273.15)-T_1 )*(eta_2-eta_1)/(T_2-T_1) )*1e3  # [cP]
-etaA_T
-# solute liquid viscosity at the droplet surface temperature, T. Rquired#
-				# for computing parachor of solut, P_{B}#
-				T_1 <- 90			    #Temp. 1, [C] 					--Vargaftik Table Value#
-				eta_1 <- 1.014e-3		#Viscosity at T_1 [N-s/m^2] 	--Vargaftik Table Value#
-				T_2 <- 100			    #Temp. 2, [C] 					--Vargaftik Table Value#
-				eta_2 <- 0.892e-3		#Viscosity at T_2 [N-s/m^2]		--Vargaftik Table Value#
-				etaA_T <- ( eta_1 + ( (T-273.15)-T_1 )*(eta_2-eta_1)/(T_2-T_1) )*1e3  # [cP]
-etaA_T
-rhoB_T
-sigmaB_T
-etaB_T
-rhoA_T
-sigmaA_T
-etaA_T
-T <- 97.8 + 273.15		# Temperature of the droplet surface#
-									# assumed to be equal to about#
-									# the boiling point of solvent @ 1 atm [K] #
-#
-			# B ==============> Solvent (Propanol) - 1 atm =======================>#
-#
-				# linear interp to find density at the normal boiling point of the solvent #
-				# This value willbe used to compute molar volume of solvent, V_{A}#
-				Tnb_prop <- 97.8 + 273.15  #normal boiling point of propanol, [C] --Vargaftik#
-				T_1 <- 90 				   #Temperature 1, [C] 			--Vargaftik Table Value#
-				rho_1 <- 0.7425e3		   #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-				T_2 <- 100 				   #Temperature 2, [C]			--Vargaftik Table Value#
-				rho_2 <- 0.7325e3 		   #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-				rhoB_nbp <- rho_1 + (Tnb_prop-T_1)*(rho_2-rho_1)/(T_2-T_1)  # kg/m^3#
-#
-				# define the density of the solvent at the temperture of the droplet surface#
-				# this value will be used to compute parachor of the Solvent, P_{A}#
-				rhoB_T <- rhoB_nbp 		# kg/m^3#
-#
-				# find surface tension of solvent at the temperature of the drplet surface#
-				# (assumed to be equal to the normal boiling point of the solvent)#
-				# this quantity will be used to calculate Parachor of the solvent, P_{A}#
-				A_sigma <- 44.605#
-				B_sigma <- 536.78#
-				n_sigma <- 0.8#
-				# Equation from Yaw, p. 725  181.83K <= T <= 652.19 K#
-				sigmaB_T <- A_sigma*(1-T/B_sigma)^n_sigma  #[dynes/cm] #
-#
-				# linear interp to find liquid viscosity of the solvent at the #
-				# droplet surface (assumed to be equal to the normal boiling point of the solvent)#
-				T_1 <- 90				#Temp. 1, [C] 					--Vargaftik Table Value#
-				eta_1 <- 0.530e-3		#Viscosity at T_1 [N-s/m^2] 	--Vargaftik Table Value#
-				T_2 <- 100				#Temp. 2, [C] 					--Vargaftik Table Value#
-				eta_2 <- 0.447e-3		#Viscosity at T_2 [N-s/m^2]		--Vargaftik Table Value#
-				etaB_T <- ( eta_1 + ( (T-273.15)-T_1 )*(eta_2-eta_1)/(T_2-T_1) )*1e3  # [cP]#
-#
-				# molecular weight of solvent#
-				MW_B <- 60.1        	  # kg/kmol (check)			#
-			# A ===============> Solute (Glycerol) - 1 atm =========================>#
-#
-				# linear interp to find density of the solute at the normal boilng #
-				# point of the solute. This value will be used to compute molar volume#
-				# of the solute, V_{B}#
-				Tnb_gly <- 290+273.15     # normal bp of glycerol, [K]  --Vargaftik#
-				A_rho <- 0.3488			  # --Yaw Table Value#
-				B_rho <- 0.25408		  # --Yaw Table Value#
-				C_rho <- 850.00			  # --Yaw Table Value#
-				n_rho <- 0.15410		  # --Yaw Table Value#
-				# eqn. taken from Yaw (Tmin = 291.33, Tmax= 850.00) for Glycerol#
-				rhoA_nbp <- A_rho*B_rho^(-(1-Tnb_gly/C_rho)^n_rho)  #g/ml#
-				rhoA_nbp <- rhoA_nbp*(1/1000)*(1000/0.001)          #kg/m^3#
-#
-				# define density of the solute at the temperature of the droplet surface, T,#
-				# assumed to be approximate the boiling point of the solvent. This value#
-				# will be used to calculate parachor, P_{B}#
-				T_1 <- 80 				  #Temperature 1, [C] 			--Vargaftik Table Value#
-				rho_1 <- 1224		      #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-				T_2 <- 100 				  #Temperature 2, [C]			--Vargaftik Table Value#
-				rho_2 <- 1208 		      #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-				rhoA_T <- rho_1 + ( (T-273.15)-T_1 )*(rho_2-rho_1)/(T_2-T_1)  # kg/m^3#
-#
-				# compute surface tension of solute at the droplet surface temperture, T. Required#
-				# for computing parachor of solute, P_{B}#
-				A_sigma <- 143.408#
-				B_sigma <- 850.00#
-				n_sigma <- 1.22222#
-				# eqn from Yaw, p. 726 291.33 K <= T <= 850.00#
-				sigmaA_T <- A_sigma*(1-T/B_sigma)^n_sigma  #[dynes/cm] #
-#
-				# solute liquid viscosity at the droplet surface temperature, T. Rquired#
-				# for computing parachor of solut, P_{B}#
-				T_1 <- 90			#Temp. 1, [C] 					--Vargaftik Table Value#
-				eta_1 <- 21e-3		#Viscosity at T_1 [N-s/m^2] 	--Vargaftik Table Value#
-				T_2 <- 100			#Temp. 2, [C] 					--Vargaftik Table Value#
-				eta_2 <- 13e-3		#Viscosity at T_2 [N-s/m^2]		--Vargaftik Table Value#
-				etaA_T <- ( eta_1 + ( (T-273.15)-T_1 )*(eta_2-eta_1)/(T_2-T_1) )*1e3  # [cP]#
-#
-				# specify molecular weight of solute#
-				MW_A <- 92.1        	# kg/kmol (check)
-rhoB_T
-etaB_T
-sigmaB_T
-T <- 97.8 + 273.15		# Temperature of the droplet surface#
-									# assumed to be equal to about#
-									# the boiling point of solvent @ 1 atm [K] #
-#
-			# B ==============> Solvent (Propanol) - 1 atm =======================>#
-#
-				# linear interp to find density at the normal boiling point of the solvent #
-				# This value willbe used to compute molar volume of solvent, V_{A}#
-				Tnb_prop <- 97.8 + 273.15  #normal boiling point of propanol, [C] --Vargaftik#
-				T_1 <- 90 				   #Temperature 1, [C] 			--Vargaftik Table Value#
-				rho_1 <- 0.7425e3		   #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-				T_2 <- 100 				   #Temperature 2, [C]			--Vargaftik Table Value#
-				rho_2 <- 0.7325e3 		   #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-				rhoB_nbp <- rho_1 + ( (Tnb_prop-273.15)-T_1)*(rho_2-rho_1)/(T_2-T_1)  # kg/m^3#
-#
-				# define the density of the solvent at the temperture of the droplet surface#
-				# this value will be used to compute parachor of the Solvent, P_{A}#
-				rhoB_T <- rhoB_nbp 		# kg/m^3#
-#
-				# find surface tension of solvent at the temperature of the drplet surface#
-				# (assumed to be equal to the normal boiling point of the solvent)#
-				# this quantity will be used to calculate Parachor of the solvent, P_{A}#
-				A_sigma <- 44.605#
-				B_sigma <- 536.78#
-				n_sigma <- 0.8#
-				# Equation from Yaw, p. 725  181.83K <= T <= 652.19 K#
-				sigmaB_T <- A_sigma*(1-T/B_sigma)^n_sigma  #[dynes/cm] #
-#
-				# linear interp to find liquid viscosity of the solvent at the #
-				# droplet surface (assumed to be equal to the normal boiling point of the solvent)#
-				T_1 <- 90				#Temp. 1, [C] 					--Vargaftik Table Value#
-				eta_1 <- 0.530e-3		#Viscosity at T_1 [N-s/m^2] 	--Vargaftik Table Value#
-				T_2 <- 100				#Temp. 2, [C] 					--Vargaftik Table Value#
-				eta_2 <- 0.447e-3		#Viscosity at T_2 [N-s/m^2]		--Vargaftik Table Value#
-				etaB_T <- ( eta_1 + ( (T-273.15)-T_1 )*(eta_2-eta_1)/(T_2-T_1) )*1e3  # [cP]#
-#
-				# molecular weight of solvent#
-				MW_B <- 60.1        	  # kg/kmol (check)			#
-			# A ===============> Solute (Glycerol) - 1 atm =========================>#
-#
-				# linear interp to find density of the solute at the normal boilng #
-				# point of the solute. This value will be used to compute molar volume#
-				# of the solute, V_{B}#
-				Tnb_gly <- 290+273.15     # normal bp of glycerol, [K]  --Vargaftik#
-				A_rho <- 0.3488			  # --Yaw Table Value#
-				B_rho <- 0.25408		  # --Yaw Table Value#
-				C_rho <- 850.00			  # --Yaw Table Value#
-				n_rho <- 0.15410		  # --Yaw Table Value#
-				# eqn. taken from Yaw (Tmin = 291.33, Tmax= 850.00) for Glycerol#
-				rhoA_nbp <- A_rho*B_rho^(-(1-Tnb_gly/C_rho)^n_rho)  #g/ml#
-				rhoA_nbp <- rhoA_nbp*(1/1000)*(1000/0.001)          #kg/m^3#
-#
-				# define density of the solute at the temperature of the droplet surface, T,#
-				# assumed to be approximate the boiling point of the solvent. This value#
-				# will be used to calculate parachor, P_{B}#
-				T_1 <- 80 				  #Temperature 1, [C] 			--Vargaftik Table Value#
-				rho_1 <- 1224		      #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-				T_2 <- 100 				  #Temperature 2, [C]			--Vargaftik Table Value#
-				rho_2 <- 1208 		      #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-				rhoA_T <- rho_1 + ( (T-273.15)-T_1 )*(rho_2-rho_1)/(T_2-T_1)  # kg/m^3#
-#
-				# compute surface tension of solute at the droplet surface temperture, T. Required#
-				# for computing parachor of solute, P_{B}#
-				A_sigma <- 143.408#
-				B_sigma <- 850.00#
-				n_sigma <- 1.22222#
-				# eqn from Yaw, p. 726 291.33 K <= T <= 850.00#
-				sigmaA_T <- A_sigma*(1-T/B_sigma)^n_sigma  #[dynes/cm] #
-#
-				# solute liquid viscosity at the droplet surface temperature, T. Rquired#
-				# for computing parachor of solut, P_{B}#
-				T_1 <- 90			#Temp. 1, [C] 					--Vargaftik Table Value#
-				eta_1 <- 21e-3		#Viscosity at T_1 [N-s/m^2] 	--Vargaftik Table Value#
-				T_2 <- 100			#Temp. 2, [C] 					--Vargaftik Table Value#
-				eta_2 <- 13e-3		#Viscosity at T_2 [N-s/m^2]		--Vargaftik Table Value#
-				etaA_T <- ( eta_1 + ( (T-273.15)-T_1 )*(eta_2-eta_1)/(T_2-T_1) )*1e3  # [cP]#
-#
-				# specify molecular weight of solute#
-				MW_A <- 92.1        	# kg/kmol (check)
-rhoB_T
-rhoA_T
-etaA_T
-T <- 403.0 				# boiling point of solvent @ 3 atm [K] (129.85 C)#
-#
-			# B ==============> Solvent (Propanol) - 3 atm =======================>#
-#
-				# linear interp to find density at the normal boiling point of the solvent #
-				# This value willbe used to compute molar volume of solvent, V_{A}#
-				Tnb_prop <- 97.8 + 273.15 # normal boiling point of propanol, [C] --Vargaftik#
-				T_1 <- 90 				  #Temperature 1, [C] 			--Vargaftik Table Value#
-				rho_1 <- 0.7425e3		  #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-				T_2 <- 100 				  #Temperature 2, [C]			--Vargaftik Table Value#
-				rho_2 <- 0.7325e3 		  #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-				rhoB_nbp <- rho_1 + ( (Tnb_prop-273.15) -T_1)*(rho_2-rho_1)/(T_2-T_1)  # kg/m^3#
-#
-				# define the density of the solvent at the temperture of the droplet surface#
-				# this value will be used to compute parachor of the Solvent, P_{A}#
-				T_1 <- 120 				  #Temperature 1, [C] 			--Vargaftik Table Value#
-				rho_1 <- 0.7110e3		  #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-				T_2 <- 130 				  #Temperature 2, [C]			--Vargaftik Table Value#
-				rho_2 <- 0.6995e3 		  #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-				rhoB_T <- rho_1 + ((T-273.15)-T_1)*(rho_2-rho_1)/(T_2-T_1)  # kg/m^3#
-#
-				# find surface tension of solvent at the temperature of the drplet surface#
-				# (assumed to be equal to the normal boiling point of the solvent)#
-				# this quantity will be used to calculate Parachor of the solvent, P_{A}#
-				A_sigma <- 44.605#
-				B_sigma <- 536.78#
-				n_sigma <- 0.8#
-				# Equation from Yaw, p. 725  181.83K <= T <= 652.19 K#
-				sigmaB_T <- A_sigma*(1-T/B_sigma)^n_sigma  #[dynes/cm] #
-#
-				# linear interp to find liquid viscosity of the solvent at the #
-				# droplet surface (assumed to be equal to the normal boiling point of the solvent)#
-				T_1 <- 120				#Temp. 1, [C] 					--Vargaftik Table Value#
-				eta_1 <- 0.337e-3		#Viscosity at T_1 [N-s/m^2] 	--Vargaftik Table Value#
-				T_2 <- 130				#Temp. 2, [C] 					--Vargaftik Table Value#
-				eta_2 <- 0.291e-3		#Viscosity at T_2 [N-s/m^2]		--Vargaftik Table Value#
-				etaB_T <- ( eta_1 + ( (T-273.15)-T_1 )*(eta_2-eta_1)/(T_2-T_1) )*1e3  # [cP]#
-#
-				# molecular weight of solvent#
-				MW_B <- 60.1        	  # kg/kmol (check)			#
-			# A ===============> Solute (Glycerol) - 3 atm =========================>#
-#
-				# linear interp to find density of the solute at the normal boilng #
-				# point of the solute. This value will be used to compute molar volume#
-				# of the solute, V_{B}#
-				Tnb_gly <- 290+273.15     # normal bp of glycerol, [K]  --Vargaftik#
-				A_rho <- 0.3488			  # --Yaw Table Value#
-				B_rho <- 0.25408		  # --Yaw Table Value#
-				C_rho <- 850.00			  # --Yaw Table Value#
-				n_rho <- 0.15410		  # --Yaw Table Value#
-				# eqn. taken from Yaw (Tmin = 291.33, Tmax= 850.00) for Glycerol#
-				rhoA_nbp <- A_rho*B_rho^(-(1-Tnb_gly/C_rho)^n_rho)  #g/ml#
-				rhoA_nbp <- rhoA_nbp*(1/1000)*(1000/0.001)          #kg/m^3#
-#
-				# define density of the solute at the temperature of the droplet surface, T,#
-				# assumed to be approximate the boiling point of the solvent. This value#
-				# will be used to calculate parachor, P_{B}#
-				T_1 <- 120 				  #Temperature 1, [C] 			--Vargaftik Table Value#
-				rho_1 <- 1188		      #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-				T_2 <- 140 				  #Temperature 2, [C]			--Vargaftik Table Value#
-				rho_2 <- 1167 		      #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-				rhoA_T <- rho_1 + ( (T-273.15)-T_1 )*(rho_2-rho_1)/(T_2-T_1)  # kg/m^3#
-#
-				# compute surface tension of solute at the droplet surface temperture, T. Required#
-				# for computing parachor of solute, P_{B}#
-				A_sigma <- 143.408#
-				B_sigma <- 850.00#
-				n_sigma <- 1.22222#
-				# eqn from Yaw, p. 726 291.33 K <= T <= 850.00#
-				sigmaA_T <- A_sigma*(1-T/B_sigma)^n_sigma  #[dynes/cm] #
-#
-				# solute liquid viscosity at the droplet surface temperature, T. Rquired#
-				# for computing parachor of solut, P_{B}#
-				T_1 <- 120			#Temp. 1, [C] 					--Vargaftik Table Value#
-				eta_1 <- 5.2e-3		#Viscosity at T_1 [N-s/m^2] 	--Vargaftik Table Value#
-				T_2 <- 140			#Temp. 2, [C] 					--Vargaftik Table Value#
-				eta_2 <- 1.8e-3		#Viscosity at T_2 [N-s/m^2]		--Vargaftik Table Value#
-				etaA_T <- ( eta_1 + ( (T-273.15)-T_1 )*(eta_2-eta_1)/(T_2-T_1) )*1e3  # [cP]#
-#
-				# specify molecular weight of solute#
-				MW_A <- 92.1        	# kg/kmol (check)
-rhoB_T
-etaB_T
-rhoA_T
-etaB_T
-rhoA_T
-etaA_T
-sigmaA_T
-T <- 3.716167E+02 		# boiling point of solvent @ 1 atm [K] (CHERIC)	(98.47 deg. C)	#
-#
-			# ------------- Heptane/Hexadecane 1 atm properties -------------------##
-			# NOTE: These values are from imperical relations provided#
-			# by CHERIC, YAW, etc.  See the contents of the folder#
-			# "hephex_experiments" for the origins of these numbers#
-			# B ==============> Solvent (Heptane) - 1 atm =======================>#
-#
-				# linear interp to find DENSITY at the normal boiling point of the solvent #
-				# This value willbe used to compute molar volume of solvent, V_{A}#
-				Tnb_hep <- 3.716167E+02   #normal boiling point of propanol, [C] --Vargaftik#
-				T_1 <- 90 				   #Temperature 1, [C] 			--Vargaftik Table Value#
-				rho_1 <- 0.6218e3		   #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-				T_2 <- 100 				   #Temperature 2, [C]			--Vargaftik Table Value#
-				rho_2 <- 0.6124e3 		   #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-				rhoB_nbp <- rho_1 + ( (Tnb_hep-273.15)-T_1 )*(rho_2-rho_1)/(T_2-T_1)  # kg/m^3#
-#
-				# define the DENSITY of the solvent at the temperture of the droplet surface#
-				# this value will be used to compute parachor of the Solvent, P_{A}#
-				rhoB_T <- rhoB_nbp 		# kg/m^3#
-#
-				# find surface tension of solvent at the temperature of the drplet surface#
-				# (assumed to be equal to the normal boiling point of the solvent)#
-				# this quantity will be used to calculate Parachor of the solvent, P_{A}#
-				A_sigma <- 53.649#
-				B_sigma <- 540.20#
-				n_sigma <- 1.24310#
-				# Equation from Yaw, p. 725  182.55K <= T <= 540.20 K#
-				sigmaB_T <- A_sigma*(1-T/B_sigma)^n_sigma  #[dynes/cm] or erg/cm^2#
-#
-				# linear interp to find liquid VISCOSITY of the solvent at the #
-				# droplet surface (assumed to be equal to the normal boiling point of the solvent)#
-				T_1 <- 90				#Temp. 1, [C] 					--Vargaftik Table Value#
-				eta_1 <- 2170e-7		#Viscosity at T_1 [N-s/m^2] 	--Vargaftik Table Value#
-				T_2 <- 100				#Temp. 2, [C] 					--Vargaftik Table Value#
-				eta_2 <- 1980e-7		#Viscosity at T_2 [N-s/m^2]		--Vargaftik Table Value#
-				etaB_T <- ( eta_1 + ( (T-273.15)-T_1 )*(eta_2-eta_1)/(T_2-T_1) )*1e3  # [cP]#
-#
-				# molecular weight of solvent#
-				MW_B <- 1.002040E+02  	# kg/kmol or g/gmol #
-			# A ===============> Solute (Hexadecane) - 1 atm =========================>#
-#
-				# linear interp to find density of the solute at the normal boilng #
-				# point of the solute. This value will be used to compute molar volume#
-				# of the solute, V_{B}#
-				Tnb_hex <- 560.2          # normal bp of glycerol, [K]  --Vargaftik#
-				A_rho <- 0.2471			  # --Yaw Table Value#
-				B_rho <- 0.26626		  # --Yaw Table Value#
-				C_rho <- 723.00			  # --Yaw Table Value#
-				n_rho <- 0.28571		  # --Yaw Table Value#
-				# eqn. taken from Yaw (Tmin = 291.31, Tmax= 723.00) for hexadecane#
-				rhoA_nbp <- A_rho*B_rho^(-(1-Tnb_hex/C_rho)^n_rho)  #g/ml#
-				rhoA_nbp <- rhoA_nbp*(1/1000)*(1000/0.001)          #kg/m^3#
-#
-				# define density of the solute at the temperature of the droplet surface, T,#
-				# assumed to be approximate the boiling point of the solvent. This value#
-				# will be used to calculate parachor, P_{B}#
-				T_1 <- 90 			    	  #Temperature 1, [C] 			--Vargaftik Table Value#
-				rho_1 <- 0.7249e3		      #density at T_1, [kg/m^3]  	--Vargaftik Table Value#
-				T_2 <- 100 		     		  #Temperature 2, [C]			--Vargaftik Table Value#
-				rho_2 <- 0.7179e3 		      #density at T_2, [kg/m^3]		--Vargaftik Table Value#
-				rhoA_T <- rho_1 + ( (T-273.15)-T_1 )*(rho_2-rho_1)/(T_2-T_1)  # kg/m^3#
-#
-				# compute surface tension of solute at the droplet surface temperture, T. Required#
-				# for computing parachor of solute, P_{B}#
-				A_sigma <- 56.805#
-				B_sigma <- 723.00#
-				n_sigma <- 1.39290#
-				# eqn from Yaw, p. 812 291.31 K <= T <= 723.00#
-				sigmaA_T <- A_sigma*(1-T/B_sigma)^n_sigma  #[dynes/cm] or erg/cm^2#
-#
-				# solute liquid viscosity at the droplet surface temperature, T. Rquired#
-				# for computing parachor of solut, P_{B}#
-				T_1 <- 90			    #Temp. 1, [C] 					--Vargaftik Table Value#
-				eta_1 <- 1.014e-3		#Viscosity at T_1 [N-s/m^2] 	--Vargaftik Table Value#
-				T_2 <- 100			    #Temp. 2, [C] 					--Vargaftik Table Value#
-				eta_2 <- 0.892e-3		#Viscosity at T_2 [N-s/m^2]		--Vargaftik Table Value#
-				etaA_T <- ( eta_1 + ( (T-273.15)-T_1 )*(eta_2-eta_1)/(T_2-T_1) )*1e3  # [cP]#
-#
-				# specify molecular weight of solute#
-				MW_A <- 2.264460E+02 	# kg/kmol or g/gmol
-rhoA_nbp
-A_rho*B_rho^(-(1-Tnb_hex/C_rho)^n_rho)
-586.4478*10e-3
-586.447*q-3
-586.447*1e-3
-source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-dyn.load('/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/server/libjvm.dylib')
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-source('/Volumes/RSRCH/COMB_RESEARCH/FLEX_PROPANOL95GLYCEROL5/C055D02_RL/averagingScript.R', chdir = TRUE)
-source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-dyn.load('/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/server/libjvm.dylib')
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
 expression( paste("U"[D]*"/", bar(D)")") )
 expression( paste("U"[D]"/")
 expression( paste("U"[D]/"D"[avg])
@@ -1002,9 +226,1196 @@ for (i in 1:N) {#
 	readline("--press enter--")#
 }
 source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/raw_Rcode_results/skewed_experiments.R', chdir = TRUE)
-interetExp <- c(2,6,14,53)
-2==interetExp
-if(2==interetExp){print("yes")}
-if(14==interetExp){print("yes")}
-2 %in% interetExp
+source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
+hist(eps_N95,prob=T,n=100)
+dev.new(), hist(K_mcN95,prob=T,n=100)
+dev.new(); hist(K_mcN95,prob=T,n=100)
+dev.new(); hist(eps_N95*K_mcN95/8,prob=T,n=100)
+N
+D_new <- rnorm(n=N, mean=0.3089,sd=0.02079436)
+eps_new <- rnorm(n=N, mean=0.3089,sd=0.02079436)
+dev.new(); hist(K_mcN95*eps/new/8,prob=T,n=100)
+dev.new(); hist(K_mcN95*eps_new/8,prob=T,n=100)
+dev.new(); hist(eps_new,prob=T,n=100)
+source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
+dyn.load('/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/server/libjvm.dylib')
+source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
+source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
+source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
+source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
+0.506*177.8
+0.506/3600
+101350-(1.22/2)*(1.406e-4)*286141.36
+101350-(1.22/2)*( (1.406e-4)*286141.36)^2
+0.1/3600
+101350-(1.22/2)*((2.78e-5)*(1.448e6))^2
+( (1.406e-4)*286141.36)^2
+(1.22/2)*((2.78e-5)*(1.448e6))^2
+((2.78e-5)*(1.448e6))^2
+40*400/90
+90*400/40
+source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
+dyn.load('/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/server/libjvm.dylib')
+source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
+source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
+dev.new(); hist(Deffective,prob=T,n=100)
+deve.new(); hist(eps_N95,prob=T,n=100)
+dev.new(); hist(eps_N95,prob=T,n=100)
+dev.new(); hist(K_mcN95,prob=T,n=100)
+dev.new(); hist(eps_N95*K_mcN95/8,prob=T,n=100)
+dev.new(); hist(rnorm(mean=0.3089,n=N,sd=0.02079436)*K_mcN95/8,prob=T,n=100)
+dev.new(); hist(eps_N95,prob=T,n=100)
+dev.new(); hist(K_mcN95,prob=T,n=100)
+dev.new(); hist(eps_N95*K_mcN95/8,prob=T,n=100)
+source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/raw_Rcode_results/skewed_experiments.R', chdir = TRUE)
+# define the summary function#
+f <- function(x) {#
+  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
+  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
+  r#
+}#
+#
+# sample data#
+d <- data.frame(x=gl(2,50), y=rnorm(100))
+# do it#
+ggplot(d, aes(x, y)) + stat_summary(fun.data = f, geom="boxplot")
+# do it#
+ggplot2(d, aes(x, y)) + stat_summary(fun.data = f, geom="boxplot")
+# do it#
+ggplot(d, aes(x, y)) + stat_summary(fun.data = f, geom="boxplot")
+library(ggplot2)
+# do it#
+ggplot(d, aes(x, y)) + stat_summary(fun.data = f, geom="boxplot")
+# example with outliers#
+# define outlier as you want    #
+o <- function(x) {#
+  subset(x, x < quantile(x)[2] | quantile(x)[4] < x)#
+}#
+#
+# do it#
+ggplot(d, aes(x, y)) + #
+  stat_summary(fun.data=f, geom="boxplot") + #
+  stat_summary(fun.y = o, geom="point")
+help(gl)
+# do it#
+stat_boxplot(geom='errorbar') +#
+ggplot(d, aes(x, y)) + stat_summary(fun.data = f, geom="boxplot")
+# define the summary function#
+f <- function(x) {#
+  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
+  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
+  r#
+}#
+#
+# sample data#
+d <- data.frame(x=gl(2,50), y=rnorm(100))#
+#
+# do it#
+stat_boxplot(geom='errorbar') +#
+ggplot(d, aes(x, y)) + stat_summary(fun.data = f, geom="boxplot")
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+# define the summary function#
+f <- function(x) {#
+  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
+  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
+  r#
+}#
+#
+# sample data#
+d <- data.frame(x=gl(2,50), y=rnorm(100))#
+#
+# do it#
+stat_boxplot(geom='errorbar') +#
+ggplot(d, aes(x, y)) + stat_summary(fun.data = f, geom="boxplot")
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+# define the summary function#
+f <- function(x) {#
+  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
+  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
+  r#
+}#
+#
+# sample data#
+d <- data.frame(x=gl(2,50), y=rnorm(100))#
+#
+# do it#
+stat_boxplot(geom='errorbar') +#
+geom_boxplot(d, aes(x, y)) + stat_summary(fun.data = f, geom="boxplot")
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+# define the summary function#
+f <- function(x) {#
+  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
+  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
+  r#
+}#
+#
+# sample data#
+d <- data.frame(x=gl(2,50), y=rnorm(100))#
+#
+# do it#
+ggplot(data=d, aes(x, y)) + geom_boxplot(aes(fill=VboxPlotxFactors), show.legend=FALSE, notch=FALSE,#
+	  	outlier.shape=NA )
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+# define the summary function#
+f <- function(x) {#
+  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
+  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
+  r#
+}#
+#
+# sample data#
+d <- data.frame(x=gl(2,50), y=rnorm(100))#
+#
+# do it#
+ggplot(data=d, aes(x, y)) + geom_boxplot(aes( show.legend=FALSE, notch=FALSE,#
+	  	outlier.shape=NA )
+)
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+# define the summary function#
+f <- function(x) {#
+  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
+  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
+  r#
+}#
+#
+# sample data#
+d <- data.frame(x=gl(2,50), y=rnorm(100))#
+#
+# do it#
+ggplot(data=d, aes(x, y)) + geom_boxplot(aes( show.legend=FALSE, notch=FALSE,#
+	  	outlier.shape=NA ) ) #
++ stat_summary(geom="errobar")
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+# define the summary function#
+f <- function(x) {#
+  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
+  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
+  r#
+}#
+#
+# sample data#
+d <- data.frame(x=gl(2,50), y=rnorm(100))#
+#
+# do it#
+ggplot(data=d, aes(x, y)) + geom_boxplot(aes( show.legend=FALSE, notch=FALSE,#
+	  	outlier.shape=NA ) ) #
++ stat_summary(geom='errorbar')
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+# define the summary function#
+f <- function(x) {#
+  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
+  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
+  r#
+}#
+#
+# sample data#
+d <- data.frame(x=gl(2,50), y=rnorm(100))#
+#
+# do it#
+ggplot(data=d, aes(x, y)) + geom_boxplot(aes( show.legend=FALSE, notch=FALSE,#
+	  	outlier.shape=NA ) ) + stat_summary(geom='errorbar')
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+# define the summary function#
+f <- function(x) {#
+  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
+  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
+  r#
+}#
+#
+# sample data#
+d <- data.frame(x=gl(2,50), y=rnorm(100))#
+#
+# do it#
+ggplot(data=d, aes(x, y)) + #
+geom_boxplot(aes( show.legend=FALSE, notch=FALSE, outlier.shape=NA ) ) + #
+stat_summary(geom='errorbar') +#
+geom_jitter(position=position_jitter(width=.4, height=0))
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+# define the summary function#
+f <- function(x) {#
+  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
+  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
+  r#
+}#
+#
+# sample data#
+d <- data.frame(x=gl(2,50), y=rnorm(100))#
+#
+# do it#
+ggplot(data=d, aes(x, y)) + #
+geom_boxplot(aes( show.legend=FALSE, notch=FALSE, outlier.shape=NA ) ) + #
+stat_summary(geom='errorbar', fun.data = f) +#
+geom_jitter(position=position_jitter(width=.4, height=0))
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+# define the summary function#
+f <- function(x) {#
+  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
+  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
+  r#
+}#
+#
+# sample data#
+d <- data.frame(x=gl(2,50), y=rnorm(100))#
+#
+# do it#
+ggplot(data=d, aes(x, y)) + #
+geom_boxplot(aes( show.legend=FALSE, notch=FALSE, outlier.shape=NA ) ) + #
+stat_summary(geom='errorbar') +#
+geom_jitter(position=position_jitter(width=.4, height=0))
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+# define the summary function#
+f <- function(x) {#
+  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
+  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
+  r#
+}#
+#
+# sample data#
+d <- data.frame(x=gl(2,50), y=rnorm(100))#
+#
+# do it#
+ggplot(data=d, aes(x, y)) + #
+geom_boxplot(aes( show.legend=FALSE, notch=FALSE, outlier.shape=NA ) ) + #
+stat_summary(geom='errorbar') +#
+geom_jitter(position=position_jitter(width=.1, height=0))
+names(d)
+plot(d$x,d$y)
+d
+plot(d$x,d$y)
+# do it#
+dev.new()#
+ggplot(data=d, aes(x, y)) + #
+geom_boxplot(aes( show.legend=FALSE, notch=FALSE, outlier.shape=NA ) ) + #
+stat_summary(geom='errorbar') +#
+geom_jitter(position=position_jitter(width=.1, height=0))
+dev.new(); boxplot(d$x,d$y)
+# example with outliers#
+# define outlier as you want    #
+o <- function(x) {#
+  subset(x, x < quantile(x)[2] | quantile(x)[4] < x)#
+}#
+#
+# do it#
+ggplot(d, aes(x, y)) + #
+  stat_summary(fun.data=f, geom="boxplot") + #
+  stat_summary(fun.y = o, geom="point")
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+# define the summary function#
+f <- function(x) {#
+  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
+  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
+  r#
+}#
+#
+# sample data#
+d <- data.frame(x=gl(2,50), y=rnorm(100))#
+#
+# do it#
+dev.new()#
+ggplot(data=d, aes(x, y)) + #
+geom_boxplot(aes( show.legend=FALSE, notch=FALSE, outlier.shape=NA ) ) + #
+stat_summary(geom='errorbar') +#
+geom_jitter(position=position_jitter(width=.1, height=0)) #
+#
+# example with outliers#
+# define outlier as you want    #
+o <- function(x) {#
+  subset(x, x < quantile(x)[2] | quantile(x)[4] < x)#
+}#
+#
+# do it#
+ggplot(d, aes(x, y)) + #
+  stat_summary(fun.data=f, geom="boxplot") + #
+  stat_summary(fun.y = o, geom="point")
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+# define the summary function#
+f <- function(x) {#
+  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
+  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
+  r#
+}#
+#
+# sample data#
+d <- data.frame(x=gl(2,50), y=rnorm(100))#
+#
+# do it#
+dev.new()#
+ggplot(data=d, aes(x, y)) + #
+geom_boxplot(aes( show.legend=FALSE, notch=FALSE, outlier.shape=NA ) ) + #
+stat_summary(geom='errorbar') +#
+geom_jitter(position=position_jitter(width=.1, height=0)) #
+#
+# example with outliers#
+# define outlier as you want    #
+o <- function(x) {#
+  subset(x, x < quantile(x)[2] | quantile(x)[4] < x)#
+}#
+#
+# do it#
+dev.new()#
+ggplot(d, aes(x, y)) + #
+  stat_summary(fun.data=f, geom="boxplot") + #
+  stat_summary(fun.y = o, geom="point")
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+# define the summary function#
+f <- function(x) {#
+  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
+  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
+  r#
+}#
+#
+# sample data#
+d <- data.frame(x=gl(2,50), y=rnorm(100))#
+#
+# do it#
+dev.new()#
+# ggplot(data=d, aes(x, y)) + #
+# geom_boxplot(aes( show.legend=FALSE, notch=FALSE, outlier.shape=NA ) ) + #
+# stat_summary(geom='errorbar') +#
+# geom_jitter(position=position_jitter(width=.1, height=0)) #
+ggplot(d, aes(x, y)) + stat_summary(fun.data = f, geom="boxplot")#
+# example with outliers#
+# define outlier as you want    #
+o <- function(x) {#
+  subset(x, x < quantile(x)[2] | quantile(x)[4] < x)#
+}#
+#
+# do it#
+dev.new()#
+ggplot(d, aes(x, y)) + #
+  stat_summary(fun.data=f, geom="boxplot") + #
+  stat_summary(fun.y = o, geom="point")
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+ ggplot(df, aes(x)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity"#
+  )
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+ ggplot(df, aes(x)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity"#
+  ) +#
+   stat_summary(geom='errobar')
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+ ggplot(df, aes(x)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity"#
+  ) +#
+   stat_boxplot(geom='errobar')
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+ ggplot(df, aes(x)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity"#
+  ) + stat_boxplot(geom='errobar')
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+ ggplot(df, aes(x)) + stat_boxplot(geom='errobar') +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity"#
+  )
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+ ggplot(df, aes(x)) + stat_boxplot(geom='errorbar') +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity"#
+  )
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+ ggplot(df, aes(x,y)) + stat_boxplot(geom='errorbar') +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity"#
+  )
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+ ggplot(df, aes(x)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity"#
+  ) #+#
+   # stat_boxplot(geom='errorbar')
+dataframe
+df
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+ ggplot(df, aes(x)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity"#
+  ) #+#
+   # stat_boxplot(geom='errorbar')
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+#
+ df2 <- data.frame(x=gl(1,100),y)#
+ ggplot(data=df2, aes(x,y)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity"#
+  ) #+#
+   # stat_boxplot(geom='errorbar')
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+#
+   y0 <- min(y),#
+   y25 <- quantile(y, 0.25),#
+   y50 <- median(y),#
+   y75 <- quantile(y, 0.75),#
+   y100 <- max(y)#
+ df2 <- data.frame(x=gl(1,100),y)#
+ ggplot(data=df2, aes(x,y)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity"#
+  ) #+#
+   # stat_boxplot(geom='errorbar')
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+#
+   y0 <- min(y)#
+   y25 <- quantile(y, 0.25)#
+   y50 <- median(y)#
+   y75 <- quantile(y, 0.75)#
+   y100 <- max(y)#
+#
+ df2 <- data.frame(x=gl(1,100),y)#
+ ggplot(data=df2, aes(x,y)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity"#
+  ) #+#
+   # stat_boxplot(geom='errorbar')
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+#
+   y0 <- min(y)#
+   y25 <- quantile(y, 0.25)#
+   y50 <- median(y)#
+   y75 <- quantile(y, 0.75)#
+   y100 <- max(y)#
+#
+ df2 <- data.frame(x=gl(1,100),y)#
+ ggplot(data=df2, aes(x,y)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity"#
+  )
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+#
+   y0 <- min(y)#
+   y25 <- quantile(y, 0.25)#
+   y50 <- median(y)#
+   y75 <- quantile(y, 0.75)#
+   y100 <- max(y)#
+#
+ df2 <- data.frame(x=gl(1,100),y)#
+ ggplot(data=df2, aes(x,y)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity"#
+  ) #+#
+   # stat_boxplot(geom='errorbar')
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+#
+   y0 <- min(y)#
+   y25 <- quantile(y, 0.25)#
+   y50 <- median(y)#
+   y75 <- quantile(y, 0.75)#
+   y100 <- max(y)#
+#
+ df2 <- data.frame(x=gl(1,100),y)#
+ ggplot(data=df2, aes(x,y)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity"#
+  ) +#
+  geom_jitter(position=position_jitter(width=.1, height=0))
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+#
+   y0 <- min(y)#
+   y25 <- quantile(y, 0.25)#
+   y50 <- median(y)#
+   y75 <- quantile(y, 0.75)#
+   y100 <- max(y)#
+#
+ df2 <- data.frame(x=gl(1,100),y)#
+ ggplot(data=df2, aes(x,y)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity"#
+  ) + geom_jitter(position=position_jitter(width=.1, height=0))
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+#
+   y0 <- min(y)#
+   y25 <- quantile(y, 0.25)#
+   y50 <- median(y)#
+   y75 <- quantile(y, 0.75)#
+   y100 <- max(y)#
+#
+ df2 <- data.frame(x=gl(1,100),y)#
+ ggplot(data=df2, aes(x,y)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity"#
+  )
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+#
+   y0 <- min(y)#
+   y25 <- quantile(y, 0.25)#
+   y50 <- median(y)#
+   y75 <- quantile(y, 0.75)#
+   y100 <- max(y)#
+#
+ df2 <- data.frame(x=gl(1,100),y)#
+ ggplot(data=df2, aes(x,y)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity"#
+  ) #+#
+   # stat_boxplot(geom='errorbar')
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+#
+   y0 <- min(y)#
+   y25 <- quantile(y, 0.25)#
+   y50 <- median(y)#
+   y75 <- quantile(y, 0.75)#
+   y100 <- max(y)#
+#
+ df2 <- data.frame(x=gl(1,100),y)#
+ ggplot(data=df2, aes(x,y)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity")
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+#
+   y0 <- min(y)#
+   y25 <- quantile(y, 0.25)#
+   y50 <- median(y)#
+   y75 <- quantile(y, 0.75)#
+   y100 <- max(y)#
+#
+ df2 <- data.frame(x=gl(1,100),y)#
+ ggplot(data=df2, aes(x,y)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity"#
+  ) #+#
+   # stat_boxplot(geom='errorbar')
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+#
+   y0 <- min(y)#
+   y25 <- quantile(y, 0.25)#
+   y50 <- median(y)#
+   y75 <- quantile(y, 0.75)#
+   y100 <- max(y)#
+#
+ df2 <- data.frame(x=gl(1,100),y)#
+ ggplot(data=df2, aes(x,y)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity"#
+  ) #+
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+#
+   y0 <- min(y)#
+   y25 <- quantile(y, 0.25)#
+   y50 <- median(y)#
+   y75 <- quantile(y, 0.75)#
+   y100 <- max(y)#
+#
+ df2 <- data.frame(x=gl(1,100),y)#
+ ggplot(data=df2, aes(x,y)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity")
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+#
+   y0 <- min(y)#
+   y25 <- quantile(y, 0.25)#
+   y50 <- median(y)#
+   y75 <- quantile(y, 0.75)#
+   y100 <- max(y)#
+#
+ df2 <- data.frame(x=gl(1,100),y)#
+ p1 <- ggplot(data=df2, aes(x,y)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity")
+p1
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+#
+   y0 <- min(y)#
+   y25 <- quantile(y, 0.25)#
+   y50 <- median(y)#
+   y75 <- quantile(y, 0.75)#
+   y100 <- max(y)#
+#
+ df2 <- data.frame(x=gl(1,100),y)#
+ p1 <- ggplot(data=df2, aes(x,y)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity") #
+p1 <- p1 + geom_jitter(position=position_jitter(width=.4, height=0))
+p1
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+#
+   y0 <- min(y)#
+   y25 <- quantile(y, 0.25)#
+   y50 <- median(y)#
+   y75 <- quantile(y, 0.75)#
+   y100 <- max(y)#
+#
+ df2 <- data.frame(x=gl(1,100),y)#
+ p1 <- ggplot(data=df2, aes(x,y)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity") #
+p2 <- p1 + geom_jitter(position=position_jitter(width=.4, height=0))
+p1
+p2
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+#
+   y0 <- min(y)#
+   y25 <- quantile(y, 0.25)#
+   y50 <- median(y)#
+   y75 <- quantile(y, 0.75)#
+   y100 <- max(y)#
+#
+ df2 <- data.frame(x=gl(1,100),y)#
+ p1 <- ggplot(data=df2, aes(x,y)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity") #
+p2 <- p1 + geom_jitter(position=position_jitter(width=.1, height=0))
+p2
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+#
+   y0 <- min(y)#
+   y25 <- quantile(y, 0.25)#
+   y50 <- median(y)#
+   y75 <- quantile(y, 0.75)#
+   y100 <- max(y)#
+#
+ df2 <- data.frame(x=gl(1,100),y)#
+p1 <- ggplot(data=df2, aes(x,y)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity") #
+p1 <- p1 + geom_jitter(position=position_jitter(width=.1, height=0))
+p1
+rm(list=ls(all=TRUE))
+p1
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ df <- data.frame(#
+   x = 1,#
+   y0 = min(y),#
+   y25 = quantile(y, 0.25),#
+   y50 = median(y),#
+   y75 = quantile(y, 0.75),#
+   y100 = max(y)#
+ )#
+#
+   y0 <- min(y)#
+   y25 <- quantile(y, 0.25)#
+   y50 <- median(y)#
+   y75 <- quantile(y, 0.75)#
+   y100 <- max(y)#
+#
+ df2 <- data.frame(x=gl(1,100),y)#
+p1 <- ggplot(data=df2, aes(x,y)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity") #
+p1 <- p1 + geom_jitter(position=position_jitter(width=.1, height=0))
+p1
+source('~/Desktop/test.R', chdir = TRUE)
+p1
+source('~/Desktop/test.R', chdir = TRUE)
+p1
+source('~/Desktop/test.R', chdir = TRUE)
+p1
+boxplot(y)
+p1
+dev.new(); boxplot(y)
+source('~/Desktop/test.R', chdir = TRUE)
+p1
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ # df <- data.frame(#
+ #   x = 1,#
+ #   y0 = min(y),#
+ #   y25 = quantile(y, 0.25),#
+ #   y50 = median(y),#
+ #   y75 = quantile(y, 0.75),#
+ #   y100 = max(y)#
+ # )#
+#
+   y0 <- min(y)#
+   y25 <- quantile(y, 0.25)#
+   y50 <- median(y)#
+   y75 <- quantile(y, 0.75)#
+   y100 <- max(y)#
+#
+ df2 <- data.frame(x=gl(1,100),y)#
+p1 <- ggplot(data=df2, aes(x,y)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity") #
+p1 <- p1 + geom_boxplot(aes(fill=x))#
+p1 <- p1 + geom_jitter(position=position_jitter(width=.1, height=0))#
+#
+p1 <- p1 + stat_boxplot(geom='errorbar')
+p1
+rm(list=ls(all=TRUE))   #remove all variables in  workspace#
+library(ggplot2)#
+#
+ # It's possible to draw a boxplot with your own computations if you#
+ # use stat = "identity":#
+ y <- rnorm(100)#
+ # df <- data.frame(#
+ #   x = 1,#
+ #   y0 = min(y),#
+ #   y25 = quantile(y, 0.25),#
+ #   y50 = median(y),#
+ #   y75 = quantile(y, 0.75),#
+ #   y100 = max(y)#
+ # )#
+#
+   y0 <- min(y)#
+   y25 <- quantile(y, 0.25)#
+   y50 <- median(y)#
+   y75 <- quantile(y, 0.75)#
+   y100 <- max(y)#
+#
+ df2 <- data.frame(x=gl(1,100),y)#
+p1 <- ggplot(data=df2, aes(x,y)) +#
+   geom_boxplot(#
+    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
+    stat = "identity", width=0.3) #
+p1 <- p1 + geom_boxplot(aes(fill=x))#
+p1 <- p1 + geom_jitter(position=position_jitter(width=.1, height=0))#
+#
+p1 <- p1 + stat_boxplot(geom='errorbar')
+source('~/Desktop/test.R', chdir = TRUE)
+p1
+source('~/Desktop/test.R', chdir = TRUE)
+p1
+source('~/Desktop/test.R', chdir = TRUE)
+p1
+source('~/Desktop/test.R', chdir = TRUE)
+p1
+source('~/Desktop/test.R', chdir = TRUE)
+p1
+dyn.load('/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/server/libjvm.dylib')
+source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
+source('~/Desktop/test.R', chdir = TRUE)
+p1
+source('~/Desktop/test.R', chdir = TRUE)
+p1
+source('~/Desktop/test.R', chdir = TRUE)
+p1
+boxplot(df2)
+df2
+boxplot(df2$x,df2$y)
+source('~/Desktop/test.R', chdir = TRUE)
+library(adply)
+library(plyr)
+help(adply)
+source('~/Desktop/test.R', chdir = TRUE)
+b
+source('~/Desktop/test.R', chdir = TRUE)
+p1
+source('~/Desktop/test.R', chdir = TRUE)
+p1
+source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
+source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
+source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
+#command window if this code does not at run at first.#
+dyn.load('/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/server/libjvm.dylib')
+source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
+source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
 source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
