@@ -87,7 +87,7 @@ mc_analysis <- function(N, P, expname)
 	sigma_K <- sqrt(Uk_sq) / cf
 	sigma_Y <- sqrt(UYo_sq) / cf	
 
-	set.seed(5)
+	#set.seed(5)
 	Yo_mcN95 <- rnorm( n=N, mean=yo, sd=sigma_Y )
 
 	LHS_mcN95 <- y_ofc / Yo_mcN95
@@ -95,12 +95,12 @@ mc_analysis <- function(N, P, expname)
 	## sample larger than needed values for dc and do
 	## then throw out-of-range values away, element-wise
 	factor <- 2  #this just specifies factor to increase number of random numbers genrated
-	set.seed(5)
+	#set.seed(5)
 	do_temp <- rnorm( n=N*factor, mean=d_o, sd= sigma_do )
 	dc_mcN95 <- 1
 	i <- 5
 	while(length(dc_mcN95) < N){
-		set.seed(i)
+		#set.seed(i)
 		dc_mcN95 <- rnorm(n=N*factor, mean = sqrt(dc_sq), sd=sigma_dc )
 		index <- which(do_temp > dc_mcN95)
 		dc_mcN95 <- dc_mcN95[index]
@@ -128,7 +128,7 @@ mc_analysis <- function(N, P, expname)
 	K_mcN95 <- 1
 	i <- 5
 	while( length(K_mcN95) < N ){
-		set.seed(i)	
+		#set.seed(i)	
 		K_mcN95 <- rnorm(n=N*factor, mean= K, sd= sigma_K)
 		K_mcN95 <- K_mcN95[which( K_mcN95 > 0)]
 		i <- i + 1	
@@ -157,10 +157,10 @@ mc_analysis <- function(N, P, expname)
 	Y_min <- yo - sqrt(UYo_sq)
 	sigma_Y <- (Y_max - Y_min) / sqrt(12)
 
-	set.seed(5)
+	#set.seed(5)
 	do_temp <- runif(n=N*factor, min=do_min , max=do_max )
 
-	set.seed(5)
+	#set.seed(5)
 	Yo_mcUS <- runif( n=N, min=Y_min, max=Y_max )
 	LHS_mcUS <- y_ofc / Yo_mcUS
 	## sample larger than needed values for dc
@@ -168,7 +168,7 @@ mc_analysis <- function(N, P, expname)
 	dc_mcUS <- 1
 	i <- 5
 	while( length(dc_mcUS) < N){
-		set.seed(i)
+		#set.seed(i)
 		dc_mcUS <- runif(n=N*factor,min=dc_min,max=dc_max )
 		index <- which(do_temp > dc_mcUS)
 		dc_mcUS <- dc_mcUS[index]
@@ -183,7 +183,7 @@ mc_analysis <- function(N, P, expname)
 	if (K_min < 0){
 		K_min <- 0
 	}
-	set.seed(5)
+	#set.seed(5)
 	K_mcUS <- runif(n=N, min=K_min, max=K_max)
 	print("----- END random number generation----- ")
 
@@ -196,7 +196,8 @@ mc_analysis <- function(N, P, expname)
 
 	D_N95 <- results_N95$dc_mcVals
 
-	if( abs(skewness(D_N95)) > 1.0 ){
+	DN95_skewness <- skewness(D_N95)
+	if( abs(DN95_skewness) > 0.6 ){
 		print("Distribution for D is too skewed...")
 		print("generating RNs for K from triangular distribution...")
 		# generate K from triangular distribution
@@ -215,7 +216,8 @@ mc_analysis <- function(N, P, expname)
 							K_vector=K_mcN95,
 							err_tol =err_tol, 
 							N = N)		
-		D_N95 <- results_N95$dc_mcVals		
+		D_N95 <- results_N95$dc_mcVals
+		DN95_skewness <- skewness(D_N95)		
 	}
 
 	D_N95 <- D_N95* (1/1000)^2  #convert to m^2/s
@@ -241,7 +243,7 @@ mc_analysis <- function(N, P, expname)
 	dev.new()
 	pdf(paste0(expname,"_Ddist.pdf") )
 	hist(D_N95,prob=TRUE,n=100,  
-		main=paste0(expname,": Distribution of D"),
+		main=paste0(expname,": Distribution of D, skw=",signif(DN95_skewness,digits=3) ),
 		xlab="D [m^2/s]", col="lightgreen")	
 	d <- density(D_N95)
 	lines(d,col="black",lwd=2)

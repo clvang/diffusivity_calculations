@@ -52,7 +52,7 @@ tynCalusSolve_MC <- function(N,
 							expname )
 {
 	cf <- 2.0
-	set.seed(5)
+	#set.seed(5)
 	#NOTE: convert all uncertainties to standard deviations by 
 	#dividing by 2.0 for RNs from normal distribution
 	T <- rnorm(n=N,mean=T,sd=uT/cf)

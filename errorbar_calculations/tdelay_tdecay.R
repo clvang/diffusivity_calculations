@@ -50,7 +50,7 @@ tdelay_tdecay <- function(do_mcN95, K_mcN95, Yo_mcN95, expname)
 	sigma_Uo <- sqrt(UUo_sq) / cf 
 
 	#generate random variables and compute viscosity of liquid mixture
-	set.seed(5)
+	#set.seed(5)
 	MW_solute <- rnorm(n=N,mean=MW_A,sd=sigma_mwA)  #hexadecane
 	MW_solvent <- rnorm(n=N,mean=MW_B,sd=sigma_mwB)  #heptane
 

@@ -25,8 +25,8 @@ data_table <- setNames(data_table, c("FLEX_ID","DmcLow_N95","Dmc_AV_N95",
 									"eps_lower", "eps_avg", "eps_upper") )
 interestExp <- c(2,6,14,53)  #index of experiments with very large/small U_{epsilon}
 
-# for (i in 1:nrow(importedData)){
-for (i in 47:47){	
+for (i in 1:nrow(importedData)){
+# for (i in 47:47){	
 	graphics.off()  #close all graphics windows
 
 	expname <- importedData$FLEX_ID[i]
