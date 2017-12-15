@@ -3,11 +3,11 @@
 
 tynCalus <- function(N, P, expname)
 {
-	source('/Users/changlvang/mygitFiles/diffusivity_calculations/errorbar_calculations/tynCalusSolve_MC.R')
-	source('/Users/changlvang/mygitFiles/diffusivity_calculations/errorbar_calculations/read_props.R')
-	source('/Users/changlvang/mygitFiles/diffusivity_calculations/errorbar_calculations/hephex_1atmProps.R')	
-	source('/Users/changlvang/mygitFiles/diffusivity_calculations/errorbar_calculations/propgly_1atmProps.R')
-	source('/Users/changlvang/mygitFiles/diffusivity_calculations/errorbar_calculations/propgly_3atmProps.R')	
+	source('/Users/changvang/mygitFiles/diffusivity_calculations/errorbar_calculations/tynCalusSolve_MC.R')
+	source('/Users/changvang/mygitFiles/diffusivity_calculations/errorbar_calculations/read_props.R')
+	source('/Users/changvang/mygitFiles/diffusivity_calculations/errorbar_calculations/hephex_1atmProps.R')	
+	source('/Users/changvang/mygitFiles/diffusivity_calculations/errorbar_calculations/propgly_1atmProps.R')
+	source('/Users/changvang/mygitFiles/diffusivity_calculations/errorbar_calculations/propgly_3atmProps.R')	
 
 	# # read data from fcprops.txt file
 	experimental_parameters <- read_props()

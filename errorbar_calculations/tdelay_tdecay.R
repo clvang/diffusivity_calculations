@@ -4,8 +4,8 @@
 tdelay_tdecay <- function(do_mcN95, K_mcN95, Yo_mcN95, expname)
 {
 	library(triangle)
-	source('/Users/changlvang/mygitFiles/diffusivity_calculations/errorbar_calculations/read_props.R')
-	source('/Users/changlvang/mygitFiles/diffusivity_calculations/errorbar_calculations/staticProps.R')
+	source('/Users/changvang/mygitFiles/diffusivity_calculations/errorbar_calculations/read_props.R')
+	source('/Users/changvang/mygitFiles/diffusivity_calculations/errorbar_calculations/staticProps.R')
 
 	#read data from fcfprops.txt file
 	experimental_parameters <- read_props()

@@ -2,7 +2,7 @@
 
  enhancement_factors <- function(N, P, Deffective, expname){
 
-	source('/Users/changlvang/mygitFiles/diffusivity_calculations/errorbar_calculations/tynCalus.R')
+	source('/Users/changvang/mygitFiles/diffusivity_calculations/errorbar_calculations/tynCalus.R')
 
 
 	# call function to solve for infinite dilution molecular diffusivities

@@ -22,7 +22,7 @@ mc_analysis <- function(N, P, expname)
 
 	library(triangle)
 	library(moments)
-	source('/Users/changlvang/mygitFiles/diffusivity_calculations/errorbar_calculations/read_props.R')
+	source('/Users/changvang/mygitFiles/diffusivity_calculations/errorbar_calculations/read_props.R')
 
 	# # read data from fcprops.txt file
 	experimental_parameters <- read_props()

@@ -3,11 +3,11 @@ rm(list=ls(all=TRUE))   #remove all variables in  workspace
 library(readxl)
 library(moments)
 
-source('/Users/changlvang/mygitFiles/diffusivity_calculations/errorbar_calculations/mc_analysis.R')
-source('/Users/changlvang/mygitFiles/diffusivity_calculations/errorbar_calculations/enhancement_factors.R')
-source('/Users/changlvang/mygitFiles/diffusivity_calculations/errorbar_calculations/tdelay_tdecay.R')
-source('/Users/changlvang/mygitFiles/diffusivity_calculations/errorbar_calculations/generate_fcprops_from_xlsx.R')
-source('/Users/changlvang/mygitFiles/diffusivity_calculations/errorbar_calculations/functionPlot.R')
+source('/Users/changvang/mygitFiles/diffusivity_calculations/errorbar_calculations/mc_analysis.R')
+source('/Users/changvang/mygitFiles/diffusivity_calculations/errorbar_calculations/enhancement_factors.R')
+source('/Users/changvang/mygitFiles/diffusivity_calculations/errorbar_calculations/tdelay_tdecay.R')
+source('/Users/changvang/mygitFiles/diffusivity_calculations/errorbar_calculations/generate_fcprops_from_xlsx.R')
+source('/Users/changvang/mygitFiles/diffusivity_calculations/errorbar_calculations/functionPlot.R')
 
 P <- 0.95
 N <- 1000000
