@@ -2,7 +2,7 @@
 rm(list=ls(all=TRUE))   #remove all variables in  workspace
 
 
-source('/Users/changlvang/mygitFiles/diffusivity_calculations/hephex_experiments/tynCalus_MC.R')
+source('/Users/changvang/mygitFiles/diffusivity_calculations/hephex_experiments/tynCalus_MC.R')
 
 #See text by Shaw, p. 147 for a similar example
 

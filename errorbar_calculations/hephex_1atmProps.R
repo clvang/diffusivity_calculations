@@ -13,11 +13,11 @@ hephex_1atmProps <- function(){
 	# B ==============> Solvent (Heptane) - 1 atm =======================>
 
 	# linear interp to find DENSITY at the normal boiling point of the solvent 
-	# This value willbe used to compute molar volume of solvent, V_{A}
-	Tnb_hep <- 3.716167E+02   #normal boiling point of propanol, [C] --Vargaftik
-	T_1 <- 90 				   #Temperature 1, [C] 			--Vargaftik Table Value
-	rho_1 <- 0.6218e3		   #density at T_1, [kg/m^3]  	--Vargaftik Table Value
-	T_2 <- 100 				   #Temperature 2, [C]			--Vargaftik Table Value
+	# This value will be used to compute molar volume of solvent, V_{A}
+	Tnb_hep <- 3.716167E+02    #normal boiling point of heptane, [K] --Vargaftik
+	T_1 <- 90 				   #Temperature 1, [C] 			    --Vargaftik Table Value
+	rho_1 <- 0.6218e3		   #density at T_1, [kg/m^3]  	    --Vargaftik Table Value
+	T_2 <- 100 				   #Temperature 2, [C]			    --Vargaftik Table Value
 	rho_2 <- 0.6124e3 		   #density at T_2, [kg/m^3]		--Vargaftik Table Value
 	rhoB_nbp <- rho_1 + ( (Tnb_hep-273.15)-T_1 )*(rho_2-rho_1)/(T_2-T_1)  # kg/m^3
 
@@ -49,7 +49,7 @@ hephex_1atmProps <- function(){
 	# A ===============> Solute (Hexadecane) - 1 atm =========================>
 
 	# linear interp to find density of the solute at the normal boilng 
-	# point of the solute. This value will be used to compute molar volume
+	# point of the solute. This value will be used to compute molar volume 
 	# of the solute, V_{B}
 	Tnb_hex <- 560.2          # normal bp of glycerol, [K]  --Vargaftik
 	A_rho <- 0.2471			  # --Yaw Table Value
@@ -63,10 +63,10 @@ hephex_1atmProps <- function(){
 	# define density of the solute at the temperature of the droplet surface, T,
 	# assumed to be approximate the boiling point of the solvent. This value
 	# will be used to calculate parachor, P_{B}
-	T_1 <- 90 			    	  #Temperature 1, [C] 			--Vargaftik Table Value
-	rho_1 <- 0.7249e3		      #density at T_1, [kg/m^3]  	--Vargaftik Table Value
-	T_2 <- 100 		     		  #Temperature 2, [C]			--Vargaftik Table Value
-	rho_2 <- 0.7179e3 		      #density at T_2, [kg/m^3]		--Vargaftik Table Value
+	T_1 <- 90 			    	  # Temperature 1, [C] 			--Vargaftik Table Value
+	rho_1 <- 0.7249e3		      # density at T_1, [kg/m^3]  	--Vargaftik Table Value
+	T_2 <- 100 		     		  # Temperature 2, [C]			--Vargaftik Table Value
+	rho_2 <- 0.7179e3 		      # density at T_2, [kg/m^3]		--Vargaftik Table Value
 	rhoA_T <- rho_1 + ( (T-273.15)-T_1 )*(rho_2-rho_1)/(T_2-T_1)  # kg/m^3
 
 	# compute surface tension of solute at the droplet surface temperture, T. Required

@@ -4,7 +4,7 @@
 rm(list=ls(all=TRUE))   #remove all variables in  workspace
 
 
-source('/Users/changlvang/mygitFiles/diffusivity_calculations/propgly_experiments/D_uncertainty_MC_prpgly.R')
+source('/Users/changvang/mygitFiles/diffusivity_calculations/propgly_experiments/D_uncertainty_MC_prpgly.R')
 
 #See text by Shaw, p. 147 for a similar example
 # #--------------------------- 1 atm propertis ----------------------------#
