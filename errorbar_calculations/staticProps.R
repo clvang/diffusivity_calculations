@@ -12,14 +12,17 @@ staticProps <- function( sol_id ){
 
 		# Define solvent (Heptane) static viscosity and density
 		mu_Bo <- 3.883e-4 #(Vargaftik) 3.871e-4  			#static viscosity of Heptane at 1 atm, 298K (N-s/m^2)
-		rho_Bo <- 5.2935e2 #(Vargaftik) 6.821e2  			#density of Heptane at 1 atm, 298 K (kg/m^3)
+		rho_Bo <- 682.0   #(Yaw p. 170) 5.2935e2 #(Vargaftik) 6.821e2  			#density of Heptane at 1 atm, 298 K (kg/m^3)
 
 		#define molecular weights of each species
 		MW_A <- 2.264460E+02 	# molecualr weight of solute, Hexadecane (kg/kmol)
 		MW_B <- 1.002040E+02  	# molecular weight of solvent, Heptane (kg/kmol)
 	}
 
-	# define static props for Propanol/Glycerol
+	# define static props for Propanol/Glycerol. Note: There are two pressures
+	# for propanol-glycerol experiments, 1 atm and 3 atm.  We will assume that
+	# the densities of propanol and glycerol at 1 atm , at 298K does not change
+	# much at 3 atm, 298K.
 	if (sol_id == 2){
 		# Define solute (Glycerol) static viscosity and density
 		# Vargaftik tabulated values

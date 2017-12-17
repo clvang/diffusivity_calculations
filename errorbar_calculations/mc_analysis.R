@@ -45,17 +45,17 @@ mc_analysis <- function(N, P, expname)
 		if ( yo == 0.05){
 			# heptane95-hexadecane5 d_o corrections
 			if (p == 1) {
-			    percent_increase <- 0.055  #so far these numbers are only valid for hep-hex exp's
+			    percent_increase <- 0.03  
 			} else {
-			    percent_increase <- 0.086
+			    percent_increase <- 0.06
 			}	
 		}
 		if ( yo == 0.20){
 			# heptane80-hexadecane20 d_o corrections
 			if (p == 1) {
-			    percent_increase <- 0.047  
+			    percent_increase <- 0.03  
 			} else {
-			    percent_increase <- 0.076
+			    percent_increase <- 0.06
 			}	
 		}
 
@@ -186,6 +186,17 @@ mc_analysis <- function(N, P, expname)
 	#set.seed(5)
 	K_mcUS <- runif(n=N, min=K_min, max=K_max)
 	print("----- END random number generation----- ")
+
+	#--------- calculate D values by solving asymptotic equation directly ------- ###
+	# -------- output is just a single value is NOT an MC analysis value  ------- ###
+	results_nonMC <- calcRoot(tau_vector = tau_o, 
+						LHS_vector = y_ofc/yo, 
+						K_vector = K,
+						err_tol = err_tol, 
+						N = 1)
+	eps_nonMC <- results_nonMC$eps_mcVals
+	D_nonMC <- (results_nonMC$dc_mcVals)* (1/1000)^2  #convert to m^2/s
+
 
 	#---------------- calculate normal 95% uncertainties ------------------------ ###
 	results_N95 <- calcRoot(tau_vector=tau_mcN95, 
@@ -330,7 +341,9 @@ mc_analysis <- function(N, P, expname)
 	print(DUS_upper)
 
 
-	list(DN95_lower = DN95_lower, #---- required to output to screen ---- #
+	list(eps_nonMC = eps_nonMC,
+		D_nonMC = D_nonMC,
+		DN95_lower = DN95_lower, #---- required to output to screen ---- #
 		DN95_bar = DN95_bar, 	  #					|
 		DN95_upper = DN95_upper,  #					|
 		DN95_most_probable = DN95_most_probable,#   |

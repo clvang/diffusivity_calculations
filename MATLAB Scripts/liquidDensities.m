@@ -14,8 +14,8 @@ T0 = 298;        %initial chamber temperature [K]
 % Ysu = 0.20;      %solute mass fraction (Hexadecane)
 
 % for heptane 95, hexadecane 05
-Ysv = 0.95;     %solvent mass fraction (Heptane)
-Ysu = 0.05;      %solute mass fraction (Hexadecane)
+Ysv = 0.80;     %solvent mass fraction (Heptane)
+Ysu = 0.20;      %solute mass fraction (Hexadecane)
 
 for i = 1:length(P)
     

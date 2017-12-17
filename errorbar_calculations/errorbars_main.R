@@ -14,8 +14,9 @@ N <- 1000000
 
 importedData <- read_excel("experiment_data_key.xlsx",sheet="HepHexPropGlyCSV",
 					col_names=TRUE)
-data_table <- data.frame( matrix(ncol = 23, nrow = nrow(importedData)) )
-data_table <- setNames(data_table, c("FLEX_ID","DmcLow_N95","Dmc_AV_N95",
+data_table <- data.frame( matrix(ncol = 25, nrow = nrow(importedData)) )
+data_table <- setNames(data_table, c("FLEX_ID", "eps_nonMC", "D_nonMC",
+									"DmcLow_N95","Dmc_AV_N95",
 									"DmcHigh_N95","Dmc_MP_N95",
 									"DUS_lower", "DUS_bar", "DUS_upper",
 									"tdtv_low95", "tdtv_avg", "tdtv_high95", 
@@ -66,6 +67,7 @@ for (i in 1:nrow(importedData)){
 
 	# add current row of data to overall dataframe
 	row_data <- c(importedData$FLEX_ID[i],
+				D_eff$eps_nonMC, D_eff$D_nonMC,
 				D_eff$DN95_lower, D_eff$DN95_bar,D_eff$DN95_upper, D_eff$DN95_most_probable,
 				D_eff$DUS_lower, D_eff$DUS_bar, D_eff$DUS_upper, 
 				delaydecayTimes$tdtv_lower, delaydecayTimes$tdtv_bar, delaydecayTimes$tdtv_upper,
