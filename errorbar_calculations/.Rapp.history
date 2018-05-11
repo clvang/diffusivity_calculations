@@ -1,1421 +1,1854 @@
-expression( paste("U"[D]*"/", bar(D)")") )
-expression( paste("U"[D]"/")
-expression( paste("U"[D]/"D"[avg])
-)
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-dyn.load('/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/server/libjvm.dylib')
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-p31 <- createPlot(#
-	xvar = HepHex_nocoolflame$K, #
-	yvar = (HepHex_nocoolflame$eps_upper - HepHex_nocoolflame$eps_lower)/#
-			HepHex_nocoolflame$eps_avg, #
-	importDataFrame = HepHex_nocoolflame, #
-	plotname = "EpsrelError_hephexonly_CoolFlameONLY_MCN95.pdf",#
-	legendXloc = 0.66, #
-	legendYloc = 0.78, #
-	xlabel = expression( paste( bar(K), " ","(",mm^2/s,")" ) ),   #
-	ylabel = expression( paste("Relative Error, U"[epsilon]/"epsilon"[avg]) ), #
-	rangeDdiscrete = relErEpsrangehephex_nocoolflame, #
-	factors = HepHex_nocoolflame$dataSet.factors,#
-	errBarWidth = 0.01,#
-	xvarName = "K",#
-	xExpansionFactor = 0.1,#
-	errbarHeight = 1.5e-9,#
-	ptsize = 4.5,#
-	yExpansionFactor = 0.1)
-range <- range( c( (HepHex_nocoolflame$eps_upper - HepHex_nocoolflame$eps_lower)/HepHex_nocoolflame$eps_avg) ) #
-noInt <- 3;#
-rangeDincr <- (range[2]-range[1] )/noInt;#
-relErEpsrangehephex_nocoolflame <- rep(NA,noInt3+1)#
-for (i in 1:(noInt+1)){#
-	relErEpsrangehephex_nocoolflame[i] <- range[1] + (i-1)*rangeDincr#
-}#
-relErEpsrangehephex_nocoolflame <- signif(relErEpsrangehephex_nocoolflame,1)#
-p31 <- createPlot(#
-	xvar = HepHex_nocoolflame$K, #
-	yvar = (HepHex_nocoolflame$eps_upper - HepHex_nocoolflame$eps_lower)/#
-			HepHex_nocoolflame$eps_avg, #
-	importDataFrame = HepHex_nocoolflame, #
-	plotname = "EpsrelError_hephexonly_CoolFlameONLY_MCN95.pdf",#
-	legendXloc = 0.66, #
-	legendYloc = 0.78, #
-	xlabel = expression( paste( bar(K), " ","(",mm^2/s,")" ) ),   #
-	ylabel = expression( paste("Relative Error, U"[epsilon]/"epsilon"[avg]) ), #
-	rangeDdiscrete = relErEpsrangehephex_nocoolflame, #
-	factors = HepHex_nocoolflame$dataSet.factors,#
-	errBarWidth = 0.01,#
-	xvarName = "K",#
-	xExpansionFactor = 0.1,#
-	errbarHeight = 1.5e-9,#
-	ptsize = 4.5,#
-	yExpansionFactor = 0.1)
-p31 <- createPlot(#
-	xvar = HepHex_nocoolflame$K, #
-	yvar = (HepHex_nocoolflame$eps_upper - HepHex_nocoolflame$eps_lower)/#
-			HepHex_nocoolflame$eps_avg, #
-	importDataFrame = HepHex_nocoolflame, #
-	plotname = "EpsrelError_hephexonly_CoolFlameONLY_MCN95.pdf",#
-	legendXloc = 0.66, #
-	legendYloc = 0.78, #
-	xlabel = expression( paste( bar(K), " ","(",mm^2/s,")" ) ),   #
-	ylabel = expression( paste("Relative Error, U"[epsilon]/epsilon[avg]) ), #
-	rangeDdiscrete = relErEpsrangehephex_nocoolflame, #
-	factors = HepHex_nocoolflame$dataSet.factors,#
-	errBarWidth = 0.01,#
-	xvarName = "K",#
-	xExpansionFactor = 0.1,#
-	errbarHeight = 1.5e-9,#
-	ptsize = 4.5,#
-	yExpansionFactor = 0.1)
-p31 <- createPlot(#
-	xvar = HepHex_nocoolflame$K, #
-	yvar = (HepHex_nocoolflame$eps_upper - HepHex_nocoolflame$eps_lower)/#
-			HepHex_nocoolflame$eps_avg, #
-	importDataFrame = HepHex_nocoolflame, #
-	plotname = "EpsrelError_hephexonly_CoolFlameONLY_MCN95.pdf",#
-	legendXloc = 0.66, #
-	legendYloc = 0.78, #
-	xlabel = expression( paste( bar(K), " ","(",mm^2/s,")" ) ),   #
-	ylabel = expression( paste("Relative Error, U"[epsilon]/bar(epsilon) ) ), #
-	rangeDdiscrete = relErEpsrangehephex_nocoolflame, #
-	factors = HepHex_nocoolflame$dataSet.factors,#
-	errBarWidth = 0.01,#
-	xvarName = "K",#
-	xExpansionFactor = 0.1,#
-	errbarHeight = 1.5e-9,#
-	ptsize = 4.5,#
-	yExpansionFactor = 0.1)
-p30 <- createPlot(#
-	xvar = HepHex_nocoolflame$K, #
-	yvar = (HepHex_nocoolflame$DmcHigh_N95 - HepHex_nocoolflame$DmcLow_N95)/#
-			HepHex_nocoolflame$Dmc_AV_N95, #
-	importDataFrame = HepHex_nocoolflame, #
-	plotname = "DrelError_hephexonly_CoolFlameONLY_MCN95.pdf",#
-	legendXloc = 0.66, #
-	legendYloc = 0.78, #
-	xlabel = expression( paste( bar(K), " ","(",mm^2/s,")" ) ),   #
-	ylabel = expression( paste("Relative Error, U"[D]/bar(D)) ), #
-	rangeDdiscrete = relErDrangehephex_nocoolflame, #
-	factors = HepHex_nocoolflame$dataSet.factors,#
-	errBarWidth = 0.01,#
-	xvarName = "K",#
-	xExpansionFactor = 0.1,#
-	errbarHeight = 1.5e-9,#
-	ptsize = 4.5,#
-	yExpansionFactor = 0.1)
-p31 <- createPlot(#
-	xvar = HepHex_nocoolflame$K, #
-	yvar = (HepHex_nocoolflame$eps_upper - HepHex_nocoolflame$eps_lower)/#
-			HepHex_nocoolflame$eps_avg, #
-	importDataFrame = HepHex_nocoolflame, #
-	plotname = "EpsrelError_hephexonly_CoolFlameONLY_MCN95.pdf",#
-	legendXloc = 0.25, #
-	legendYloc = 0.78, #
-	xlabel = expression( paste( bar(K), " ","(",mm^2/s,")" ) ),   #
-	ylabel = expression( paste("Relative Error, U"[epsilon]/bar(epsilon) ) ), #
-	rangeDdiscrete = relErEpsrangehephex_nocoolflame, #
-	factors = HepHex_nocoolflame$dataSet.factors,#
-	errBarWidth = 0.01,#
-	xvarName = "K",#
-	xExpansionFactor = 0.1,#
-	errbarHeight = 1.5e-9,#
-	ptsize = 4.5,#
-	yExpansionFactor = 0.2)
-p31 <- createPlot(#
-	xvar = HepHex_nocoolflame$K, #
-	yvar = (HepHex_nocoolflame$eps_upper - HepHex_nocoolflame$eps_lower)/#
-			HepHex_nocoolflame$eps_avg, #
-	importDataFrame = HepHex_nocoolflame, #
-	plotname = "EpsrelError_hephexonly_CoolFlameONLY_MCN95.pdf",#
-	legendXloc = 0.2, #
-	legendYloc = 0.78, #
-	xlabel = expression( paste( bar(K), " ","(",mm^2/s,")" ) ),   #
-	ylabel = expression( paste("Relative Error, U"[epsilon]/bar(epsilon) ) ), #
-	rangeDdiscrete = relErEpsrangehephex_nocoolflame, #
-	factors = HepHex_nocoolflame$dataSet.factors,#
-	errBarWidth = 0.01,#
-	xvarName = "K",#
-	xExpansionFactor = 0.1,#
-	errbarHeight = 1.5e-9,#
-	ptsize = 4.5,#
-	yExpansionFactor = 0.2)
-p31 <- createPlot(#
-	xvar = HepHex_nocoolflame$K, #
-	yvar = (HepHex_nocoolflame$eps_upper - HepHex_nocoolflame$eps_lower)/#
-			HepHex_nocoolflame$eps_avg, #
-	importDataFrame = HepHex_nocoolflame, #
-	plotname = "EpsrelError_hephexonly_CoolFlameONLY_MCN95.pdf",#
-	legendXloc = 0.18, #
-	legendYloc = 0.78, #
-	xlabel = expression( paste( bar(K), " ","(",mm^2/s,")" ) ),   #
-	ylabel = expression( paste("Relative Error, U"[epsilon]/bar(epsilon) ) ), #
-	rangeDdiscrete = relErEpsrangehephex_nocoolflame, #
-	factors = HepHex_nocoolflame$dataSet.factors,#
-	errBarWidth = 0.01,#
-	xvarName = "K",#
-	xExpansionFactor = 0.1,#
-	errbarHeight = 1.5e-9,#
-	ptsize = 4.5,#
-	yExpansionFactor = 0.2)
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
+n_trials
+source('~/Box Sync/S2018TASHIP_EME109 (Erickson)/labs/lab_1-Statapult/thursdayMorning/catapult_code_check.R', chdir = TRUE)
+n_trials
+source('~/Box Sync/S2018TASHIP_EME109 (Erickson)/labs/lab_1-Statapult/thursdayMorning/catapult_code_check.R', chdir = TRUE)
+fit
+Y_dataframe <- data.frame(YA, YB)
+Y_dataframe
+source('~/Box Sync/S2018TASHIP_EME109 (Erickson)/labs/lab_1-Statapult/thursdayMorning/catapult_code_check.R', chdir = TRUE)
+as.numeric(9)
+numeric(9)
+source('~/Box Sync/S2018TASHIP_EME109 (Erickson)/labs/lab_1-Statapult/thursdayMorning/catapult_code_check.R', chdir = TRUE)
+Y_dataframe[i, ]
+i
+mean(Y_dataframe[i, ])
+as.numeric(Y_dataframe[i, ])
+mean(as.numeric(Y_dataframe[i, ]))
+source('~/Box Sync/S2018TASHIP_EME109 (Erickson)/labs/lab_1-Statapult/thursdayMorning/catapult_code_check.R', chdir = TRUE)
+Y_bar
+source('~/Box Sync/S2018TASHIP_EME109 (Erickson)/labs/lab_1-Statapult/thursdayMorning/catapult_code_check.R', chdir = TRUE)
+Y_dataframe
+( (74-Y_bar[1])^2 + (74-Y_bar[1])^2 + (76-Y_bar[1])^2 ) / (3-1)
+( (74-Y_bar[1])^2 + (74-Y_bar[1])^2 + (76-Y_bar[1])^2 ) / (3)
+sqrt(0.8888)
+fit
+names(fit)
+fit$coefficients
+fit$coefficients[1]
+fit$coef[1]
+as.numeric(fit$coef[1])
+Y_avg <- as.numeric(fit$coef[1])#
+E1 <- as.numeric(fit$coef[2])*2#
+E2 <- as.numeric(fit$coef[3])*2#
+E3 <- as.numeric(fit$coef[4])*2#
+I12 <- as.numeric(fit$coef[5])*2#
+I13 <- as.numeric(fit$coef[6])*2#
+I23 <- as.numeric(fit$coef[7])*2#
+I123 <- as.numeric(fit$coef[8])*2
+print(E1, E2)
+print(E1)
+8*3
+nrow(data)
+nu <- (2-1)*(2^3)
+nu
+source('~/Box Sync/S2018TASHIP_EME109 (Erickson)/labs/lab_1-Statapult/thursdayMorning/catapult_code_check.R', chdir = TRUE)
+nu
+source('~/Box Sync/S2018TASHIP_EME109 (Erickson)/labs/lab_1-Statapult/thursdayMorning/catapult_code_check.R', chdir = TRUE)
+print(fit$coef[1:7])
+print(fit$coef[2:8]*2)
+Y_sdPooled <- sqrt(mean(Y_var))
+Y_sdPooled
+n_trials*(2^3)
+#print effects and interactions#
+print(fit$coef[2:8]*2)#
+#
+#compute pooled std#
+sigma_pooled <- sqrt(mean(Y_var))#
+#
+#compute standard error#
+n_f <- n_trials*(2^3)#
+S_E <- 2*sigma_pooled/sqrt(n_f)#
+#
+#compute signal to noise t-ratio#
+fit$coef[2:8]*2 / S_E
+t95_nu
+source('~/Box Sync/S2018TASHIP_EME109 (Erickson)/labs/lab_1-Statapult/thursdayMorning/catapult_code_check.R', chdir = TRUE)
+fit$coefs
+fit$coefficients
+source('~/Box Sync/S2018TASHIP_EME109 (Erickson)/labs/lab_1-Statapult/thursdayMorning/catapult_code_check.R', chdir = TRUE)
+mean(Y_var)
+mean(Y_sd)
+fit$coefficients
+source('~/Box Sync/S2018TASHIP_EME109 (Erickson)/labs/lab_1-Statapult/thursdayMorning/catapult_code_check.R', chdir = TRUE)
+mean(Y_var)
+source('~/Box Sync/HepHex_Paper/HepHex_Diffusivities/conditional_inference_analysisHepHex.R', chdir = TRUE)
+head(airquality)
+airq <- subset(airquality, !is.na(Ozone))
+air.ct <- ctree(Ozone ~ ., data = airq, controls = ctree_control(maxsurrogate = 3))
+air.ct <- ctree(Ozone ~ ., data = airq, controls = c(maxsurrogate = 3) )
+air.ct <- ctree(Ozone ~ ., data = airq, controls = list(maxsurrogate = 3) )
+nrow(airq)
+air.ct <- ctree(Ozone ~ ., data = airq)
+air.ct
+plot(air.ct)
+help(sapply)
+sapply(airq[,-1], class)
+names(paper_data)
+p_value <- 0.05#
+#
+quartz()#
+D_ctree <- ctree(D~tdtv_avg+XO2+Inert+XN2+XHe+K+#
+	Y_Heptane+Y_Propanol,#
+mincriterion=1-p_value,minbucket=0,minsplit=0,stump=FALSE)#
+plot(D_ctree, main="Effective Liquid Diffusivity (All Experiments)")
+plot(D_ctree, main="Effective Liquid Diffusivity (All Experiments)")
+quartz()#
+K_ctree <- ctree(K~tdtv_avg+d0+XO2+Inert+XN2+XHe+#
+	Y_Heptane+Y_Propanol,#
+mincriterion=1-p_value,minbucket=0,minsplit=0,stump=FALSE)#
+plot(K_ctree, main="Burning Rate (All Experiments)")
+#plot tdtv_avg reet for all experiemnts#
+quartz()#
+EABBA_ctree <- ctree(EF_avg~tdtv_avg+d0+XO2+Inert+XN2+XHe+#
+	Y_Heptane+Y_Propanol+K,#
+mincriterion=1-p_value,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctree, main="tdtv_avg (All Experiments)")
+source('~/Box Sync/HepHex_Paper/HepHex_Diffusivities/conditional_inference_analysisHepHex.R', chdir = TRUE)
+plot(EABBA_ctreeHepHex, main="tdtv_avg (Hep/Hex)")
+p_value2 <- 0.1#
+quartz()#
+EABBA_ctreeHepHex <- ctree(EF_avg~tdtv_avg+d0+XO2+Inert+XN2+XHe+#
+	Y_Heptane+Y_Propanol+K, data=hepHexSubset,#
+mincriterion=1-p_value2,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctreeHepHex, main="EF_avg (Hep/Hex)")
+#plot EABBA tree for Hep-Hex experiments only#
+p_value2 <- 0.05#
+quartz()#
+EABBA_ctreeHepHex <- ctree(EF_avg~tdtv_avg+d0+XO2+Inert+XN2+XHe+#
+	Y_Heptane+Y_Propanol+K, data=hepHexSubset,#
+mincriterion=1-p_value2,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctreeHepHex, main="EF_avg (Hep/Hex)")
+names(hepHexSubset)
+source('~/Box Sync/HepHex_Paper/HepHex_Diffusivities/conditional_inference_analysisHepHex.R', chdir = TRUE)
+p_value2 <- 0.05#
+quartz()#
+EABBA_ctreeHepHex <- ctree(EF_avg~tdtv_avg+d0+XO2+Inert+XN2+XHe+#
+	Y_Heptane+K+t_fc+d_c, data=hepHexSubset,#
+mincriterion=1-p_value2,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctreeHepHex, main="EF_avg (Hep/Hex)")
+#plot EABBA tree for Hep-Hex experiments only#
+p_value2 <- 0.1#
+quartz()#
+EABBA_ctreeHepHex <- ctree(EF_avg~tdtv_avg+d0+XO2+Inert+XN2+XHe+#
+	Y_Heptane+K+t_fc+d_c, data=hepHexSubset,#
+mincriterion=1-p_value2,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctreeHepHex, main="EF_avg (Hep/Hex)")
+p_value2 <- 0.5#
+quartz()#
+EABBA_ctreeHepHex <- ctree(EF_avg~tdtv_avg+d0+XO2+Inert+XN2+XHe+#
+	Y_Heptane+K+t_fc+d_c, data=hepHexSubset,#
+mincriterion=1-p_value2,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctreeHepHex, main="EF_avg (Hep/Hex)")
+p_value2 <- 0.8#
+quartz()#
+EABBA_ctreeHepHex <- ctree(EF_avg~tdtv_avg+d0+XO2+Inert+XN2+XHe+#
+	Y_Heptane+K+t_fc+d_c, data=hepHexSubset,#
+mincriterion=1-p_value2,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctreeHepHex, main="EF_avg (Hep/Hex)")
+names(hepHexSubset)
+p_value2 <- 0.8#
+quartz()#
+EABBA_ctreeHepHex <- ctree(EF_avg~tdtv_avg+d0+XO2+Inert+XN2+XHe+#
+	Y_Heptane+K+t_fc+d_c+t_delay+P, data=hepHexSubset,#
+mincriterion=1-p_value2,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctreeHepHex, main="EF_avg (Hep/Hex)")
+#plot EABBA tree for Hep-Hex experiments only#
+p_value2 <- 0.8#
+quartz()#
+EABBA_ctreeHepHex <- ctree(EF_avg~., data=hepHexSubset,#
+mincriterion=1-p_value2,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctreeHepHex, main="EF_avg (Hep/Hex)")
+hepHexSubset$t_fc
+quartz()#
+K_ctree <- ctree(K~tdtv_avg+d0+XO2+Inert+XN2+XHe+#
+	Y_Heptane+Y_Propanol+t_fc+d_c+t_delay+P,#
+mincriterion=1-p_value,minbucket=0,minsplit=0,stump=FALSE)#
+plot(K_ctree, main="Burning Rate (All Experiments)")
+#plot tdtv_avg reet for all experiemnts#
+quartz()#
+EABBA_ctree <- ctree(EF_avg~tdtv_avg+d0+XO2+Inert+XN2+XHe+#
+	Y_Heptane+Y_Propanol+K+t_fc+d_c+t_delay+P,#
+mincriterion=1-p_value,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctree, main="EF_avg (All Experiments)")
+#plot EABBA tree for Hep-Hex experiments only#
+p_value2 <- 0.05#
+quartz()#
+EABBA_ctreeHepHex <- ctree(EF_avg~tdtv_avg+d0+XO2+Inert+XN2+XHe+#
+	Y_Heptane+K+t_fc+d_c+t_delay+P, data=hepHexSubset,#
+mincriterion=1-p_value2,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctreeHepHex, main="EF_avg (Hep/Hex)")#
+#
+#plot tdtv_avg tree for Hep-Hex experiments only#
+quartz()#
+D_ctreeHepHex <- ctree(D~tdtv_avg+d0+XO2+Inert+XN2+XHe+#
+	Y_Heptane+Y_Propanol+K+t_fc+d_c, data=hepHexSubset,#
+mincriterion=1-p_value2,minbucket=0,minsplit=0,stump=FALSE)#
+plot(D_ctreeHepHex, main="Effective Liquid Diffusivity (Hep/Hex)")#
+#
+# print out analysis reports#
+D_ctree#
+# eps_ctree#
+K_ctree
+#plot tdtv_avg reet for all experiemnts#
+quartz()#
+EABBA_ctree <- ctree(EF_avg~tdtv_avg+d0+XO2+Inert+XN2+XHe+#
+	Y_Heptane+Y_Propanol+K+t_fc+d_c+t_delay+P,#
+mincriterion=1-p_value,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctree, main="EF_avg (All Experiments)")
+#plot tdtv_avg reet for all experiemnts#
+quartz()#
+EABBA_ctree <- ctree(EF_avg~tdtv_avg+d0+XO2+Inert+XN2+XHe+#
+	Y_Heptane+Y_Propanol+t_fc+d_c+t_delay+P,#
+mincriterion=1-p_value,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctree, main="EF_avg (All Experiments)")
+#plot tdtv_avg reet for all experiemnts#
+quartz()#
+EABBA_ctree <- ctree(EF_avg~tdtv_avg+d0+XO2+Inert+XN2+XHe+#
+	Y_Heptane+#
+	Y_Propanol+K+t_fc+d_c+t_delay+P,#
+mincriterion=1-p_value,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctree, main="EF_avg (All Experiments)")
+#plot tdtv_avg reet for all experiemnts#
+quartz()#
+EABBA_ctree <- ctree(EF_avg~tdtv_avg+#
+	d0+#
+	XO2+#
+	Inert+#
+	XN2+#
+	XHe+#
+	Y_Heptane+#
+	Y_Propanol+#
+	K+#
+	t_fc+#
+	d_c+#
+	t_delay+#
+	P,#
+mincriterion=1-p_value,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctree, main="EF_avg (All Experiments)")
+#plot tdtv_avg reet for all experiemnts#
+quartz()#
+EABBA_ctree <- ctree(EF_avg~tdtv_avg+#
+	d0+#
+	XO2+#
+	Inert+#
+	XN2+#
+	XHe+#
+	Y_Heptane+#
+	Y_Propanol+#
+	# K+#
+	t_fc+#
+	# d_c+#
+	# t_delay+#
+	P,#
+mincriterion=1-p_value,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctree, main="EF_avg (All Experiments)")
+#plot tdtv_avg reet for all experiemnts#
+quartz()#
+EABBA_ctree <- ctree(EF_avg~tdtv_avg+#
+	d0+#
+	XO2+#
+	Inert+#
+	XN2+#
+	XHe+#
+	Y_Heptane+#
+	# Y_Propanol+#
+	# K+#
+	# d_c+#
+	# t_delay+#
+	# P+#
+	t_fc,#
+mincriterion=1-p_value,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctree, main="EF_avg (All Experiments)")
+#plot tdtv_avg reet for all experiemnts#
+quartz()#
+EABBA_ctree <- ctree(EF_avg~tdtv_avg+#
+	d0+#
+	# XO2+#
+	Inert+#
+	XN2+#
+	XHe+#
+	# Y_Heptane+#
+	# Y_Propanol+#
+	# K+#
+	# d_c+#
+	# t_delay+#
+	# P+#
+	t_fc,#
+mincriterion=1-p_value,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctree, main="EF_avg (All Experiments)")
+#plot tdtv_avg reet for all experiemnts#
+quartz()#
+EABBA_ctree <- ctree(EF_avg~tdtv_avg+#
+	d0+#
+	# XO2+#
+	Inert+#
+	XN2+#
+	XHe+#
+	Y_Heptane+#
+	# Y_Propanol+#
+	# K+#
+	# d_c+#
+	# t_delay+#
+	# P+#
+	t_fc,#
+mincriterion=1-p_value,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctree, main="EF_avg (All Experiments)")
+quartz()#
+D_ctree <- ctree(D~tdtv_avg+XO2+Inert+XN2+XHe+K+#
+	Y_Heptane+Y_Propanol+t_fc+d_c,#
+mincriterion=1-p_value,minbucket=0,minsplit=0,stump=FALSE)#
+plot(D_ctree, main="Effective Liquid Diffusivity (All Experiments)")
+quartz()#
+D_ctree <- ctree(D~tdtv_avg+XO2+Inert+XN2+XHe+K+#
+	Y_Heptane+Y_Propanol+t_fc+d_c+t_delay+P,#
+mincriterion=1-p_value,minbucket=0,minsplit=0,stump=FALSE)#
+plot(D_ctree, main="Effective Liquid Diffusivity (All Experiments)")
+#plot tdtv_avg reet for all experiemnts#
+quartz()#
+EABBA_ctree <- ctree(EF_avg~tdtv_avg+#
+	d0+#
+	XO2+#
+	Inert+#
+	XN2+#
+	XHe+#
+	Y_Heptane+#
+	# Y_Propanol+#
+	# K+#
+	# d_c+#
+	# t_delay+#
+	# P+#
+	t_fc,#
+mincriterion=1-p_value,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctree, main="EF_avg (All Experiments)")
+#plot tdtv_avg reet for all experiemnts#
+quartz()#
+EABBA_ctree <- ctree(EF_avg~tdtv_avg+#
+	d0+#
+	XO2+#
+	Inert+#
+	XN2+#
+	XHe+#
+	Y_Heptane+#
+	Y_Propanol+#
+	K+#
+	d_c+#
+	t_delay+#
+	t_fc,#
+mincriterion=1-p_value,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctree, main="EF_avg (All Experiments)")
+#plot tdtv_avg reet for all experiemnts#
+quartz()#
+EABBA_ctree <- ctree(EF_avg~tdtv_avg+#
+	d0+#
+	# XO2+#
+	Inert+#
+	XN2+#
+	XHe+#
+	Y_Heptane+#
+	Y_Propanol+#
+	K+#
+	d_c+#
+	t_delay+#
+	t_fc,#
+mincriterion=1-p_value,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctree, main="EF_avg (All Experiments)")
+#plot tdtv_avg reet for all experiemnts#
+quartz()#
+EABBA_ctree <- ctree(EF_avg~tdtv_avg+#
+	d0+#
+	XO2+#
+	Inert+#
+	XN2+#
+	XHe+#
+	Y_Heptane+#
+	Y_Propanol+#
+	K+#
+	d_c+#
+	t_delay+#
+	t_fc,#
+mincriterion=1-p_value,minbucket=0,minsplit=0,stump=FALSE)#
+plot(EABBA_ctree, main="EF_avg (All Experiments)")
+source('~/mygitFiles/hephex_scatterplots/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
+names(HepHexPropGlyData_all)
+#plot EABBA vs d0 and various boxplots using D Monte Carlo results#
+p38 <- createPlot(#
+	xvar = HepHexPropGlyData_all$eps, #
+	yvar = HepHexPropGlyData_all$EF_avg, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EABBAvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.75, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*" (mm)"), 	#
+	ylabel = expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" ), #
+	# rangeDdiscrete = rangeDdiscrete3,#
+	# rangeDdiscrete = c(1.0, 5, 10, 15, 20),	#
+	rangeDdiscrete = c(1.0, 10.0, 20.0),#
+	factors = HepHexPropGlyData_all$fuel,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	createBoxPlot = 1 ,#
+	errBarWidth = 0.05,#
+	errbarHeight = 0.5,#
+	VboxPlotxFactors = HepHexPropGlyData_all$doSizeFactor, #x factor for marginal boxplot) )#
+	sci_yAxis = 0,#
+	createVboxplot2nd = 1,#
+	VboxPlotxFactors2nd = HepHexPropGlyData_all$fuel2,#
+	xExpansionFactor= 0.05,#
+	yExpansionFactor= 0.22,	#
+	VBpMargins = c(0, 0, 0.5, 0),#
+	EABBA1 = 1 ,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	txts = 6,		#specifies text size for axis labels#
+	leS = 6,		#specifies text size for legend	#
+	size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	jittptSize = 0.3 #
+	)
+names(HepHexPropGlyData_all)
+#plot EABBA vs d0 and various boxplots using D Monte Carlo results#
+p38 <- createPlot(#
+	xvar = HepHexPropGlyData_all$d0, #
+	yvar = HepHexPropGlyData_all$eps, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EABBAvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.75, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*" (mm)"), 	#
+	ylabel = expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" ), #
+	# rangeDdiscrete = rangeDdiscrete3,#
+	# rangeDdiscrete = c(1.0, 5, 10, 15, 20),	#
+	rangeDdiscrete = c(1.0, 10.0, 20.0),#
+	factors = HepHexPropGlyData_all$fuel,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	createBoxPlot = 1 ,#
+	errBarWidth = 0.05,#
+	errbarHeight = 0.5,#
+	VboxPlotxFactors = HepHexPropGlyData_all$doSizeFactor, #x factor for marginal boxplot) )#
+	sci_yAxis = 0,#
+	createVboxplot2nd = 1,#
+	VboxPlotxFactors2nd = HepHexPropGlyData_all$fuel2,#
+	xExpansionFactor= 0.05,#
+	yExpansionFactor= 0.22,	#
+	VBpMargins = c(0, 0, 0.5, 0),#
+	EABBA1 = 1 ,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	txts = 6,		#specifies text size for axis labels#
+	leS = 6,		#specifies text size for legend	#
+	size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	jittptSize = 0.3 #
+	)
+names(HepHexPropGlyData_all)
+#plot EABBA vs d0 and various boxplots using D Monte Carlo results#
+p38 <- createPlot(#
+	xvar = HepHexPropGlyData_all$d0 / HepHexPropGlyData_all$d_c, #
+	yvar = HepHexPropGlyData_all$eps, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EABBAvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.75, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*" (mm)"), 	#
+	ylabel = expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" ), #
+	# rangeDdiscrete = rangeDdiscrete3,#
+	# rangeDdiscrete = c(1.0, 5, 10, 15, 20),	#
+	rangeDdiscrete = c(1.0, 10.0, 20.0),#
+	factors = HepHexPropGlyData_all$fuel,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	createBoxPlot = 1 ,#
+	errBarWidth = 0.05,#
+	errbarHeight = 0.5,#
+	VboxPlotxFactors = HepHexPropGlyData_all$doSizeFactor, #x factor for marginal boxplot) )#
+	sci_yAxis = 0,#
+	createVboxplot2nd = 1,#
+	VboxPlotxFactors2nd = HepHexPropGlyData_all$fuel2,#
+	xExpansionFactor= 0.05,#
+	yExpansionFactor= 0.22,	#
+	VBpMargins = c(0, 0, 0.5, 0),#
+	EABBA1 = 1 ,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	txts = 6,		#specifies text size for axis labels#
+	leS = 6,		#specifies text size for legend	#
+	size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	jittptSize = 0.3 #
+	)
+#plot EABBA vs d0 and various boxplots using D Monte Carlo results#
+p38 <- createPlot(#
+	xvar = HepHexPropGlyData_all$d0, #
+	yvar = HepHexPropGlyData_all$EF_avg, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EABBAvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.75, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*" (mm)"), 	#
+	ylabel = expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" ), #
+	# rangeDdiscrete = rangeDdiscrete3,#
+	# rangeDdiscrete = c(1.0, 5, 10, 15, 20),	#
+	rangeDdiscrete = c(1.0, 10.0, 20.0),#
+	factors = HepHexPropGlyData_all$fuel,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	createBoxPlot = 1 ,#
+	errBarWidth = 0.05,#
+	errbarHeight = 0.5,#
+	VboxPlotxFactors = HepHexPropGlyData_all$doSizeFactor, #x factor for marginal boxplot) )#
+	sci_yAxis = 0,#
+	createVboxplot2nd = 1,#
+	VboxPlotxFactors2nd = HepHexPropGlyData_all$fuel2,#
+	xExpansionFactor= 0.05,#
+	yExpansionFactor= 0.22,	#
+	VBpMargins = c(0, 0, 0.5, 0),#
+	EABBA1 = 1 ,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	# txts = 6,		#specifies text size for axis labels#
+	# leS = 6,		#specifies text size for legend	#
+	# size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	# size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	# bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	# jittptSize = 0.3 #
+	)
+#plot eps vs d0/dc and various boxplots using D Monte Carlo results#
+p38 <- createPlot(#
+	xvar = HepHexPropGlyData_all$d0, #
+	yvar = HepHexPropGlyData_all$eps, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EpsvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.75, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*" (mm)"), 	#
+	ylabel = expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" ), #
+	# rangeDdiscrete = rangeDdiscrete3,#
+	# rangeDdiscrete = c(1.0, 5, 10, 15, 20),	#
+	rangeDdiscrete = c(1.0, 10.0, 20.0),#
+	factors = HepHexPropGlyData_all$fuel,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	# createBoxPlot = 1 ,#
+	# errBarWidth = 0.05,#
+	# errbarHeight = 0.5,#
+	# VboxPlotxFactors = HepHexPropGlyData_all$doSizeFactor, #x factor for marginal boxplot) )#
+	sci_yAxis = 0,#
+	# createVboxplot2nd = 1,#
+	# VboxPlotxFactors2nd = HepHexPropGlyData_all$fuel2,#
+	# xExpansionFactor= 0.05,#
+	# yExpansionFactor= 0.22,	#
+	# VBpMargins = c(0, 0, 0.5, 0),#
+	# EABBA1 = 1 ,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	# EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	# txts = 6,		#specifies text size for axis labels#
+	# leS = 6,		#specifies text size for legend	#
+	# size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	# size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	# bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	# jittptSize = 0.3 #
+	)
+range(HepHexPropGlyData_all$eps)
+min(HepHexPropGlyData_all$eps)
+max(HepHexPropGlyData_all$eps)
+linspace(range(HepHexPropGlyData_all$eps),3)
+library(pracma)
+linspace(range(HepHexPropGlyData_all$eps),3)
+a <- min(HepHexPropGlyData_all$eps)
+b <- max(HepHexPropGlyData_all$eps)
+linspace(a,b,3)
+#plot eps vs d0/dc and various boxplots using D Monte Carlo results#
+p38 <- createPlot(#
+	xvar = HepHexPropGlyData_all$d0, #
+	yvar = HepHexPropGlyData_all$eps, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EpsvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.75, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*" (mm)"), 	#
+	ylabel = expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" ), #
+	# rangeDdiscrete = rangeDdiscrete3,#
+	# rangeDdiscrete = c(1.0, 5, 10, 15, 20),	#
+	rangeDdiscrete = linspace(min(HepHexPropGlyData_all$eps), max(HepHexPropGlyData_all$eps),4),#
+	factors = HepHexPropGlyData_all$fuel,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	# createBoxPlot = 1 ,#
+	# errBarWidth = 0.05,#
+	# errbarHeight = 0.5,#
+	# VboxPlotxFactors = HepHexPropGlyData_all$doSizeFactor, #x factor for marginal boxplot) )#
+	sci_yAxis = 0,#
+	# createVboxplot2nd = 1,#
+	# VboxPlotxFactors2nd = HepHexPropGlyData_all$fuel2,#
+	# xExpansionFactor= 0.05,#
+	# yExpansionFactor= 0.22,	#
+	# VBpMargins = c(0, 0, 0.5, 0),#
+	# EABBA1 = 1 ,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	# EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	# txts = 6,		#specifies text size for axis labels#
+	# leS = 6,		#specifies text size for legend	#
+	# size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	# size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	# bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	# jittptSize = 0.3 #
+	)
+#plot eps vs d0/dc and various boxplots using D Monte Carlo results#
+p38 <- createPlot(#
+	xvar = HepHexPropGlyData_all$d0, #
+	yvar = HepHexPropGlyData_all$eps, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EpsvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.75, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*" (mm)"), 	#
+	ylabel = expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" ), #
+	# rangeDdiscrete = rangeDdiscrete3,#
+	# rangeDdiscrete = c(1.0, 5, 10, 15, 20),	#
+	rangeDdiscrete = linspace(min(HepHexPropGlyData_all$eps), max(HepHexPropGlyData_all$eps),4),#
+	factors = HepHexPropGlyData_all$fuel,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	# createBoxPlot = 1 ,#
+	# errBarWidth = 0.05,#
+	# errbarHeight = 0.5,#
+	# VboxPlotxFactors = HepHexPropGlyData_all$doSizeFactor, #x factor for marginal boxplot) )#
+	sci_yAxis = 1,#
+	# createVboxplot2nd = 1,#
+	# VboxPlotxFactors2nd = HepHexPropGlyData_all$fuel2,#
+	# xExpansionFactor= 0.05,#
+	# yExpansionFactor= 0.22,	#
+	# VBpMargins = c(0, 0, 0.5, 0),#
+	# EABBA1 = 1 ,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	# EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	# txts = 6,		#specifies text size for axis labels#
+	# leS = 6,		#specifies text size for legend	#
+	# size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	# size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	# bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	# jittptSize = 0.3 #
+	)
+linspace(min(HepHexPropGlyData_all$eps), max(HepHexPropGlyData_all$eps),4)
+names(HepHexPropGlyData_all)
+#plot eps vs d0/dc and various boxplots using D Monte Carlo results#
+p38 <- createPlot(#
+	xvar = HepHexPropGlyData_all$d0 / HepHexPropGlyData_all$dc, #
+	yvar = HepHexPropGlyData_all$eps, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EpsvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.75, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*" (mm)"), 	#
+	ylabel = expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" ), #
+	# rangeDdiscrete = rangeDdiscrete3,#
+	# rangeDdiscrete = c(1.0, 5, 10, 15, 20),	#
+	rangeDdiscrete = linspace(min(HepHexPropGlyData_all$eps), max(HepHexPropGlyData_all$eps),4),#
+	factors = HepHexPropGlyData_all$fuel,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	# createBoxPlot = 1 ,#
+	# errBarWidth = 0.05,#
+	# errbarHeight = 0.5,#
+	# VboxPlotxFactors = HepHexPropGlyData_all$doSizeFactor, #x factor for marginal boxplot) )#
+	sci_yAxis = 1,#
+	# createVboxplot2nd = 1,#
+	# VboxPlotxFactors2nd = HepHexPropGlyData_all$fuel2,#
+	# xExpansionFactor= 0.05,#
+	# yExpansionFactor= 0.22,	#
+	# VBpMargins = c(0, 0, 0.5, 0),#
+	# EABBA1 = 1 ,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	# EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	# txts = 6,		#specifies text size for axis labels#
+	# leS = 6,		#specifies text size for legend	#
+	# size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	# size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	# bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	# jittptSize = 0.3 #
+	)
+p38 <- createPlot(#
+	xvar = HepHexPropGlyData_all$d0 / HepHexPropGlyData_all$dc, #
+	yvar = HepHexPropGlyData_all$eps, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EpsvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.75, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*" (mm)"), 	#
+	ylabel = expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" ), #
+	# rangeDdiscrete = rangeDdiscrete3,#
+	# rangeDdiscrete = c(1.0, 5, 10, 15, 20),	#
+	# rangeDdiscrete = linspace(min(HepHexPropGlyData_all$eps), max(HepHexPropGlyData_all$eps),4),#
+	factors = HepHexPropGlyData_all$fuel,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	# createBoxPlot = 1 ,#
+	# errBarWidth = 0.05,#
+	# errbarHeight = 0.5,#
+	# VboxPlotxFactors = HepHexPropGlyData_all$doSizeFactor, #x factor for marginal boxplot) )#
+	sci_yAxis = 1,#
+	# createVboxplot2nd = 1,#
+	# VboxPlotxFactors2nd = HepHexPropGlyData_all$fuel2,#
+	# xExpansionFactor= 0.05,#
+	# yExpansionFactor= 0.22,	#
+	# VBpMargins = c(0, 0, 0.5, 0),#
+	# EABBA1 = 1 ,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	# EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	# txts = 6,		#specifies text size for axis labels#
+	# leS = 6,		#specifies text size for legend	#
+	# size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	# size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	# bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	# jittptSize = 0.3 #
+	)
+#plot eps vs d0/dc and various boxplots using D Monte Carlo results#
+p38 <- createPlot(#
+	xvar = HepHexPropGlyData_all$d0 / HepHexPropGlyData_all$dc, #
+	yvar = HepHexPropGlyData_all$eps, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EpsvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.75, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*" (mm)"), 	#
+	ylabel = expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" ), #
+	# rangeDdiscrete = rangeDdiscrete3,#
+	# rangeDdiscrete = c(1.0, 5, 10, 15, 20),	#
+	rangeDdiscrete = linspace(min(HepHexPropGlyData_all$eps/ HepHexPropGlyData_all$dc), max(HepHexPropGlyData_all$eps/ HepHexPropGlyData_all$dc),4),#
+	factors = HepHexPropGlyData_all$fuel,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	# createBoxPlot = 1 ,#
+	# errBarWidth = 0.05,#
+	# errbarHeight = 0.5,#
+	# VboxPlotxFactors = HepHexPropGlyData_all$doSizeFactor, #x factor for marginal boxplot) )#
+	sci_yAxis = 1,#
+	# createVboxplot2nd = 1,#
+	# VboxPlotxFactors2nd = HepHexPropGlyData_all$fuel2,#
+	# xExpansionFactor= 0.05,#
+	# yExpansionFactor= 0.22,	#
+	# VBpMargins = c(0, 0, 0.5, 0),#
+	# EABBA1 = 1 ,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	# EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	# txts = 6,		#specifies text size for axis labels#
+	# leS = 6,		#specifies text size for legend	#
+	# size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	# size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	# bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	# jittptSize = 0.3 #
+	)
+#plot eps vs d0/dc and various boxplots using D Monte Carlo results#
+p38 <- createPlot(#
+	xvar = HepHexPropGlyData_all$d0, #
+	yvar = HepHexPropGlyData_all$eps, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EpsvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.75, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*" (mm)"), 	#
+	ylabel = expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" ), #
+	# rangeDdiscrete = rangeDdiscrete3,#
+	# rangeDdiscrete = c(1.0, 5, 10, 15, 20),	#
+	rangeDdiscrete = linspace(min(HepHexPropGlyData_all$eps), max(HepHexPropGlyData_all$eps),4),#
+	factors = HepHexPropGlyData_all$fuel,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	# createBoxPlot = 1 ,#
+	# errBarWidth = 0.05,#
+	# errbarHeight = 0.5,#
+	# VboxPlotxFactors = HepHexPropGlyData_all$doSizeFactor, #x factor for marginal boxplot) )#
+	sci_yAxis = 1,#
+	# createVboxplot2nd = 1,#
+	# VboxPlotxFactors2nd = HepHexPropGlyData_all$fuel2,#
+	# xExpansionFactor= 0.05,#
+	# yExpansionFactor= 0.22,	#
+	# VBpMargins = c(0, 0, 0.5, 0),#
+	# EABBA1 = 1 ,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	# EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	# txts = 6,		#specifies text size for axis labels#
+	# leS = 6,		#specifies text size for legend	#
+	# size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	# size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	# bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	# jittptSize = 0.3 #
+	)
+#plot eps vs d0/dc and various boxplots using D Monte Carlo results#
+p38 <- createPlot(#
+	xvar = HepHexPropGlyData_all$d0/HepHexPropGlyData_all$d_c, #
+	yvar = HepHexPropGlyData_all$eps, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EpsvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.75, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*" (mm)"), 	#
+	ylabel = expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" ), #
+	# rangeDdiscrete = rangeDdiscrete3,#
+	# rangeDdiscrete = c(1.0, 5, 10, 15, 20),	#
+	rangeDdiscrete = linspace(min(HepHexPropGlyData_all$eps), max(HepHexPropGlyData_all$eps),4),#
+	factors = HepHexPropGlyData_all$fuel,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	# createBoxPlot = 1 ,#
+	# errBarWidth = 0.05,#
+	# errbarHeight = 0.5,#
+	# VboxPlotxFactors = HepHexPropGlyData_all$doSizeFactor, #x factor for marginal boxplot) )#
+	sci_yAxis = 1,#
+	# createVboxplot2nd = 1,#
+	# VboxPlotxFactors2nd = HepHexPropGlyData_all$fuel2,#
+	# xExpansionFactor= 0.05,#
+	# yExpansionFactor= 0.22,	#
+	# VBpMargins = c(0, 0, 0.5, 0),#
+	# EABBA1 = 1 ,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	# EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	# txts = 6,		#specifies text size for axis labels#
+	# leS = 6,		#specifies text size for legend	#
+	# size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	# size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	# bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	# jittptSize = 0.3 #
+	)
+#plot eps vs d0/dc and various boxplots using D Monte Carlo results#
+p38 <- createPlot(#
+	xvar = HepHexPropGlyData_all$d0/HepHexPropGlyData_all$d_c, #
+	yvar = HepHexPropGlyData_all$eps, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EpsvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.75, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*" (mm)"), 	#
+	ylabel = expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" ), #
+	# rangeDdiscrete = rangeDdiscrete3,#
+	# rangeDdiscrete = c(1.0, 5, 10, 15, 20),	#
+	rangeDdiscrete = linspace(min(HepHexPropGlyData_all$eps), max(HepHexPropGlyData_all$eps),4),#
+	factors = HepHexPropGlyData_all$Inert,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	# createBoxPlot = 1 ,#
+	# errBarWidth = 0.05,#
+	# errbarHeight = 0.5,#
+	# VboxPlotxFactors = HepHexPropGlyData_all$doSizeFactor, #x factor for marginal boxplot) )#
+	sci_yAxis = 1,#
+	# createVboxplot2nd = 1,#
+	# VboxPlotxFactors2nd = HepHexPropGlyData_all$fuel2,#
+	# xExpansionFactor= 0.05,#
+	# yExpansionFactor= 0.22,	#
+	# VBpMargins = c(0, 0, 0.5, 0),#
+	# EABBA1 = 1 ,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	# EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	# txts = 6,		#specifies text size for axis labels#
+	# leS = 6,		#specifies text size for legend	#
+	# size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	# size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	# bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	# jittptSize = 0.3 #
+	)
+#plot eps vs d0/dc and various boxplots using D Monte Carlo results#
+p38 <- createPlot(#
+	xvar = HepHexPropGlyData_all$d0/HepHexPropGlyData_all$d_c, #
+	yvar = HepHexPropGlyData_all$EF_avg, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EpsvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.75, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*" (mm)"), 	#
+	ylabel = expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" ), #
+	# rangeDdiscrete = rangeDdiscrete3,#
+	# rangeDdiscrete = c(1.0, 5, 10, 15, 20),	#
+	rangeDdiscrete = linspace(min(HepHexPropGlyData_all$EF_avg), max(HepHexPropGlyData_all$EF_avg),4),#
+	factors = HepHexPropGlyData_all$Inert,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	# createBoxPlot = 1 ,#
+	# errBarWidth = 0.05,#
+	# errbarHeight = 0.5,#
+	# VboxPlotxFactors = HepHexPropGlyData_all$doSizeFactor, #x factor for marginal boxplot) )#
+	sci_yAxis = 1,#
+	# createVboxplot2nd = 1,#
+	# VboxPlotxFactors2nd = HepHexPropGlyData_all$fuel2,#
+	# xExpansionFactor= 0.05,#
+	# yExpansionFactor= 0.22,	#
+	# VBpMargins = c(0, 0, 0.5, 0),#
+	# EABBA1 = 1 ,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	# EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	# txts = 6,		#specifies text size for axis labels#
+	# leS = 6,		#specifies text size for legend	#
+	# size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	# size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	# bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	# jittptSize = 0.3 #
+	)
+names(HepHexPropGlyData_all)
+#plot eps vs d0/dc and various boxplots using D Monte Carlo results#
+p38 <- createPlot(#
+	xvar = HepHexPropGlyData_all$K, #
+	yvar = HepHexPropGlyData_all$EF_avg, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EpsvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.75, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*" (mm)"), 	#
+	ylabel = expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" ), #
+	# rangeDdiscrete = rangeDdiscrete3,#
+	# rangeDdiscrete = c(1.0, 5, 10, 15, 20),	#
+	rangeDdiscrete = linspace(min(HepHexPropGlyData_all$EF_avg), max(HepHexPropGlyData_all$EF_avg),4),#
+	factors = HepHexPropGlyData_all$Inert,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	# createBoxPlot = 1 ,#
+	# errBarWidth = 0.05,#
+	# errbarHeight = 0.5,#
+	# VboxPlotxFactors = HepHexPropGlyData_all$doSizeFactor, #x factor for marginal boxplot) )#
+	sci_yAxis = 1,#
+	# createVboxplot2nd = 1,#
+	# VboxPlotxFactors2nd = HepHexPropGlyData_all$fuel2,#
+	# xExpansionFactor= 0.05,#
+	# yExpansionFactor= 0.22,	#
+	# VBpMargins = c(0, 0, 0.5, 0),#
+	# EABBA1 = 1 ,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	# EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	# txts = 6,		#specifies text size for axis labels#
+	# leS = 6,		#specifies text size for legend	#
+	# size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	# size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	# bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	# jittptSize = 0.3 #
+	)
+#plot eps vs d0/dc and various boxplots using D Monte Carlo results#
+p38 <- createPlot(#
+	xvar = HepHexPropGlyData_all$d0/HepHexPropGlyData_all$d_c, #
+	yvar = HepHexPropGlyData_all$EF_avg, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EpsvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.75, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*" (mm)"), 	#
+	ylabel = expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" ), #
+	# rangeDdiscrete = rangeDdiscrete3,#
+	# rangeDdiscrete = c(1.0, 5, 10, 15, 20),	#
+	rangeDdiscrete = linspace(min(HepHexPropGlyData_all$EF_avg), max(HepHexPropGlyData_all$EF_avg),4),#
+	factors = HepHexPropGlyData_all$Inert,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	# createBoxPlot = 1 ,#
+	# errBarWidth = 0.05,#
+	# errbarHeight = 0.5,#
+	# VboxPlotxFactors = HepHexPropGlyData_all$doSizeFactor, #x factor for marginal boxplot) )#
+	sci_yAxis = 1,#
+	# createVboxplot2nd = 1,#
+	# VboxPlotxFactors2nd = HepHexPropGlyData_all$fuel2,#
+	# xExpansionFactor= 0.05,#
+	# yExpansionFactor= 0.22,	#
+	# VBpMargins = c(0, 0, 0.5, 0),#
+	# EABBA1 = 1 ,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	# EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	# txts = 6,		#specifies text size for axis labels#
+	# leS = 6,		#specifies text size for legend	#
+	# size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	# size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	# bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	# jittptSize = 0.3 #
+	)
+#plot eps vs d0/dc and various boxplots using D Monte Carlo results#
+p38 <- createPlot(#
+	xvar = HepHexPropGlyData_all$d0/HepHexPropGlyData_all$d_c, #
+	yvar = HepHexPropGlyData_all$eps, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EpsvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.75, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*"/ d"[c]*), 	#
+	ylabel = expression( epsilon ), #
+	# rangeDdiscrete = rangeDdiscrete3,#
+	# rangeDdiscrete = c(1.0, 5, 10, 15, 20),	#
+	rangeDdiscrete = linspace(min(HepHexPropGlyData_all$EF_avg), max(HepHexPropGlyData_all$EF_avg),4),#
+	factors = HepHexPropGlyData_all$Inert,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	# createBoxPlot = 1 ,#
+	# errBarWidth = 0.05,#
+	# errbarHeight = 0.5,#
+	# VboxPlotxFactors = HepHexPropGlyData_all$doSizeFactor, #x factor for marginal boxplot) )#
+	sci_yAxis = 1,#
+	# createVboxplot2nd = 1,#
+	# VboxPlotxFactors2nd = HepHexPropGlyData_all$fuel2,#
+	# xExpansionFactor= 0.05,#
+	# yExpansionFactor= 0.22,	#
+	# VBpMargins = c(0, 0, 0.5, 0),#
+	# EABBA1 = 1 ,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	# EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	# txts = 6,		#specifies text size for axis labels#
+	# leS = 6,		#specifies text size for legend	#
+	# size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	# size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	# bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	# jittptSize = 0.3 #
+	)
+#plot eps vs d0/dc and various boxplots using D Monte Carlo results#
+p38 <- createPlot(#
+	xvar = HepHexPropGlyData_all$d0/HepHexPropGlyData_all$d_c, #
+	yvar = HepHexPropGlyData_all$eps, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EpsvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.75, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*"/ d"[c]), 	#
+	ylabel = expression( epsilon ), #
+	# rangeDdiscrete = rangeDdiscrete3,#
+	# rangeDdiscrete = c(1.0, 5, 10, 15, 20),	#
+	rangeDdiscrete = linspace(min(HepHexPropGlyData_all$EF_avg), max(HepHexPropGlyData_all$EF_avg),4),#
+	factors = HepHexPropGlyData_all$Inert,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	# createBoxPlot = 1 ,#
+	# errBarWidth = 0.05,#
+	# errbarHeight = 0.5,#
+	# VboxPlotxFactors = HepHexPropGlyData_all$doSizeFactor, #x factor for marginal boxplot) )#
+	sci_yAxis = 1,#
+	# createVboxplot2nd = 1,#
+	# VboxPlotxFactors2nd = HepHexPropGlyData_all$fuel2,#
+	# xExpansionFactor= 0.05,#
+	# yExpansionFactor= 0.22,	#
+	# VBpMargins = c(0, 0, 0.5, 0),#
+	# EABBA1 = 1 ,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	# EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	# txts = 6,		#specifies text size for axis labels#
+	# leS = 6,		#specifies text size for legend	#
+	# size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	# size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	# bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	# jittptSize = 0.3 #
+	)
+#plot eps vs d0/dc and various boxplots using D Monte Carlo results#
+p38 <- createPlot(#
+	xvar = HepHexPropGlyData_all$d0/HepHexPropGlyData_all$d_c, #
+	yvar = HepHexPropGlyData_all$eps, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EpsvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.75, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*"/ d"[c]), 	#
+	ylabel = expression( epsilon ), #
+	# rangeDdiscrete = rangeDdiscrete3,#
+	# rangeDdiscrete = c(1.0, 5, 10, 15, 20),	#
+	rangeDdiscrete = signif(linspace(min(HepHexPropGlyData_all$eps), max(HepHexPropGlyData_all$eps),4), 3),#
+	factors = HepHexPropGlyData_all$Inert,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	# createBoxPlot = 1 ,#
+	# errBarWidth = 0.05,#
+	# errbarHeight = 0.5,#
+	# VboxPlotxFactors = HepHexPropGlyData_all$doSizeFactor, #x factor for marginal boxplot) )#
+	sci_yAxis = 1,#
+	# createVboxplot2nd = 1,#
+	# VboxPlotxFactors2nd = HepHexPropGlyData_all$fuel2,#
+	# xExpansionFactor= 0.05,#
+	# yExpansionFactor= 0.22,	#
+	# VBpMargins = c(0, 0, 0.5, 0),#
+	# EABBA1 = 1 ,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	# EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	# txts = 6,		#specifies text size for axis labels#
+	# leS = 6,		#specifies text size for legend	#
+	# size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	# size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	# bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	# jittptSize = 0.3 #
+	)
+#plot eps vs d0/dc and various boxplots using D Monte Carlo results#
+p39 <- createPlot(#
+	xvar = HepHexPropGlyData_all$d0/HepHexPropGlyData_all$d_c, #
+	yvar = HepHexPropGlyData_all$eps, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EpsvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.3, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*"/ d"[c]), 	#
+	ylabel = expression( epsilon ), #
+	rangeDdiscrete = signif(linspace(min(HepHexPropGlyData_all$eps), max(HepHexPropGlyData_all$eps),4), 3),#
+	factors = HepHexPropGlyData_all$Inert,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	sci_yAxis = 1,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	# EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	# txts = 6,		#specifies text size for axis labels#
+	# leS = 6,		#specifies text size for legend	#
+	# size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	# size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	# bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	# jittptSize = 0.3 #
+	)
+#plot eps vs d0/dc and various boxplots using D Monte Carlo results#
+p39 <- createPlot(#
+	xvar = HepHexPropGlyData_all$d0/HepHexPropGlyData_all$d_c, #
+	yvar = HepHexPropGlyData_all$eps, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EpsvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.3, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*"/ d"[c]), 	#
+	ylabel = expression( epsilon ), #
+	rangeDdiscrete = signif(linspace(min(HepHexPropGlyData_all$eps), max(HepHexPropGlyData_all$eps),4), 2),#
+	factors = HepHexPropGlyData_all$Inert,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	sci_yAxis = 1,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	# EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	# txts = 6,		#specifies text size for axis labels#
+	# leS = 6,		#specifies text size for legend	#
+	# size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	# size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	# bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	# jittptSize = 0.3 #
+	)
+#plot eps vs d0/dc and various boxplots using D Monte Carlo results#
+p39 <- createPlot(#
+	xvar = HepHexPropGlyData_all$d0/HepHexPropGlyData_all$d_c, #
+	yvar = HepHexPropGlyData_all$eps, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EpsvsD0_allFuel_allexp_MCN95v2.pdf",#
+	legendXloc = 0.3, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*"/ d"[c]), 	#
+	ylabel = expression( epsilon ), #
+	rangeDdiscrete = signif(linspace(min(HepHexPropGlyData_all$eps), max(HepHexPropGlyData_all$eps),4), 3),#
+	factors = HepHexPropGlyData_all$Inert,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	sci_yAxis = 1,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	# EFvstdtvONLYcolorGrad = 1,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	# txts = 6,		#specifies text size for axis labels#
+	# leS = 6,		#specifies text size for legend	#
+	# size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	# size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	# bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	# jittptSize = 0.3 #
+	)
+signif(linspace(min(HepHexPropGlyData_all$eps), max(HepHexPropGlyData_all$eps),4), 3)
+test <- signif(linspace(min(HepHexPropGlyData_all$eps), max(HepHexPropGlyData_all$eps),4), 3)
+test[2]-test[1]
+test[3]-test[2]
+test[4]-test[3]
+0.00327+0.218
+source('~/mygitFiles/hephex_scatterplots/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
+source('~/mygitFiles/droplet_trajectories/singleAndMulticomponent/original_data/igExt_plots.R', chdir = TRUE)
+source('~/Box Sync/S2018TASHIP_EME109 (Erickson)/labs/lab_1-Statapult/thursdayMorning/catapult_code_check.R', chdir = TRUE)
+fit$coefficients
+source('~/Box Sync/S2018TASHIP_EME109 (Erickson)/labs/lab_1-Statapult/thursdayMorning/catapult_code_check.R', chdir = TRUE)
+source('~/Box Sync/S2018TASHIP_EME109 (Erickson)/labs/lab_1-Statapult/thursdayAfternoon/catapult_code_check.R', chdir = TRUE)
+library(pracma)
+beta <- linspace(0.01,0.2,100)
+tv <- log(1/beta)
+plot(tv,beta)
+plot(beta,tv)
+plot(linspace(0.001,0.01),log(1/beta))
+source('~/Box Sync/HepHex_Paper/HepHex_Diffusivities/conditional_inference_analysisHepHex.R', chdir = TRUE)
+source('~/Box Sync/S2018TASHIP_EME109 (Erickson)/labs/lab_1-Statapult/thursdayAfternoon/catapult_code_check.R', chdir = TRUE)
+n_trials
+2*2.92/(8)
+n_f
+2*sigma_pooled/sqrt(n_f)
+sigma_pooled
+2*2.92/4
+source('~/Box Sync/S2018TASHIP_EME109 (Erickson)/labs/lab_1-Statapult/thursdayAfternoon/catapult_code_check.R', chdir = TRUE)
+fit$coefficients
+2.474874^2
+source('~/Box Sync/S2018TASHIP_EME109 (Erickson)/labs/lab_2-TemperatureMeasurement/thermocouple_LabView_data/thermocouple_plots.R', chdir = TRUE)
+combined
+source('~/Box Sync/S2018TASHIP_EME109 (Erickson)/labs/lab_1-Statapult/fridayAfternoon/catapult_code_check.R', chdir = TRUE)
+3.297726*2/4
+23.5/1.15
+23.5/1.64
+source('~/Box Sync/S2018TASHIP_EME109 (Erickson)/labs/lab_1-Statapult/fridayAfternoon/catapult_code_check.R', chdir = TRUE)
+nu
+source('~/Box Sync/S2018TASHIP_EME109 (Erickson)/labs/lab_1-Statapult/fridayAfternoon/catapult_code_check.R', chdir = TRUE)
+print(fit$coef[2:8])
+nu
+names(Y_dataframe)
+Y
+max(Y)
+min(Y)
+source('~/mygitFiles/hephex_scatterplots/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
+names(HepHexPropGlyData_all)
+#plot eps vs K_avg and various boxplots using D Monte Carlo results#
+p39 <- createPlot(#
+	xvar = HepHexPropGlyData_all$K, #
+	yvar = HepHexPropGlyData_all$EF_avg, #
+	importDataFrame = HepHexPropGlyData_all, #
+	plotname = "EABBAvsK_allFuel_allexp_MCN95.pdf",#
+	legendXloc = 0.3, #
+	legendYloc = 0.80, #
+	xlabel = expression( "d"[0]*"/ d"[c]), 	#
+	ylabel = expression( epsilon ), #
+	rangeDdiscrete = signif(linspace(min(HepHexPropGlyData_all$EF_avg), max(HepHexPropGlyData_all$EF_avg),4), 2),#
+	factors = HepHexPropGlyData_all$XO2,#
+	plotTitle = "Hep/Hex & Prop/Gly",#
+	sci_yAxis = 1,#
+	d0xAxisOnly = 1,#
+	ptsize = 3.0,#
+	bgColor = "white",#
+	EF1_xstart = 2.8,#
+	EF1_xend = 3.0,#
+	EF1_txtx = 2.75,#
+	# txts = 6,		#specifies text size for axis labels#
+	# leS = 6,		#specifies text size for legend	#
+	# size.w = 4.0,	#specifies width of .pdf of plot in units specified by un#
+	# size.h = 2.4,		#specifies height of .pdf of plot in units specified by un#
+	# bpAxs = 4, 		#specifies axis text size for marginal boxplots	#
+	# jittptSize = 0.3 #
+	)
+p38
+ggplot(p3)
+ggplot(p38)
+source('~/Desktop/test_beamer/grouping_analysis.R', chdir = TRUE)
+source('~/mygitFiles/hephex_scatterplots/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
+p40 <- ggplot2(data=HepHexPropGlyData_all) + aes(x=K, y=EF_avg) +#
+		geom_hline(aes(yintercept=1), colour="#0000EE", linetype=10,size=1)  +#
+    	annotate("segment", x = EF1_xstart, xend = EF1_xend, y = EF1_ystart, #
+    		yend = EF1_yend, colour="blue", size=0.5, arrow=arrow(length=unit(.2, "cm") ) ) +#
+		annotate("text",x=EF1_txtx, y=EF1_txty,#
+			parse=TRUE,label="1.0" ) +#
+		geom_errorbar(data=importDataFrame, aes(ymin = EF_low95, #print error bars for D values#
+	    		ymax = EF_high95), width=errBarWidth) +#
+		scale_shape_manual( values=c(20,15,17,22,15,16,20) ) +#
+		geom_point( aes(colour=XO2), size=4.0 ) +#
+		labs(col="XO2", shape="fuel type") +#
+		# scale_colour_gradient(limits=c(min(importDataFrame$t_fc), max(importDataFrame$t_fc)),#
+		# 					 guide="colourbar")#
+		# scale_colour_gradient(high="#969696", guide="colourbar")		#
+		# scale_colour_gradient(high="grey",low="black", guide="colourbar")				#
+		scale_colour_gradient(high="grey",low="black", guide="colourbar",#
+			breaks=c(2,15,28,42,55) )
+p40 <- ggplot(data=HepHexPropGlyData_all) + aes(x=K, y=EF_avg) +#
+		geom_hline(aes(yintercept=1), colour="#0000EE", linetype=10,size=1)  +#
+    	annotate("segment", x = EF1_xstart, xend = EF1_xend, y = EF1_ystart, #
+    		yend = EF1_yend, colour="blue", size=0.5, arrow=arrow(length=unit(.2, "cm") ) ) +#
+		annotate("text",x=EF1_txtx, y=EF1_txty,#
+			parse=TRUE,label="1.0" ) +#
+		geom_errorbar(data=importDataFrame, aes(ymin = EF_low95, #print error bars for D values#
+	    		ymax = EF_high95), width=errBarWidth) +#
+		scale_shape_manual( values=c(20,15,17,22,15,16,20) ) +#
+		geom_point( aes(colour=XO2), size=4.0 ) +#
+		labs(col="XO2", shape="fuel type") +#
+		# scale_colour_gradient(limits=c(min(importDataFrame$t_fc), max(importDataFrame$t_fc)),#
+		# 					 guide="colourbar")#
+		# scale_colour_gradient(high="#969696", guide="colourbar")		#
+		# scale_colour_gradient(high="grey",low="black", guide="colourbar")				#
+		scale_colour_gradient(high="grey",low="black", guide="colourbar",#
+			breaks=c(2,15,28,42,55) )
+p40 <- ggplot(data=HepHexPropGlyData_all) + aes(x=K, y=EF_avg) +#
+		geom_hline(aes(yintercept=1), colour="#0000EE", linetype=10,size=1)  +#
+  #   	annotate("segment", x = EF1_xstart, xend = EF1_xend, y = EF1_ystart, #
+  #   		yend = EF1_yend, colour="blue", size=0.5, arrow=arrow(length=unit(.2, "cm") ) ) +#
+		# annotate("text",x=EF1_txtx, y=EF1_txty,#
+		# 	parse=TRUE,label="1.0" ) +#
+		geom_errorbar(data=importDataFrame, aes(ymin = EF_low95, #print error bars for D values#
+	    		ymax = EF_high95), width=errBarWidth) +#
+		scale_shape_manual( values=c(20,15,17,22,15,16,20) ) +#
+		geom_point( aes(colour=XO2), size=4.0 ) +#
+		labs(col="XO2", shape="fuel type") +#
+		# scale_colour_gradient(limits=c(min(importDataFrame$t_fc), max(importDataFrame$t_fc)),#
+		# 					 guide="colourbar")#
+		# scale_colour_gradient(high="#969696", guide="colourbar")		#
+		# scale_colour_gradient(high="grey",low="black", guide="colourbar")				#
+		scale_colour_gradient(high="grey",low="black", guide="colourbar",#
+			breaks=c(2,15,28,42,55) )
+errBarWidth <- 0.1#
+p40 <- ggplot(data=HepHexPropGlyData_all) + aes(x=K, y=EF_avg) +#
+		geom_hline(aes(yintercept=1), colour="#0000EE", linetype=10,size=1)  +#
+  #   	annotate("segment", x = EF1_xstart, xend = EF1_xend, y = EF1_ystart, #
+  #   		yend = EF1_yend, colour="blue", size=0.5, arrow=arrow(length=unit(.2, "cm") ) ) +#
+		# annotate("text",x=EF1_txtx, y=EF1_txty,#
+		# 	parse=TRUE,label="1.0" ) +#
+		geom_errorbar(data=importDataFrame, aes(ymin = EF_low95, #print error bars for D values#
+	    		ymax = EF_high95), width=errBarWidth) +#
+		scale_shape_manual( values=c(20,15,17,22,15,16,20) ) +#
+		geom_point( aes(colour=XO2), size=4.0 ) +#
+		labs(col="XO2", shape="fuel type") +#
+		# scale_colour_gradient(limits=c(min(importDataFrame$t_fc), max(importDataFrame$t_fc)),#
+		# 					 guide="colourbar")#
+		# scale_colour_gradient(high="#969696", guide="colourbar")		#
+		# scale_colour_gradient(high="grey",low="black", guide="colourbar")				#
+		scale_colour_gradient(high="grey",low="black", guide="colourbar",#
+			breaks=c(2,15,28,42,55) )
+errBarWidth <- 0.1#
+p40 <- ggplot(data=HepHexPropGlyData_all) + aes(x=K, y=EF_avg) +#
+		geom_hline(aes(yintercept=1), colour="#0000EE", linetype=10,size=1)  +#
+  #   	annotate("segment", x = EF1_xstart, xend = EF1_xend, y = EF1_ystart, #
+  #   		yend = EF1_yend, colour="blue", size=0.5, arrow=arrow(length=unit(.2, "cm") ) ) +#
+		# annotate("text",x=EF1_txtx, y=EF1_txty,#
+		# 	parse=TRUE,label="1.0" ) +#
+		geom_errorbar(data=HepHexPropGlyData_all, aes(ymin = EF_low95, #print error bars for D values#
+	    		ymax = EF_high95), width=errBarWidth) +#
+		scale_shape_manual( values=c(20,15,17,22,15,16,20) ) +#
+		geom_point( aes(colour=XO2), size=4.0 ) +#
+		labs(col="XO2", shape="fuel type") +#
+		# scale_colour_gradient(limits=c(min(importDataFrame$t_fc), max(importDataFrame$t_fc)),#
+		# 					 guide="colourbar")#
+		# scale_colour_gradient(high="#969696", guide="colourbar")		#
+		# scale_colour_gradient(high="grey",low="black", guide="colourbar")				#
+		scale_colour_gradient(high="grey",low="black", guide="colourbar",#
+			breaks=c(2,15,28,42,55) )
+p40
+errBarWidth <- 0.1#
+xlabel <- expression( "K (mm"^2*"/s)" )#
+ylabel <- expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" )#
+SpMargins <- c(0, 0, 0.5, 0.5)#
+bgColor <- "#f7f7f7"#
+p40 <- ggplot(data=HepHexPropGlyData_all) + aes(x=K, y=EF_avg) +#
+		geom_hline(aes(yintercept=1), colour="#0000EE", linetype=10,size=1)  +#
+  #   	annotate("segment", x = EF1_xstart, xend = EF1_xend, y = EF1_ystart, #
+  #   		yend = EF1_yend, colour="blue", size=0.5, arrow=arrow(length=unit(.2, "cm") ) ) +#
+		# annotate("text",x=EF1_txtx, y=EF1_txty,#
+		# 	parse=TRUE,label="1.0" ) +#
+		geom_errorbar(data=HepHexPropGlyData_all, aes(ymin = EF_low95, #print error bars for D values#
+	    		ymax = EF_high95), width=errBarWidth) +#
+		scale_shape_manual( values=c(20,15,17,22,15,16,20) ) +#
+		geom_point( aes(colour=XO2), size=4.0 ) +#
+		labs(col="XO2", shape="fuel type") +#
+		# scale_colour_gradient(limits=c(min(importDataFrame$t_fc), max(importDataFrame$t_fc)),#
+		# 					 guide="colourbar")#
+		# scale_colour_gradient(high="#969696", guide="colourbar")		#
+		# scale_colour_gradient(high="grey",low="black", guide="colourbar")				#
+		scale_colour_gradient(high="grey",low="black", guide="colourbar",#
+			breaks=c(2,15,28,42,55) ) + #
+		xlab(xlabel) + #
+		ylab(ylabel ) +#
+		theme_bw()+#
+		theme(plot.title = element_text(colour="black",face="bold",size=12),#
+		panel.background = element_rect(fill = bgColor),#
+		axis.text = element_text(size=txts,colour="black"),#
+		plot.margin= unit(SpMargins, "lines") )
+errBarWidth <- 0.1#
+xlabel <- expression( "K (mm"^2*"/s)" )#
+ylabel <- expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" )#
+SpMargins <- c(0, 0, 0.5, 0.5)#
+bgColor <- "#f7f7f7"#
+txts <- 12#
+p40 <- ggplot(data=HepHexPropGlyData_all) + aes(x=K, y=EF_avg) +#
+		geom_hline(aes(yintercept=1), colour="#0000EE", linetype=10,size=1)  +#
+  #   	annotate("segment", x = EF1_xstart, xend = EF1_xend, y = EF1_ystart, #
+  #   		yend = EF1_yend, colour="blue", size=0.5, arrow=arrow(length=unit(.2, "cm") ) ) +#
+		# annotate("text",x=EF1_txtx, y=EF1_txty,#
+		# 	parse=TRUE,label="1.0" ) +#
+		geom_errorbar(data=HepHexPropGlyData_all, aes(ymin = EF_low95, #print error bars for D values#
+	    		ymax = EF_high95), width=errBarWidth) +#
+		scale_shape_manual( values=c(20,15,17,22,15,16,20) ) +#
+		geom_point( aes(colour=XO2), size=4.0 ) +#
+		labs(col="XO2", shape="fuel type") +#
+		# scale_colour_gradient(limits=c(min(importDataFrame$t_fc), max(importDataFrame$t_fc)),#
+		# 					 guide="colourbar")#
+		# scale_colour_gradient(high="#969696", guide="colourbar")		#
+		# scale_colour_gradient(high="grey",low="black", guide="colourbar")				#
+		scale_colour_gradient(high="grey",low="black", guide="colourbar",#
+			breaks=c(2,15,28,42,55) ) + #
+		xlab(xlabel) + #
+		ylab(ylabel ) +#
+		theme_bw()+#
+		theme(plot.title = element_text(colour="black",face="bold",size=12),#
+		panel.background = element_rect(fill = bgColor),#
+		axis.text = element_text(size=txts,colour="black"),#
+		plot.margin= unit(SpMargins, "lines") )
+p40
+errBarWidth <- 0.1#
+xlabel <- expression( "K (mm"^2*"/s)" )#
+ylabel <- expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" )#
+SpMargins <- c(0, 0, 0.5, 0.5)#
+bgColor <- "#f7f7f7"#
+txts <- 12#
+p40 <- ggplot(data=HepHexPropGlyData_all) + aes(x=K, y=EF_avg) +#
+		geom_hline(aes(yintercept=1), colour="#0000EE", linetype=10,size=1)  +#
+  #   	annotate("segment", x = EF1_xstart, xend = EF1_xend, y = EF1_ystart, #
+  #   		yend = EF1_yend, colour="blue", size=0.5, arrow=arrow(length=unit(.2, "cm") ) ) +#
+		# annotate("text",x=EF1_txtx, y=EF1_txty,#
+		# 	parse=TRUE,label="1.0" ) +#
+		geom_errorbar(data=HepHexPropGlyData_all, aes(ymin = EF_low95, #print error bars for D values#
+	    		ymax = EF_high95), width=errBarWidth) +#
+		geom_errorbarh(data=HepHexPropGlyData_all, aes(xmin= K-Uncertainty_K,#
+		    		xmax = K+Uncertainty_K), height= errbarHeight)    		#
+		scale_shape_manual( values=c(20,15,17,22,15,16,20) ) +#
+		geom_point( aes(colour=XO2), size=4.0 ) +#
+		labs(col="XO2", shape="fuel type") +#
+		# scale_colour_gradient(limits=c(min(importDataFrame$t_fc), max(importDataFrame$t_fc)),#
+		# 					 guide="colourbar")#
+		# scale_colour_gradient(high="#969696", guide="colourbar")		#
+		# scale_colour_gradient(high="grey",low="black", guide="colourbar")				#
+		scale_colour_gradient(high="grey",low="black", guide="colourbar",#
+			breaks=c(2,15,28,42,55) ) + #
+		xlab(xlabel) + #
+		ylab(ylabel ) +#
+		theme_bw()+#
+		theme(plot.title = element_text(colour="black",face="bold",size=12),#
+		panel.background = element_rect(fill = bgColor),#
+		axis.text = element_text(size=txts,colour="black"),#
+		plot.margin= unit(SpMargins, "lines") )
+errBarWidth <- 0.1#
+xlabel <- expression( "K (mm"^2*"/s)" )#
+ylabel <- expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" )#
+SpMargins <- c(0, 0, 0.5, 0.5)#
+bgColor <- "#f7f7f7"#
+txts <- 12#
+p40 <- ggplot(data=HepHexPropGlyData_all) + aes(x=K, y=EF_avg) +#
+		geom_hline(aes(yintercept=1), colour="#0000EE", linetype=10,size=1)  +#
+  #   	annotate("segment", x = EF1_xstart, xend = EF1_xend, y = EF1_ystart, #
+  #   		yend = EF1_yend, colour="blue", size=0.5, arrow=arrow(length=unit(.2, "cm") ) ) +#
+		# annotate("text",x=EF1_txtx, y=EF1_txty,#
+		# 	parse=TRUE,label="1.0" ) +#
+		geom_errorbar(data=HepHexPropGlyData_all, aes(ymin = EF_low95, #print error bars for D values#
+	    		ymax = EF_high95), width=errBarWidth) +#
+		geom_errorbarh(data=HepHexPropGlyData_all, aes(xmin= K-Uncertainty_K,#
+		    		xmax = K+Uncertainty_K), height= errbarHeight) + 		#
+		scale_shape_manual( values=c(20,15,17,22,15,16,20) ) +#
+		geom_point( aes(colour=XO2), size=4.0 ) +#
+		labs(col="XO2", shape="fuel type") +#
+		# scale_colour_gradient(limits=c(min(importDataFrame$t_fc), max(importDataFrame$t_fc)),#
+		# 					 guide="colourbar")#
+		# scale_colour_gradient(high="#969696", guide="colourbar")		#
+		# scale_colour_gradient(high="grey",low="black", guide="colourbar")				#
+		scale_colour_gradient(high="grey",low="black", guide="colourbar",#
+			breaks=c(2,15,28,42,55) ) + #
+		xlab(xlabel) + #
+		ylab(ylabel ) +#
+		theme_bw()+#
+		theme(plot.title = element_text(colour="black",face="bold",size=12),#
+		panel.background = element_rect(fill = bgColor),#
+		axis.text = element_text(size=txts,colour="black"),#
+		plot.margin= unit(SpMargins, "lines") )
+errBarWidth <- 0.1#
+errbarHeight <- 2e-9#
+xlabel <- expression( "K (mm"^2*"/s)" )#
+ylabel <- expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" )#
+SpMargins <- c(0, 0, 0.5, 0.5)#
+bgColor <- "#f7f7f7"#
+txts <- 12#
+p40 <- ggplot(data=HepHexPropGlyData_all) + aes(x=K, y=EF_avg) +#
+		geom_hline(aes(yintercept=1), colour="#0000EE", linetype=10,size=1)  +#
+  #   	annotate("segment", x = EF1_xstart, xend = EF1_xend, y = EF1_ystart, #
+  #   		yend = EF1_yend, colour="blue", size=0.5, arrow=arrow(length=unit(.2, "cm") ) ) +#
+		# annotate("text",x=EF1_txtx, y=EF1_txty,#
+		# 	parse=TRUE,label="1.0" ) +#
+		geom_errorbar(data=HepHexPropGlyData_all, aes(ymin = EF_low95, #print error bars for D values#
+	    		ymax = EF_high95), width=errBarWidth) +#
+		geom_errorbarh(data=HepHexPropGlyData_all, aes(xmin= K-Uncertainty_K,#
+		    		xmax = K+Uncertainty_K), height= errbarHeight) + 		#
+		scale_shape_manual( values=c(20,15,17,22,15,16,20) ) +#
+		geom_point( aes(colour=XO2), size=4.0 ) +#
+		labs(col="XO2", shape="fuel type") +#
+		# scale_colour_gradient(limits=c(min(importDataFrame$t_fc), max(importDataFrame$t_fc)),#
+		# 					 guide="colourbar")#
+		# scale_colour_gradient(high="#969696", guide="colourbar")		#
+		# scale_colour_gradient(high="grey",low="black", guide="colourbar")				#
+		scale_colour_gradient(high="grey",low="black", guide="colourbar",#
+			breaks=c(2,15,28,42,55) ) + #
+		xlab(xlabel) + #
+		ylab(ylabel ) +#
+		theme_bw()+#
+		theme(plot.title = element_text(colour="black",face="bold",size=12),#
+		panel.background = element_rect(fill = bgColor),#
+		axis.text = element_text(size=txts,colour="black"),#
+		plot.margin= unit(SpMargins, "lines") )
+p40
+errBarWidth <- 0.1#
+errbarHeight <- 0.1#
+xlabel <- expression( "K (mm"^2*"/s)" )#
+ylabel <- expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" )#
+SpMargins <- c(0, 0, 0.5, 0.5)#
+bgColor <- "#f7f7f7"#
+txts <- 12#
+p40 <- ggplot(data=HepHexPropGlyData_all) + aes(x=K, y=EF_avg) +#
+		geom_hline(aes(yintercept=1), colour="#0000EE", linetype=10,size=1)  +#
+  #   	annotate("segment", x = EF1_xstart, xend = EF1_xend, y = EF1_ystart, #
+  #   		yend = EF1_yend, colour="blue", size=0.5, arrow=arrow(length=unit(.2, "cm") ) ) +#
+		# annotate("text",x=EF1_txtx, y=EF1_txty,#
+		# 	parse=TRUE,label="1.0" ) +#
+		geom_errorbar(data=HepHexPropGlyData_all, aes(ymin = EF_low95, #print error bars for D values#
+	    		ymax = EF_high95), width=errBarWidth) +#
+		geom_errorbarh(data=HepHexPropGlyData_all, aes(xmin= K-Uncertainty_K,#
+		    		xmax = K+Uncertainty_K), height= errbarHeight) + 		#
+		scale_shape_manual( values=c(20,15,17,22,15,16,20) ) +#
+		geom_point( aes(colour=XO2), size=4.0 ) +#
+		labs(col="XO2", shape="fuel type") +#
+		# scale_colour_gradient(limits=c(min(importDataFrame$t_fc), max(importDataFrame$t_fc)),#
+		# 					 guide="colourbar")#
+		# scale_colour_gradient(high="#969696", guide="colourbar")		#
+		# scale_colour_gradient(high="grey",low="black", guide="colourbar")				#
+		scale_colour_gradient(high="grey",low="black", guide="colourbar",#
+			breaks=c(2,15,28,42,55) ) + #
+		xlab(xlabel) + #
+		ylab(ylabel ) +#
+		theme_bw()+#
+		theme(plot.title = element_text(colour="black",face="bold",size=12),#
+		panel.background = element_rect(fill = bgColor),#
+		axis.text = element_text(size=txts,colour="black"),#
+		plot.margin= unit(SpMargins, "lines") )
+p40
+errBarWidth <- 0.1#
+errbarHeight <- 1.0#
+xlabel <- expression( "K (mm"^2*"/s)" )#
+ylabel <- expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" )#
+SpMargins <- c(0, 0, 0.5, 0.5)#
+bgColor <- "#f7f7f7"#
+txts <- 12#
+p40 <- ggplot(data=HepHexPropGlyData_all) + aes(x=K, y=EF_avg) +#
+		geom_hline(aes(yintercept=1), colour="#0000EE", linetype=10,size=1)  +#
+  #   	annotate("segment", x = EF1_xstart, xend = EF1_xend, y = EF1_ystart, #
+  #   		yend = EF1_yend, colour="blue", size=0.5, arrow=arrow(length=unit(.2, "cm") ) ) +#
+		# annotate("text",x=EF1_txtx, y=EF1_txty,#
+		# 	parse=TRUE,label="1.0" ) +#
+		geom_errorbar(data=HepHexPropGlyData_all, aes(ymin = EF_low95, #print error bars for D values#
+	    		ymax = EF_high95), width=errBarWidth) +#
+		geom_errorbarh(data=HepHexPropGlyData_all, aes(xmin= K-Uncertainty_K,#
+		    		xmax = K+Uncertainty_K), height= errbarHeight) + 		#
+		scale_shape_manual( values=c(20,15,17,22,15,16,20) ) +#
+		geom_point( aes(colour=XO2), size=4.0 ) +#
+		labs(col="XO2", shape="fuel type") +#
+		# scale_colour_gradient(limits=c(min(importDataFrame$t_fc), max(importDataFrame$t_fc)),#
+		# 					 guide="colourbar")#
+		# scale_colour_gradient(high="#969696", guide="colourbar")		#
+		# scale_colour_gradient(high="grey",low="black", guide="colourbar")				#
+		scale_colour_gradient(high="grey",low="black", guide="colourbar",#
+			breaks=c(2,15,28,42,55) ) + #
+		xlab(xlabel) + #
+		ylab(ylabel ) +#
+		theme_bw()+#
+		theme(plot.title = element_text(colour="black",face="bold",size=12),#
+		panel.background = element_rect(fill = bgColor),#
+		axis.text = element_text(size=txts,colour="black"),#
+		plot.margin= unit(SpMargins, "lines") )
+p40
+errBarWidth <- 0.1#
+errbarHeight <- 1.0#
+xlabel <- expression( "K (mm"^2*"/s)" )#
+ylabel <- expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" )#
+SpMargins <- c(0, 0, 0.5, 0.5)#
+bgColor <- "#f7f7f7"#
+txts <- 12#
+p40 <- ggplot(data=HepHexPropGlyData_all) + aes(x=K, y=EF_avg) +#
+		geom_hline(aes(yintercept=1), colour="#0000EE", linetype=10,size=1)  +#
+		# geom_errorbar(data=HepHexPropGlyData_all, aes(ymin = EF_low95, #print error bars for D values#
+	 #    		ymax = EF_high95), width=errBarWidth) +#
+		# geom_errorbarh(data=HepHexPropGlyData_all, aes(xmin= K-Uncertainty_K,#
+		#     		xmax = K+Uncertainty_K), height= errbarHeight) + 		#
+		scale_shape_manual( values=c(20,15,17,22,15,16,20) ) +		#
+		geom_point( aes(colour=XO2), size=4.0 ) +#
+		labs(col="XO2", shape="fuel type") +			#
+		scale_colour_gradient(high="grey",low="black", guide="colourbar") + #
+		xlab(xlabel) + #
+		ylab(ylabel ) +#
+		theme_bw()+#
+		theme(plot.title = element_text(colour="black",face="bold",size=12),#
+		panel.background = element_rect(fill = bgColor),#
+		axis.text = element_text(size=txts,colour="black"),#
+		plot.margin= unit(SpMargins, "lines") )
+p40
+names(HepHexPropGlyData_all)
+errBarWidth <- 0.1#
+errbarHeight <- 1.0#
+xlabel <- expression( "K (mm"^2*"/s)" )#
+ylabel <- expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" )#
+SpMargins <- c(0, 0, 0.5, 0.5)#
+bgColor <- "#f7f7f7"#
+txts <- 12#
+p40 <- ggplot(data=HepHexPropGlyData_all) + aes(x=K, y=EF_avg) +#
+		aes(group=Inert, shape=Inert)+#
+		geom_hline(aes(yintercept=1), colour="#0000EE", linetype=10,size=1)  +#
+		# geom_errorbar(data=HepHexPropGlyData_all, aes(ymin = EF_low95, #print error bars for D values#
+	 #    		ymax = EF_high95), width=errBarWidth) +#
+		# geom_errorbarh(data=HepHexPropGlyData_all, aes(xmin= K-Uncertainty_K,#
+		#     		xmax = K+Uncertainty_K), height= errbarHeight) + 		#
+		scale_shape_manual( values=c(20,15,17,22,15,16,20) ) +		#
+		geom_point( aes(colour=XO2), size=4.0 ) +#
+		labs(col="XO2", shape="fuel type") +			#
+		scale_colour_gradient(high="grey",low="black", guide="colourbar") + #
+		xlab(xlabel) + #
+		ylab(ylabel ) +#
+		theme_bw()+#
+		theme(plot.title = element_text(colour="black",face="bold",size=12),#
+		panel.background = element_rect(fill = bgColor),#
+		axis.text = element_text(size=txts,colour="black"),#
+		plot.margin= unit(SpMargins, "lines") )
+p40
+errBarWidth <- 0.1#
+errbarHeight <- 1.0#
+xlabel <- expression( "K (mm"^2*"/s)" )#
+ylabel <- expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" )#
+SpMargins <- c(0, 0, 0.5, 0.5)#
+bgColor <- "#f7f7f7"#
+txts <- 12#
+p40 <- ggplot(data=HepHexPropGlyData_all) + aes(x=K, y=EF_avg) +#
+		aes(group=Inert, shape=Inert)+#
+		geom_hline(aes(yintercept=1), colour="#0000EE", linetype=10,size=1)  +#
+		# geom_errorbar(data=HepHexPropGlyData_all, aes(ymin = EF_low95, #print error bars for D values#
+	 #    		ymax = EF_high95), width=errBarWidth) +#
+		# geom_errorbarh(data=HepHexPropGlyData_all, aes(xmin= K-Uncertainty_K,#
+		#     		xmax = K+Uncertainty_K), height= errbarHeight) + 		#
+		scale_shape_manual( values=c(20,15,17,22,15,16,20) ) +		#
+		geom_point( aes(colour=XO2), size=4.0 ) +#
+		labs(col="XO2", shape="fuel type") +			#
+		scale_colour_gradient(high="grey",low="black", guide="colourbar") + #
+		xlab(xlabel) + #
+		ylab(ylabel ) +#
+		theme_bw()+#
+		theme(legend.position=c(0.3, 0.7),#
+		plot.title = element_text(colour="black",face="bold",size=12),#
+		panel.background = element_rect(fill = bgColor),#
+		axis.text = element_text(size=txts,colour="black"),#
+		plot.margin= unit(SpMargins, "lines") )
+p40
+errBarWidth <- 0.1#
+errbarHeight <- 1.0#
+xlabel <- expression( "K (mm"^2*"/s)" )#
+ylabel <- expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" )#
+SpMargins <- c(0, 0, 0.5, 0.5)#
+bgColor <- "#f7f7f7"#
+txts <- 12#
+p40 <- ggplot(data=HepHexPropGlyData_all) + aes(x=K, y=EF_avg) +#
+		aes(group=Inert, shape=Inert)+#
+		geom_hline(aes(yintercept=1), colour="#0000EE", linetype=10,size=1)  +#
+		# geom_errorbar(data=HepHexPropGlyData_all, aes(ymin = EF_low95, #print error bars for D values#
+	 #    		ymax = EF_high95), width=errBarWidth) +#
+		# geom_errorbarh(data=HepHexPropGlyData_all, aes(xmin= K-Uncertainty_K,#
+		#     		xmax = K+Uncertainty_K), height= errbarHeight) + 		#
+		scale_shape_manual( values=c(20,15,17,22,15,16,20) ) +		#
+		geom_point( aes(colour=XO2), size=4.0 ) +#
+		labs(col="XO2", shape="fuel type") +			#
+		scale_colour_gradient(high="grey",low="black", guide="colourbar") + #
+		xlab(xlabel) + #
+		ylab(ylabel ) +#
+		theme_bw()+#
+		theme(legend.position=c(0.2, 0.8),#
+		plot.title = element_text(colour="black",face="bold",size=12),#
+		panel.background = element_rect(fill = bgColor),#
+		axis.text = element_text(size=txts,colour="black"),#
+		plot.margin= unit(SpMargins, "lines") )
+p40
+errBarWidth <- 0.1#
+errbarHeight <- 1.0#
+xlabel <- expression( "K (mm"^2*"/s)" )#
+ylabel <- expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" )#
+SpMargins <- c(0, 0, 0.5, 0.5)#
+bgColor <- "#f7f7f7"#
+txts <- 12#
+p40 <- ggplot(data=HepHexPropGlyData_all) + aes(x=K, y=EF_avg) +#
+		aes(group=Inert, shape=Inert)+#
+		geom_hline(aes(yintercept=1), colour="#0000EE", linetype=10,size=1)  +#
+		# geom_errorbar(data=HepHexPropGlyData_all, aes(ymin = EF_low95, #print error bars for D values#
+	 #    		ymax = EF_high95), width=errBarWidth) +#
+		# geom_errorbarh(data=HepHexPropGlyData_all, aes(xmin= K-Uncertainty_K,#
+		#     		xmax = K+Uncertainty_K), height= errbarHeight) + 		#
+		scale_shape_manual( values=c(20,15,17,22,15,16,20) ) +		#
+		geom_point( aes(colour=XO2), size=4.0 ) +#
+		labs(col="XO2", shape="fuel type") +			#
+		scale_colour_gradient(high="grey",low="black", guide="colourbar") + #
+		xlab(xlabel) + #
+		ylab(ylabel ) +#
+		theme_bw()+#
+		theme(legend.position=c(0.15, 0.75),#
+		plot.title = element_text(colour="black",face="bold",size=12),#
+		panel.background = element_rect(fill = bgColor),#
+		axis.text = element_text(size=txts,colour="black"),#
+		plot.margin= unit(SpMargins, "lines") )
+p40
+# errBarWidth <- 0.1#
+# errbarHeight <- 1.0#
+xlabel <- expression( "K (mm"^2*"/s)" )#
+ylabel <- expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" )#
+SpMargins <- c(0, 0, 0.5, 0.5)#
+# bgColor <- "#f7f7f7"#
+txts <- 12#
+p40 <- ggplot(data=HepHexPropGlyData_all) + aes(x=K, y=EF_avg) +#
+		aes(group=Inert, shape=Inert)+#
+		geom_hline(aes(yintercept=1), colour="#0000EE", linetype=10,size=1)  +#
+		# geom_errorbar(data=HepHexPropGlyData_all, aes(ymin = EF_low95, #print error bars for D values#
+	 #    		ymax = EF_high95), width=errBarWidth) +#
+		# geom_errorbarh(data=HepHexPropGlyData_all, aes(xmin= K-Uncertainty_K,#
+		#     		xmax = K+Uncertainty_K), height= errbarHeight) + 		#
+		scale_shape_manual( values=c(20,17,17,22,15,16,20) ) +		#
+		geom_point( aes(colour=XO2), size=4.0 ) +#
+		labs(col="XO2", shape="fuel type") +			#
+		scale_colour_gradient(high="grey",low="black", guide="colourbar") + #
+		xlab(xlabel) + #
+		ylab(ylabel ) +#
+		theme_bw()+#
+		theme(legend.position=c(0.15, 0.75),#
+		plot.title = element_text(colour="black",face="bold",size=12),#
+		panel.background = element_rect(fill = bgColor),#
+		axis.text = element_text(size=txts,colour="black"),#
+		plot.margin= unit(SpMargins, "lines") )
+p40
+# errBarWidth <- 0.1#
+# errbarHeight <- 1.0#
+xlabel <- expression( "K (mm"^2*"/s)" )#
+ylabel <- expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" )#
+SpMargins <- c(0, 0, 0.5, 0.5)#
+# bgColor <- "#f7f7f7"#
+txts <- 12#
+p40 <- ggplot(data=HepHexPropGlyData_all) + aes(x=K, y=EF_avg) +#
+		aes(group=Inert, shape=Inert)+#
+		geom_hline(aes(yintercept=1), colour="#0000EE", linetype=10,size=1)  +#
+		# geom_errorbar(data=HepHexPropGlyData_all, aes(ymin = EF_low95, #print error bars for D values#
+	 #    		ymax = EF_high95), width=errBarWidth) +#
+		# geom_errorbarh(data=HepHexPropGlyData_all, aes(xmin= K-Uncertainty_K,#
+		#     		xmax = K+Uncertainty_K), height= errbarHeight) + 		#
+		scale_shape_manual( values=c(19,17,17,22,15,16,20) ) +		#
+		geom_point( aes(colour=XO2), size=4.0 ) +#
+		labs(col="XO2", shape="fuel type") +			#
+		scale_colour_gradient(high="grey",low="black", guide="colourbar") + #
+		xlab(xlabel) + #
+		ylab(ylabel ) +#
+		theme_bw()+#
+		theme(legend.position=c(0.15, 0.75),#
+		plot.title = element_text(colour="black",face="bold",size=12),#
+		panel.background = element_rect(fill = bgColor),#
+		axis.text = element_text(size=txts,colour="black"),#
+		plot.margin= unit(SpMargins, "lines") )
+p40
+source('~/Desktop/YoCorrections.R', chdir = TRUE)
+i
+FP
+FA
+source('~/Desktop/YoCorrections.R', chdir = TRUE)
+i
+source('~/Desktop/YoCorrections.R', chdir = TRUE)
+io
+i
+Nmax
+source('~/mygitFiles/hephex_scatterplots/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
+p40
+xlabel <- expression( "K (mm"^2*"/s)" )#
+ylabel <- expression( "D/( 0.5(D"[BA]^0*+D[AB]^0* " ))" )#
+SpMargins <- c(0, 0, 0.5, 0.5)#
+txts <- 12#
+bgColor <- "white"#
+p40 <- ggplot(data=HepHexPropGlyData_all) + aes(x=K, y=EF_avg) +#
+		aes(group=Inert, shape=Inert)+#
+		geom_hline(aes(yintercept=1), colour="#0000EE", linetype=10,size=1)  +#
+		# geom_errorbar(data=HepHexPropGlyData_all, aes(ymin = EF_low95, #print error bars for D values#
+	 #    		ymax = EF_high95), width=errBarWidth) +#
+		# geom_errorbarh(data=HepHexPropGlyData_all, aes(xmin= K-Uncertainty_K,#
+		#     		xmax = K+Uncertainty_K), height= errbarHeight) + 		#
+		scale_shape_manual( values=c(19,17,17,22,15,16,20) ) +		#
+		geom_point( aes(colour=XO2), size=4.0 ) +#
+		labs(col="XO2", shape="inert type") +			#
+		scale_colour_gradient(high="grey",low="black", guide="colourbar") + #
+		xlab(xlabel) + #
+		ylab(ylabel ) +#
+		theme_bw()+#
+		theme(legend.position=c(0.15, 0.75),#
+		plot.title = element_text(colour="black",face="bold",size=12),#
+		panel.background = element_rect(fill = bgColor),#
+		axis.text = element_text(size=txts,colour="black"),#
+		plot.margin= unit(SpMargins, "lines") )
+p40
+source('~/Desktop/YoCorrections.R', chdir = TRUE)
+source('~/Desktop/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
 source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
-hist(D_eff$eps_N95,prob=T,n=100)
-hist(K_mcN96,prob=T,n=100)
-hist(K_mcN95,prob=T,n=100)
-hist(D_eff$eps_N95*K_mcN05,prob=T,n=100)
-hist(D_eff$eps_N95*K_mcN95,prob=T,n=100)
-ds(K_mcN95)
-sd(K_mcN95)
-sd(D_eff$eps_N95)
-source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
-D_eff$eps_upper-D_eff$eps_lower
-D_eff$eps_bar
-source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
-sd(D_eff$K_mcN95)
-source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-dyn.load('/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/server/libjvm.dylib')
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-library(ggplot2)#
-library(directlabels)#
-#my data set:#
-oc <- read.csv("http://www.columbia.edu/~mad2200/oc.csv")#
-oc$percent_women <- oc$W_employment/(oc$M_employment+oc$W_employment)#
-oc$size <- oc$W_employment+oc$M_employment#
-p <- ggplot(oc, aes(M_w_earnings, W_w_earnings, label = as.character(Occupational.Group)))#
-p + geom_point(aes(size = size, colour=percent_women)) + scale_size_continuous(range=c(0,30)) + #scale_area()+#
-#geom_point(aes(colour = oc$percent_women)) + #
-coord_equal() +#
-scale_colour_gradient(high = "red")+#
-ylim(700, 1700) +#
-xlim(700, 1700) +#
-geom_abline(slope=1) +#
-labs(title = "Income Disparity by Occupation and Gender") +#
-ylab("Women's Weekly Earnings in $") +#
-xlab("Men's Weekly Earnings in $")
-names(oc)
-oc
-help(type)
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-plotOut
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/test.R', chdir = TRUE)
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-#command window if this code does not at run at first.#
-dyn.load('/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/server/libjvm.dylib')
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-double(5)
-length(5)
-test <- c(1,2,3,45)
-length(test)
-testing1 <- numeric(5)
-testing1
-source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/raw_Rcode_results/skewed_experiments.R', chdir = TRUE)
-N
-eps
-M <- 1e6#
-par(mfrow=c(2,2))#
-for (i in 1:N) {#
-	D <- rnorm(n=M,mean=eps[i],sd=sigma_eps[i])*rnorm(n=M,mean=K[i],sd=sigma_K[i])/8#
-	hist(D,prob=TRUE)#
-}
-for (i in 1:N) {#
-	D <- rnorm(n=M,mean=eps[i],sd=sigma_eps[i])*rnorm(n=M,mean=K[i],sd=sigma_K[i])/8#
-	hist(D,prob=TRUE)#
-	readline("--press enter--")#
-}
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/raw_Rcode_results/skewed_experiments.R', chdir = TRUE)
-source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
-hist(eps_N95,prob=T,n=100)
-dev.new(), hist(K_mcN95,prob=T,n=100)
-dev.new(); hist(K_mcN95,prob=T,n=100)
-dev.new(); hist(eps_N95*K_mcN95/8,prob=T,n=100)
-N
-D_new <- rnorm(n=N, mean=0.3089,sd=0.02079436)
-eps_new <- rnorm(n=N, mean=0.3089,sd=0.02079436)
-dev.new(); hist(K_mcN95*eps/new/8,prob=T,n=100)
-dev.new(); hist(K_mcN95*eps_new/8,prob=T,n=100)
-dev.new(); hist(eps_new,prob=T,n=100)
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-dyn.load('/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/server/libjvm.dylib')
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
-0.506*177.8
-0.506/3600
-101350-(1.22/2)*(1.406e-4)*286141.36
-101350-(1.22/2)*( (1.406e-4)*286141.36)^2
-0.1/3600
-101350-(1.22/2)*((2.78e-5)*(1.448e6))^2
-( (1.406e-4)*286141.36)^2
-(1.22/2)*((2.78e-5)*(1.448e6))^2
-((2.78e-5)*(1.448e6))^2
-40*400/90
-90*400/40
-source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
-dyn.load('/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/server/libjvm.dylib')
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
-dev.new(); hist(Deffective,prob=T,n=100)
-deve.new(); hist(eps_N95,prob=T,n=100)
-dev.new(); hist(eps_N95,prob=T,n=100)
-dev.new(); hist(K_mcN95,prob=T,n=100)
-dev.new(); hist(eps_N95*K_mcN95/8,prob=T,n=100)
-dev.new(); hist(rnorm(mean=0.3089,n=N,sd=0.02079436)*K_mcN95/8,prob=T,n=100)
-dev.new(); hist(eps_N95,prob=T,n=100)
-dev.new(); hist(K_mcN95,prob=T,n=100)
-dev.new(); hist(eps_N95*K_mcN95/8,prob=T,n=100)
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/raw_Rcode_results/skewed_experiments.R', chdir = TRUE)
-# define the summary function#
-f <- function(x) {#
-  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
-  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
-  r#
-}#
-#
-# sample data#
-d <- data.frame(x=gl(2,50), y=rnorm(100))
-# do it#
-ggplot(d, aes(x, y)) + stat_summary(fun.data = f, geom="boxplot")
-# do it#
-ggplot2(d, aes(x, y)) + stat_summary(fun.data = f, geom="boxplot")
-# do it#
-ggplot(d, aes(x, y)) + stat_summary(fun.data = f, geom="boxplot")
-library(ggplot2)
-# do it#
-ggplot(d, aes(x, y)) + stat_summary(fun.data = f, geom="boxplot")
-# example with outliers#
-# define outlier as you want    #
-o <- function(x) {#
-  subset(x, x < quantile(x)[2] | quantile(x)[4] < x)#
-}#
-#
-# do it#
-ggplot(d, aes(x, y)) + #
-  stat_summary(fun.data=f, geom="boxplot") + #
-  stat_summary(fun.y = o, geom="point")
-help(gl)
-# do it#
-stat_boxplot(geom='errorbar') +#
-ggplot(d, aes(x, y)) + stat_summary(fun.data = f, geom="boxplot")
-# define the summary function#
-f <- function(x) {#
-  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
-  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
-  r#
-}#
-#
-# sample data#
-d <- data.frame(x=gl(2,50), y=rnorm(100))#
-#
-# do it#
-stat_boxplot(geom='errorbar') +#
-ggplot(d, aes(x, y)) + stat_summary(fun.data = f, geom="boxplot")
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
-# define the summary function#
-f <- function(x) {#
-  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
-  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
-  r#
-}#
-#
-# sample data#
-d <- data.frame(x=gl(2,50), y=rnorm(100))#
-#
-# do it#
-stat_boxplot(geom='errorbar') +#
-ggplot(d, aes(x, y)) + stat_summary(fun.data = f, geom="boxplot")
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
-# define the summary function#
-f <- function(x) {#
-  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
-  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
-  r#
-}#
-#
-# sample data#
-d <- data.frame(x=gl(2,50), y=rnorm(100))#
-#
-# do it#
-stat_boxplot(geom='errorbar') +#
-geom_boxplot(d, aes(x, y)) + stat_summary(fun.data = f, geom="boxplot")
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
-# define the summary function#
-f <- function(x) {#
-  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
-  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
-  r#
-}#
-#
-# sample data#
-d <- data.frame(x=gl(2,50), y=rnorm(100))#
-#
-# do it#
-ggplot(data=d, aes(x, y)) + geom_boxplot(aes(fill=VboxPlotxFactors), show.legend=FALSE, notch=FALSE,#
-	  	outlier.shape=NA )
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
-# define the summary function#
-f <- function(x) {#
-  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
-  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
-  r#
-}#
-#
-# sample data#
-d <- data.frame(x=gl(2,50), y=rnorm(100))#
-#
-# do it#
-ggplot(data=d, aes(x, y)) + geom_boxplot(aes( show.legend=FALSE, notch=FALSE,#
-	  	outlier.shape=NA )
-)
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
-# define the summary function#
-f <- function(x) {#
-  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
-  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
-  r#
-}#
-#
-# sample data#
-d <- data.frame(x=gl(2,50), y=rnorm(100))#
-#
-# do it#
-ggplot(data=d, aes(x, y)) + geom_boxplot(aes( show.legend=FALSE, notch=FALSE,#
-	  	outlier.shape=NA ) ) #
-+ stat_summary(geom="errobar")
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
-# define the summary function#
-f <- function(x) {#
-  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
-  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
-  r#
-}#
-#
-# sample data#
-d <- data.frame(x=gl(2,50), y=rnorm(100))#
-#
-# do it#
-ggplot(data=d, aes(x, y)) + geom_boxplot(aes( show.legend=FALSE, notch=FALSE,#
-	  	outlier.shape=NA ) ) #
-+ stat_summary(geom='errorbar')
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
-# define the summary function#
-f <- function(x) {#
-  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
-  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
-  r#
-}#
-#
-# sample data#
-d <- data.frame(x=gl(2,50), y=rnorm(100))#
-#
-# do it#
-ggplot(data=d, aes(x, y)) + geom_boxplot(aes( show.legend=FALSE, notch=FALSE,#
-	  	outlier.shape=NA ) ) + stat_summary(geom='errorbar')
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
-# define the summary function#
-f <- function(x) {#
-  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
-  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
-  r#
-}#
-#
-# sample data#
-d <- data.frame(x=gl(2,50), y=rnorm(100))#
-#
-# do it#
-ggplot(data=d, aes(x, y)) + #
-geom_boxplot(aes( show.legend=FALSE, notch=FALSE, outlier.shape=NA ) ) + #
-stat_summary(geom='errorbar') +#
-geom_jitter(position=position_jitter(width=.4, height=0))
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
-# define the summary function#
-f <- function(x) {#
-  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
-  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
-  r#
-}#
-#
-# sample data#
-d <- data.frame(x=gl(2,50), y=rnorm(100))#
-#
-# do it#
-ggplot(data=d, aes(x, y)) + #
-geom_boxplot(aes( show.legend=FALSE, notch=FALSE, outlier.shape=NA ) ) + #
-stat_summary(geom='errorbar', fun.data = f) +#
-geom_jitter(position=position_jitter(width=.4, height=0))
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
-# define the summary function#
-f <- function(x) {#
-  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
-  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
-  r#
-}#
-#
-# sample data#
-d <- data.frame(x=gl(2,50), y=rnorm(100))#
-#
-# do it#
-ggplot(data=d, aes(x, y)) + #
-geom_boxplot(aes( show.legend=FALSE, notch=FALSE, outlier.shape=NA ) ) + #
-stat_summary(geom='errorbar') +#
-geom_jitter(position=position_jitter(width=.4, height=0))
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
-# define the summary function#
-f <- function(x) {#
-  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
-  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
-  r#
-}#
-#
-# sample data#
-d <- data.frame(x=gl(2,50), y=rnorm(100))#
-#
-# do it#
-ggplot(data=d, aes(x, y)) + #
-geom_boxplot(aes( show.legend=FALSE, notch=FALSE, outlier.shape=NA ) ) + #
-stat_summary(geom='errorbar') +#
-geom_jitter(position=position_jitter(width=.1, height=0))
-names(d)
-plot(d$x,d$y)
-d
-plot(d$x,d$y)
-# do it#
-dev.new()#
-ggplot(data=d, aes(x, y)) + #
-geom_boxplot(aes( show.legend=FALSE, notch=FALSE, outlier.shape=NA ) ) + #
-stat_summary(geom='errorbar') +#
-geom_jitter(position=position_jitter(width=.1, height=0))
-dev.new(); boxplot(d$x,d$y)
-# example with outliers#
-# define outlier as you want    #
-o <- function(x) {#
-  subset(x, x < quantile(x)[2] | quantile(x)[4] < x)#
-}#
-#
-# do it#
-ggplot(d, aes(x, y)) + #
-  stat_summary(fun.data=f, geom="boxplot") + #
-  stat_summary(fun.y = o, geom="point")
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
-# define the summary function#
-f <- function(x) {#
-  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
-  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
-  r#
-}#
-#
-# sample data#
-d <- data.frame(x=gl(2,50), y=rnorm(100))#
-#
-# do it#
-dev.new()#
-ggplot(data=d, aes(x, y)) + #
-geom_boxplot(aes( show.legend=FALSE, notch=FALSE, outlier.shape=NA ) ) + #
-stat_summary(geom='errorbar') +#
-geom_jitter(position=position_jitter(width=.1, height=0)) #
-#
-# example with outliers#
-# define outlier as you want    #
-o <- function(x) {#
-  subset(x, x < quantile(x)[2] | quantile(x)[4] < x)#
-}#
-#
-# do it#
-ggplot(d, aes(x, y)) + #
-  stat_summary(fun.data=f, geom="boxplot") + #
-  stat_summary(fun.y = o, geom="point")
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
-# define the summary function#
-f <- function(x) {#
-  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
-  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
-  r#
-}#
-#
-# sample data#
-d <- data.frame(x=gl(2,50), y=rnorm(100))#
-#
-# do it#
-dev.new()#
-ggplot(data=d, aes(x, y)) + #
-geom_boxplot(aes( show.legend=FALSE, notch=FALSE, outlier.shape=NA ) ) + #
-stat_summary(geom='errorbar') +#
-geom_jitter(position=position_jitter(width=.1, height=0)) #
-#
-# example with outliers#
-# define outlier as you want    #
-o <- function(x) {#
-  subset(x, x < quantile(x)[2] | quantile(x)[4] < x)#
-}#
-#
-# do it#
-dev.new()#
-ggplot(d, aes(x, y)) + #
-  stat_summary(fun.data=f, geom="boxplot") + #
-  stat_summary(fun.y = o, geom="point")
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
-# define the summary function#
-f <- function(x) {#
-  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))#
-  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")#
-  r#
-}#
-#
-# sample data#
-d <- data.frame(x=gl(2,50), y=rnorm(100))#
-#
-# do it#
-dev.new()#
-# ggplot(data=d, aes(x, y)) + #
-# geom_boxplot(aes( show.legend=FALSE, notch=FALSE, outlier.shape=NA ) ) + #
-# stat_summary(geom='errorbar') +#
-# geom_jitter(position=position_jitter(width=.1, height=0)) #
-ggplot(d, aes(x, y)) + stat_summary(fun.data = f, geom="boxplot")#
-# example with outliers#
-# define outlier as you want    #
-o <- function(x) {#
-  subset(x, x < quantile(x)[2] | quantile(x)[4] < x)#
-}#
-#
-# do it#
-dev.new()#
-ggplot(d, aes(x, y)) + #
-  stat_summary(fun.data=f, geom="boxplot") + #
-  stat_summary(fun.y = o, geom="point")
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
- ggplot(df, aes(x)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity"#
-  )
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
- ggplot(df, aes(x)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity"#
-  ) +#
-   stat_summary(geom='errobar')
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
- ggplot(df, aes(x)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity"#
-  ) +#
-   stat_boxplot(geom='errobar')
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
- ggplot(df, aes(x)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity"#
-  ) + stat_boxplot(geom='errobar')
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
- ggplot(df, aes(x)) + stat_boxplot(geom='errobar') +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity"#
-  )
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
- ggplot(df, aes(x)) + stat_boxplot(geom='errorbar') +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity"#
-  )
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
- ggplot(df, aes(x,y)) + stat_boxplot(geom='errorbar') +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity"#
-  )
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
- ggplot(df, aes(x)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity"#
-  ) #+#
-   # stat_boxplot(geom='errorbar')
-dataframe
-df
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
- ggplot(df, aes(x)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity"#
-  ) #+#
-   # stat_boxplot(geom='errorbar')
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
-#
- df2 <- data.frame(x=gl(1,100),y)#
- ggplot(data=df2, aes(x,y)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity"#
-  ) #+#
-   # stat_boxplot(geom='errorbar')
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
-#
-   y0 <- min(y),#
-   y25 <- quantile(y, 0.25),#
-   y50 <- median(y),#
-   y75 <- quantile(y, 0.75),#
-   y100 <- max(y)#
- df2 <- data.frame(x=gl(1,100),y)#
- ggplot(data=df2, aes(x,y)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity"#
-  ) #+#
-   # stat_boxplot(geom='errorbar')
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
-#
-   y0 <- min(y)#
-   y25 <- quantile(y, 0.25)#
-   y50 <- median(y)#
-   y75 <- quantile(y, 0.75)#
-   y100 <- max(y)#
-#
- df2 <- data.frame(x=gl(1,100),y)#
- ggplot(data=df2, aes(x,y)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity"#
-  ) #+#
-   # stat_boxplot(geom='errorbar')
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
-#
-   y0 <- min(y)#
-   y25 <- quantile(y, 0.25)#
-   y50 <- median(y)#
-   y75 <- quantile(y, 0.75)#
-   y100 <- max(y)#
-#
- df2 <- data.frame(x=gl(1,100),y)#
- ggplot(data=df2, aes(x,y)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity"#
-  )
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
-#
-   y0 <- min(y)#
-   y25 <- quantile(y, 0.25)#
-   y50 <- median(y)#
-   y75 <- quantile(y, 0.75)#
-   y100 <- max(y)#
-#
- df2 <- data.frame(x=gl(1,100),y)#
- ggplot(data=df2, aes(x,y)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity"#
-  ) #+#
-   # stat_boxplot(geom='errorbar')
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
-#
-   y0 <- min(y)#
-   y25 <- quantile(y, 0.25)#
-   y50 <- median(y)#
-   y75 <- quantile(y, 0.75)#
-   y100 <- max(y)#
-#
- df2 <- data.frame(x=gl(1,100),y)#
- ggplot(data=df2, aes(x,y)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity"#
-  ) +#
-  geom_jitter(position=position_jitter(width=.1, height=0))
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
-#
-   y0 <- min(y)#
-   y25 <- quantile(y, 0.25)#
-   y50 <- median(y)#
-   y75 <- quantile(y, 0.75)#
-   y100 <- max(y)#
-#
- df2 <- data.frame(x=gl(1,100),y)#
- ggplot(data=df2, aes(x,y)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity"#
-  ) + geom_jitter(position=position_jitter(width=.1, height=0))
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
-#
-   y0 <- min(y)#
-   y25 <- quantile(y, 0.25)#
-   y50 <- median(y)#
-   y75 <- quantile(y, 0.75)#
-   y100 <- max(y)#
-#
- df2 <- data.frame(x=gl(1,100),y)#
- ggplot(data=df2, aes(x,y)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity"#
-  )
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
-#
-   y0 <- min(y)#
-   y25 <- quantile(y, 0.25)#
-   y50 <- median(y)#
-   y75 <- quantile(y, 0.75)#
-   y100 <- max(y)#
-#
- df2 <- data.frame(x=gl(1,100),y)#
- ggplot(data=df2, aes(x,y)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity"#
-  ) #+#
-   # stat_boxplot(geom='errorbar')
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
-#
-   y0 <- min(y)#
-   y25 <- quantile(y, 0.25)#
-   y50 <- median(y)#
-   y75 <- quantile(y, 0.75)#
-   y100 <- max(y)#
-#
- df2 <- data.frame(x=gl(1,100),y)#
- ggplot(data=df2, aes(x,y)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity")
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
-#
-   y0 <- min(y)#
-   y25 <- quantile(y, 0.25)#
-   y50 <- median(y)#
-   y75 <- quantile(y, 0.75)#
-   y100 <- max(y)#
-#
- df2 <- data.frame(x=gl(1,100),y)#
- ggplot(data=df2, aes(x,y)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity"#
-  ) #+#
-   # stat_boxplot(geom='errorbar')
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
-#
-   y0 <- min(y)#
-   y25 <- quantile(y, 0.25)#
-   y50 <- median(y)#
-   y75 <- quantile(y, 0.75)#
-   y100 <- max(y)#
-#
- df2 <- data.frame(x=gl(1,100),y)#
- ggplot(data=df2, aes(x,y)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity"#
-  ) #+
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
-#
-   y0 <- min(y)#
-   y25 <- quantile(y, 0.25)#
-   y50 <- median(y)#
-   y75 <- quantile(y, 0.75)#
-   y100 <- max(y)#
-#
- df2 <- data.frame(x=gl(1,100),y)#
- ggplot(data=df2, aes(x,y)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity")
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
-#
-   y0 <- min(y)#
-   y25 <- quantile(y, 0.25)#
-   y50 <- median(y)#
-   y75 <- quantile(y, 0.75)#
-   y100 <- max(y)#
-#
- df2 <- data.frame(x=gl(1,100),y)#
- p1 <- ggplot(data=df2, aes(x,y)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity")
-p1
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
-#
-   y0 <- min(y)#
-   y25 <- quantile(y, 0.25)#
-   y50 <- median(y)#
-   y75 <- quantile(y, 0.75)#
-   y100 <- max(y)#
-#
- df2 <- data.frame(x=gl(1,100),y)#
- p1 <- ggplot(data=df2, aes(x,y)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity") #
-p1 <- p1 + geom_jitter(position=position_jitter(width=.4, height=0))
-p1
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
-#
-   y0 <- min(y)#
-   y25 <- quantile(y, 0.25)#
-   y50 <- median(y)#
-   y75 <- quantile(y, 0.75)#
-   y100 <- max(y)#
-#
- df2 <- data.frame(x=gl(1,100),y)#
- p1 <- ggplot(data=df2, aes(x,y)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity") #
-p2 <- p1 + geom_jitter(position=position_jitter(width=.4, height=0))
-p1
-p2
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
-#
-   y0 <- min(y)#
-   y25 <- quantile(y, 0.25)#
-   y50 <- median(y)#
-   y75 <- quantile(y, 0.75)#
-   y100 <- max(y)#
-#
- df2 <- data.frame(x=gl(1,100),y)#
- p1 <- ggplot(data=df2, aes(x,y)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity") #
-p2 <- p1 + geom_jitter(position=position_jitter(width=.1, height=0))
-p2
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
-#
-   y0 <- min(y)#
-   y25 <- quantile(y, 0.25)#
-   y50 <- median(y)#
-   y75 <- quantile(y, 0.75)#
-   y100 <- max(y)#
-#
- df2 <- data.frame(x=gl(1,100),y)#
-p1 <- ggplot(data=df2, aes(x,y)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity") #
-p1 <- p1 + geom_jitter(position=position_jitter(width=.1, height=0))
-p1
-rm(list=ls(all=TRUE))
-p1
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- df <- data.frame(#
-   x = 1,#
-   y0 = min(y),#
-   y25 = quantile(y, 0.25),#
-   y50 = median(y),#
-   y75 = quantile(y, 0.75),#
-   y100 = max(y)#
- )#
-#
-   y0 <- min(y)#
-   y25 <- quantile(y, 0.25)#
-   y50 <- median(y)#
-   y75 <- quantile(y, 0.75)#
-   y100 <- max(y)#
-#
- df2 <- data.frame(x=gl(1,100),y)#
-p1 <- ggplot(data=df2, aes(x,y)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity") #
-p1 <- p1 + geom_jitter(position=position_jitter(width=.1, height=0))
-p1
-source('~/Desktop/test.R', chdir = TRUE)
-p1
-source('~/Desktop/test.R', chdir = TRUE)
-p1
-source('~/Desktop/test.R', chdir = TRUE)
-p1
-boxplot(y)
-p1
-dev.new(); boxplot(y)
-source('~/Desktop/test.R', chdir = TRUE)
-p1
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- # df <- data.frame(#
- #   x = 1,#
- #   y0 = min(y),#
- #   y25 = quantile(y, 0.25),#
- #   y50 = median(y),#
- #   y75 = quantile(y, 0.75),#
- #   y100 = max(y)#
- # )#
-#
-   y0 <- min(y)#
-   y25 <- quantile(y, 0.25)#
-   y50 <- median(y)#
-   y75 <- quantile(y, 0.75)#
-   y100 <- max(y)#
-#
- df2 <- data.frame(x=gl(1,100),y)#
-p1 <- ggplot(data=df2, aes(x,y)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity") #
-p1 <- p1 + geom_boxplot(aes(fill=x))#
-p1 <- p1 + geom_jitter(position=position_jitter(width=.1, height=0))#
-#
-p1 <- p1 + stat_boxplot(geom='errorbar')
-p1
-rm(list=ls(all=TRUE))   #remove all variables in  workspace#
-library(ggplot2)#
-#
- # It's possible to draw a boxplot with your own computations if you#
- # use stat = "identity":#
- y <- rnorm(100)#
- # df <- data.frame(#
- #   x = 1,#
- #   y0 = min(y),#
- #   y25 = quantile(y, 0.25),#
- #   y50 = median(y),#
- #   y75 = quantile(y, 0.75),#
- #   y100 = max(y)#
- # )#
-#
-   y0 <- min(y)#
-   y25 <- quantile(y, 0.25)#
-   y50 <- median(y)#
-   y75 <- quantile(y, 0.75)#
-   y100 <- max(y)#
-#
- df2 <- data.frame(x=gl(1,100),y)#
-p1 <- ggplot(data=df2, aes(x,y)) +#
-   geom_boxplot(#
-    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),#
-    stat = "identity", width=0.3) #
-p1 <- p1 + geom_boxplot(aes(fill=x))#
-p1 <- p1 + geom_jitter(position=position_jitter(width=.1, height=0))#
-#
-p1 <- p1 + stat_boxplot(geom='errorbar')
-source('~/Desktop/test.R', chdir = TRUE)
-p1
-source('~/Desktop/test.R', chdir = TRUE)
-p1
-source('~/Desktop/test.R', chdir = TRUE)
-p1
-source('~/Desktop/test.R', chdir = TRUE)
-p1
-source('~/Desktop/test.R', chdir = TRUE)
-p1
-dyn.load('/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/server/libjvm.dylib')
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-source('~/Desktop/test.R', chdir = TRUE)
-p1
-source('~/Desktop/test.R', chdir = TRUE)
-p1
-source('~/Desktop/test.R', chdir = TRUE)
-p1
-boxplot(df2)
-df2
-boxplot(df2$x,df2$y)
-source('~/Desktop/test.R', chdir = TRUE)
-library(adply)
-library(plyr)
-help(adply)
-source('~/Desktop/test.R', chdir = TRUE)
-b
-source('~/Desktop/test.R', chdir = TRUE)
-p1
-source('~/Desktop/test.R', chdir = TRUE)
-p1
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-#command window if this code does not at run at first.#
-dyn.load('/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/server/libjvm.dylib')
-source('~/Box Sync/HepHex_Paper/HepHex_Data/HepHex_Diffusivities/hephexPlotsASGSR.Rev04.R', chdir = TRUE)
-source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
-source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/errorbars_main.R', chdir = TRUE)
+source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/mcUandBisect_test.R', chdir = TRUE)
+D_N95
+source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/mcUandBisect_test.R', chdir = TRUE)
+D_N95
+source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/mcUandBisect_test.R', chdir = TRUE)
+source('~/mygitFiles/diffusivity_calculations/errorbar_calculations/mcUandBisect_test.R', chdir = TRUE)
