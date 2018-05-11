@@ -14,6 +14,7 @@ SUBROUTINE bisection(tau, LHS, err_tol, p)
     b = 1.0
     CALL Fx_eval(tau, a, LHS, f_a)
     CALL Fx_eval(tau, b, LHS, f_b) 
+
     IF ( f_a * f_b > 0 ) THEN 
         WRITE(*,10) a, b 
 10      FORMAT('!!!!! ROOT IS NOT BOUNDED IN: [', ES8.2, ',', ES8.2 '] !!!!!!!!!!!!')  
@@ -32,7 +33,7 @@ SUBROUTINE bisection(tau, LHS, err_tol, p)
                 b = p 
             END IF 
         END DO 
-            ! WRITE(*,20) i, ABS(f_p)
+!             WRITE(*,20) i, ABS(f_p)
 ! 20          FORMAT(' ',"iteration count:" I3,  "   f(epsilon):" ES14.6)         
     END IF 
 
