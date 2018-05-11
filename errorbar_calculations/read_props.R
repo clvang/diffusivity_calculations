@@ -2,8 +2,8 @@
 read_props <- function()
 {
 		# read data from fcprops.txt file
-	data_import <- read.table('fcprops.txt',skip=4,nrows=15, sep="!")
-	data_numeric <- as.numeric(as.character(data_import$V1[seq(1,14)]))
+	data_import <- read.table('fcprops.txt',skip=4,nrows=16, sep="!")
+	data_numeric <- as.numeric(as.character(data_import$V1[seq(1,16)]))
 
 	p 			<- data_numeric[1]    # chamber pressure [atm]
 	dc_sq 		<- data_numeric[2]    # drop diameter @ onset of fc squared [mm^2]
@@ -20,6 +20,7 @@ read_props <- function()
 	td          <- data_numeric[13]   # time delay [s]
 	Utd_sq      <- data_numeric[14]^2   # uncertainty in time delay [s]
 	sol_id      <- data_import$V1[15] #solvent id (1) - Heptane (2)- Propanol
+	dod1_ratio  <- data_numeric[16]
 
 	list(p=p, dc_sq=dc_sq,
 		K=K, do_measured=do_measured,
@@ -27,5 +28,6 @@ read_props <- function()
 		Uk_sq=Uk_sq, Udo_sq=Udo_sq,
 		Udc_sq=Udc_sq, UYo_sq=UYo_sq,
 		Uo=Uo, UUo_sq=UUo_sq,
-		td=td, Utd_sq=Utd_sq, sol_id=sol_id)
+		td=td, Utd_sq=Utd_sq, sol_id=sol_id,
+		dod1_ratio=dod1_ratio)
 }
