@@ -37,7 +37,8 @@ generate_fcprops_from_xlsx <- function(i, importedData){
 		paste("150.0","                 !95% Uncertainty in measurement of Uo (mm/s)"),
 		paste(importedData$t_delay[i],"               !time delay [s]"),
 		paste("0.67","                  !95% uncertainty in measurement of time delay [s] (p/m two frames)"),
-		paste(sol_id,"                     !solvent (1)-Heptane (2)-Propanol") ),
+		paste(sol_id,"                  !solvent (1)-Heptane (2)-Propanol"),
+		paste(importedData$dod1_ratio[i],"				!diameter ratio at needle retraction to igniter on, do/d1") ),
 		fileConn)
 
 	close(fileConn)
