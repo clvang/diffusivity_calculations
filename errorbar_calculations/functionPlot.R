@@ -1,7 +1,7 @@
 
-functionPlot <- function(tau_vector, LHS_vector, eps_vector, expname)
+functionPlot <- function(tau_vector, LHS_vector, expname)
 
-{
+{ 
 	# functionEval <- function(tau_vector_input, eps_vector_input, LHS_vector_input, N, num_pts, expname){
 	functionEval <- function(tau_input, eps_input, LHS_input){
 	# SUBROUTINE functional_eval( tau_vector, LHS_vector, eps_vector, N, num_pts, expname )
