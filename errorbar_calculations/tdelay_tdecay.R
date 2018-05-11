@@ -30,7 +30,7 @@ tdelay_tdecay <- function(do_mcN95, K_mcN95, Yo_mcN95, expname)
 	mu_relative_error <- 0.15   			#viscosity 10% relative error for 95% confidence 
 	rho_relative_error <- 0.01 				#density 10% relative error for 95% confidnece
 	u_muAo <- mu_Ao*mu_relative_error 		#relative error U_mu10/mu_10 = 15% for 95% confidence
-	u_rhoAo <- rho_Ao*rho_relative_error    #relative error U_rho/rho = 15% for 95% confidence
+	u_rhoAo <- rho_Ao*rho_relative_error    #relative error U_rho/rho = 1% for 95% confidence
 	u_muBo <- mu_Bo*mu_relative_error 
 	u_rhoBo <- rho_Bo*rho_relative_error
 
@@ -50,9 +50,8 @@ tdelay_tdecay <- function(do_mcN95, K_mcN95, Yo_mcN95, expname)
 	sigma_Uo <- sqrt(UUo_sq) / cf 
 
 	#generate random variables and compute viscosity of liquid mixture
-	#set.seed(5)
-	MW_solute <- rnorm(n=N,mean=MW_A,sd=sigma_mwA)  #hexadecane
-	MW_solvent <- rnorm(n=N,mean=MW_B,sd=sigma_mwB)  #heptane
+	MW_solute <- rnorm(n=N,mean=MW_A,sd=sigma_mwA)   # hexadecane
+	MW_solvent <- rnorm(n=N,mean=MW_B,sd=sigma_mwB)  # heptane
 
 	X_A <- (Yo_mcN95/MW_solute)/( (Yo_mcN95/MW_solute) + (1- Yo_mcN95)/MW_solvent )
 	mu_A <- rnorm(n=N,mean=mu_Ao,sd=sigma_muAo)
