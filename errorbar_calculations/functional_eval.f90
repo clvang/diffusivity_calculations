@@ -1,4 +1,4 @@
-
+! this fortran function is used by the script functionPlot.R
 SUBROUTINE functional_eval( tau_vector, LHS_vector, eps_vector, N, num_pts, expname )
 
   IMPLICIT NONE
