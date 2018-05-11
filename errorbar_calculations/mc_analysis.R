@@ -23,6 +23,7 @@ mc_analysis <- function(N, P, expname)
 	library(triangle)
 	library(moments)
 	source('/Users/changvang/mygitFiles/diffusivity_calculations/errorbar_calculations/read_props.R')
+	source('/Users/changvang/mygitFiles/diffusivity_calculations/errorbar_calculations/YoCorrection_Function.R')
 
 	# # read data from fcprops.txt file
 	experimental_parameters <- read_props()
@@ -37,6 +38,7 @@ mc_analysis <- function(N, P, expname)
 	Udc_sq <- experimental_parameters$Udc_sq
 	UYo_sq <- experimental_parameters$UYo_sq
 	sol_id <- experimental_parameters$sol_id
+	dod1_ratio <- experimental_parameters$dod1_ratio
 
 	y_ofc <- 1.0  # (defined) mass fraction of low volatility comp at onset of fc
 
@@ -87,8 +89,18 @@ mc_analysis <- function(N, P, expname)
 	sigma_K <- sqrt(Uk_sq) / cf
 	sigma_Y <- sqrt(UYo_sq) / cf	
 
-	#set.seed(5)
-	Yo_mcN95 <- rnorm( n=N, mean=yo, sd=sigma_Y )
+	# THIS IS WHERE YOU WOULD PASS IN dod1_ratio and yo into a function
+	# which solves for Yo_mcN95 (the corrected mass fraction of the low
+	# volatility component when the igniters are turned on)
+	# readline(prompt="Generating RNs for Yo: ")
+	# Yo_mcN95 <- rnorm( n=N, mean=yo, sd=sigma_Y )
+	print('Correcting for changes in Yo...')
+	Yo_mcN95 <- YoCorrection_Function(N=N, cf=cf, sol_id=sol_id,
+									  dod1_ratio=dod1_ratio,
+									  yo=yo, UYo_sq=UYo_sq,
+									  Udo_sq=Udo_sq,
+									  do_measured=do_measured)
+	print("completed correction for Yo...")
 
 	LHS_mcN95 <- y_ofc / Yo_mcN95
 
@@ -189,6 +201,7 @@ mc_analysis <- function(N, P, expname)
 
 	#--------- calculate D values by solving asymptotic equation directly ------- ###
 	# -------- output is just a single value is NOT an MC analysis value  ------- ###
+	print("Solving for single point results...")
 	results_nonMC <- calcRoot(tau_vector = tau_o, 
 						LHS_vector = y_ofc/yo, 
 						K_vector = K,
@@ -196,9 +209,11 @@ mc_analysis <- function(N, P, expname)
 						N = 1)
 	eps_nonMC <- results_nonMC$eps_mcVals
 	D_nonMC <- (results_nonMC$dc_mcVals)* (1/1000)^2  #convert to m^2/s
-
+	print("Completed solving for single point result...")
 
 	#---------------- calculate normal 95% uncertainties ------------------------ ###
+	print("Solving for normal 95% results...")	
+	# readline(prompt="Solving for normal 95% results...")
 	results_N95 <- calcRoot(tau_vector=tau_mcN95, 
 						LHS_vector=LHS_mcN95, 
 						K_vector=K_mcN95,
@@ -206,6 +221,8 @@ mc_analysis <- function(N, P, expname)
 						N = N)
 
 	D_N95 <- results_N95$dc_mcVals
+	# readline(prompt="Completed solving for normal 95% results...")		
+	print("Completed solving for normal 95% results...")		
 
 	DN95_skewness <- skewness(D_N95)
 	if( abs(DN95_skewness) > 0.6 ){
@@ -316,6 +333,24 @@ mc_analysis <- function(N, P, expname)
 	abline(v=eps_upper,col='red',lwd=2.3,lty="dashed")
 	abline(v=eps_lower,col='red',lwd=2.3,lty="dotted")
 	abline(v=eps_bar,col='red',lwd=2.9)
+	legend("topright", c("MC"), col=c("red"), lwd=2)	
+
+	# plot distribution in initial mass fraction of low volatility component
+	Yo_mcN95_lower <- quantile(Yo_mcN95,probs=c((1-P)/2,(1+P)/2), type=1)[[1]]
+	Yo_mcN95_upper <- quantile(Yo_mcN95,probs=c((1-P)/2,(1+P)/2), type=1)[[2]] 
+	Yo_mcN95_bar <- mean(Yo_mcN95)
+	d <- density(Yo_mcN95)
+	Yo_mcN95_most_probable <- d$x[which(d$y==max(d$y))]	
+
+	dev.new()
+	pdf(paste0(expname,"_Ydist.pdf") )
+	hist(Yo_mcN95,prob=TRUE,n=100,  
+		main=paste0(expname,": Distribution of Y"),
+		xlab="Y", col="lightgreen")	
+	lines(d,col="black",lwd=2)
+	abline(v=Yo_mcN95_upper,col='red',lwd=2.3,lty="dashed")
+	abline(v=Yo_mcN95_lower,col='red',lwd=2.3,lty="dotted")
+	abline(v=Yo_mcN95_bar,col='red',lwd=2.9)
 	legend("topright", c("MC"), col=c("red"), lwd=2)	
 
 
